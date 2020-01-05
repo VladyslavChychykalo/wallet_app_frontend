@@ -1,7 +1,12 @@
 import React from 'react';
+import DiagramTab from '../../components/DiagramTab';
 
 const DashboardPage = () => {
-  return <div>DashboardPage</div>;
+  return (
+    <div>
+      <DiagramTab />
+    </div>
+  );
 };
 
 export default DashboardPage;
