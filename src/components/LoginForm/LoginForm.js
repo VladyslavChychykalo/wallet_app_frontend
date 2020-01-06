@@ -68,7 +68,10 @@ import { ReactComponent as EmailIcon } from '../../images/emailIcon.svg';
 import { ReactComponent as PasswordIcon } from '../../images/passwordIcon.svg';
 
 const LoginForm = ({ errors, touched, isSubmitting }) => (
-  <div className={styles.backgroundLogin}>
+  <>
+    <div className={styles.backgroundLogin}>
+      <p className={styles.name}>Finance App</p>
+    </div>
     <div className={styles.container}>
       <div className={styles.logoContainer}>
         <Logo className={styles.logo} />
@@ -107,8 +110,7 @@ const LoginForm = ({ errors, touched, isSubmitting }) => (
         Registration
       </Link>
     </div>
-    <p className={styles.name}>Finance App</p>
-  </div>
+  </>
 );
 
 const FormikLoginForm = withFormik({

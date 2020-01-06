@@ -123,9 +123,9 @@
   .container {
     width: 550px;
     min-height: 390px;
-    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   .logoContainer {
@@ -159,9 +159,27 @@
   }
 }
 
-/* @media (min-width: 1280px) {
+@media (min-width: 1280px) {
   .backgroundLogin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 513px;
+    min-height: 100%;
     background-image: url(../../images/backgroundLoginDesktop.png);
-    background-size: 511px 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 513px 100%;
   }
-} */
+
+  .container {
+    right: 10%;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .name {
+    position: absolute;
+    bottom: 40px;
+  }
+}
