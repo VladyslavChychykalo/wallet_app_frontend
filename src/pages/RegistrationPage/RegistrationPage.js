@@ -1,9 +1,8 @@
 import React from 'react';
-import RegistrationForm from '../../components/RegistrationFrom/RegistrationForm';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 
 const RegistrationPage = () => (
   <div>
-    <h1>RegistrationPage</h1>
     <RegistrationForm />
   </div>
 );
