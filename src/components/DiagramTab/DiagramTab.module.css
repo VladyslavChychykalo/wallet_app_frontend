@@ -20,7 +20,7 @@
   display: none;
 }
 
-@media (min-width: 768px) and (max-width: 1439px) {
+@media (min-width: 768px) {
   .diagram {
     padding: 0;
     background: #f9fefd;
@@ -55,7 +55,7 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   .diagram {
     width: 854px;
     padding: 0;
