@@ -90,5 +90,13 @@
     margin: 0;
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    padding: 0;
+    border-radius: unset;
+    box-shadow: unset;
+  }
+
+  .chartBlockHeader {
+    display: none;
   }
 }
