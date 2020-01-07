@@ -1,13 +1,7 @@
 import React from 'react';
-import Currency from '../../components/Currency/Currency';
 
 const DashboardPage = () => {
-  return (
-    <>
-      <div>DashboardPage</div>
-      <Currency />
-    </>
-  );
+  return <div>DashboardPage</div>;
 };
 
 export default DashboardPage;
