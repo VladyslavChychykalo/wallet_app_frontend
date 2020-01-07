@@ -16,16 +16,16 @@ export const hasUpper = value => {
 };
 
 export const strengthColor = count => {
-  if (count === 0) {
+  if (count === 1) {
     return 'transparent';
   }
-  if (count < 2) {
+  if (count < 3) {
     return 'red';
   }
-  if (count < 3) {
+  if (count < 4) {
     return 'yellow';
   }
-  if (count < 4) {
+  if (count < 5) {
     return 'green';
   }
 };
@@ -35,11 +35,10 @@ export const strengthIndicator = value => {
   // if (value.lentgh > 5) matched.push('greater-than-5');
   // if (value.lentgh > 7) matched.push('greater-than-7');
   if (hasNumbers(value)) matched.push('has-numbers');
-  // if (hasDown(value)) matched.push('has-down');
-  // if (hasUpper(value)) matched.push('has-upper');
-  // if (hasSpecial(value)) matched.push('has-special');
+  if (hasDown(value)) matched.push('has-down');
+  if (hasUpper(value)) matched.push('has-upper');
+  if (hasSpecial(value)) matched.push('has-special');
   matched.push(value);
-  console.log(matched);
 
   return matched.length;
 };
