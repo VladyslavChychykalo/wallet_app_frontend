@@ -10,7 +10,11 @@ import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as EmailIcon } from '../../images/emailIcon.svg';
 import { ReactComponent as PasswordIcon } from '../../images/passwordIcon.svg';
 import { ReactComponent as NameIcon } from '../../images/nameIcon.svg';
-import { strengthColor, strengthIndicator } from './strength/strength';
+import {
+  strengthColor,
+  strengthIndicator,
+} from './strengthPassword/strengthPassword';
+import './strengthPassword/strengthPassword.css';
 
 const RegistrationSchema = yup.object().shape({
   email: yup
@@ -22,7 +26,11 @@ const RegistrationSchema = yup.object().shape({
     .min(6, 'Password must be at least 6 characters')
     .max(12, 'Password must be at most 12 characters')
     .required('Password is required'),
-  passwordConfirmed: yup.string(),
+  passwordConfirmed: yup
+    .string()
+    .min(6, 'Password must be at least 6 characters')
+    .max(12, 'Password must be at most 12 characters')
+    .required('Password is required'),
   name: yup.string(),
 });
 
@@ -55,7 +63,7 @@ const RegistrationForm = ({ onRegistration }) => (
               <Logo className={styles.logo} />
               <h1 className={styles.title}>Wallet</h1>
             </div>
-            <Form>
+            <Form autoComplete="off">
               <div className={styles.inputWithIcon}>
                 <Field
                   className={styles.input}
@@ -74,7 +82,6 @@ const RegistrationForm = ({ onRegistration }) => (
                   type="password"
                   name="password"
                   placeholder="Password"
-                  style={{ border: `2px solid ${color}` }}
                 />
                 <PasswordIcon className={styles.registrationIcon} />
                 {touched.password && errors.password && (
@@ -89,9 +96,12 @@ const RegistrationForm = ({ onRegistration }) => (
                   placeholder="Confirm password"
                 />
                 <PasswordIcon className={styles.registrationIcon} />
-                {touched.password && errors.password && (
-                  <p className={styles.error}>{errors.password}</p>
+                {touched.passwordConfirmed && errors.passwordConfirmed && (
+                  <p className={styles.error}>{errors.passwordConfirmed}</p>
                 )}
+                <div className={`meter ${color}`}>
+                  <span className="indicator" />
+                </div>
               </div>
               <div className={styles.inputWithIcon}>
                 <Field
@@ -111,7 +121,7 @@ const RegistrationForm = ({ onRegistration }) => (
               </button>
             </Form>
             <Link className={styles.link} to="/">
-              Enter
+              Login
             </Link>
           </div>
         </>

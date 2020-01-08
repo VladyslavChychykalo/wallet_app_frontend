@@ -47,7 +47,7 @@ const LoginForm = ({ onLogin }) => (
               <Logo className={styles.logo} />
               <h1 className={styles.title}>Wallet</h1>
             </div>
-            <Form>
+            <Form autoComplete="off">
               <div className={styles.inputWithIcon}>
                 <Field
                   className={styles.input}
