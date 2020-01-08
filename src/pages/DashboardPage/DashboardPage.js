@@ -4,7 +4,7 @@ import styles from './DashboardPage.module.css';
 // import HomeTab from '../../components/HomeTab/HomeTab';
 import DiagramTab from '../../components/DiagramTab/index';
 // import Header from '../../components/Header/Header';
-// import Currency from '../../components/Currency/Currency'
+import Currency from '../../components/Currency/Currency';
 // import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction'
 
 export default class DashboardPage extends Component {
@@ -24,8 +24,7 @@ export default class DashboardPage extends Component {
             <section className={styles.balance}>Balance</section>
             {windowWidth >= 768 && (
               <section className={styles.currency}>
-                Curr
-                {/* <Currency /> */}
+                <Currency />
               </section>
             )}
           </aside>
