@@ -1,0 +1,20 @@
+.title {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .title {
+    color: #7e8d93;
+  }
+
+  .amount {
+    color: var(--color-main-blue);
+  }
+}
+
+@media (min-width: 1280px) {
+  .title,
+  .amount {
+    color: #ffffff;
+  }
+}

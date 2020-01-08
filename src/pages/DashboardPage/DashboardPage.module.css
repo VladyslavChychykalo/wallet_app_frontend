@@ -21,10 +21,18 @@
 }
 
 .balance {
-  background-color: beige;
+  background-color: var(--color-main-blue);
   width: 95%;
   margin: 0 auto;
   margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 28px 0;
+  color: #ffffff;
+  font-family: 'HelveticaNeueCyr', serif;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+  font-size: 15px;
 }
 
 .addTransaction {
@@ -56,6 +64,8 @@
   .balance {
     width: 20%;
     margin: 0;
+    background: none;
+    display: flex;
   }
 
   .currency {
@@ -100,6 +110,12 @@
     width: 72%;
     margin: 0;
     position: inherit;
+  }
+
+  .balance {
+    justify-content: space-around;
+    padding: 38px 0;
+    background-color: var(--bg-color-dark-blue);
   }
 
   .content {
