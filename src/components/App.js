@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import routes from '../routes/routes';
-import Modal from './AddTransaction/Modal/Modal';
+// import ModalAddTransaction from './AddTransaction/ModalAddTransaction/ModalAddTransaction';
 
 const App = () => {
   return (
     <>
-      <Modal />
+      {/* <ModalAddTransaction /> */}
       <BrowserRouter>
         <Switch>
           <Route

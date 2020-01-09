@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import styles from './Modal.module.css';
+import styles from './ModalAddTransaction.module.css';
 import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
 
 export default class Modal extends Component {
