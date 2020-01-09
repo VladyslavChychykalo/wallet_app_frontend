@@ -1,0 +1,142 @@
+.container {
+  width: 320px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #ebefee;
+  position: relative;
+}
+
+.main {
+  width: 100%;
+}
+
+.aside {
+  width: 100%;
+}
+
+.nav {
+  width: 100%;
+  background-color: var(--color-main-blue);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.balance {
+  background-color: var(--color-main-blue);
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 28px 0;
+  color: #ffffff;
+  font-family: 'HelveticaNeueCyr', serif;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+  font-size: 15px;
+}
+
+.addTransaction {
+  position: absolute;
+  bottom: 8px;
+  right: 50%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .aside {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .nav {
+    width: 40%;
+    margin-bottom: 0;
+    background: none;
+    padding: 26px 0;
+  }
+
+  .balance {
+    width: 30%;
+    margin: 0;
+    background: none;
+    display: flex;
+  }
+
+  .currency {
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+  }
+
+  .addTransaction {
+    bottom: 50px;
+    right: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+
+  .header {
+    margin-bottom: 46px;
+  }
+
+  .aside {
+    width: 33.333333%;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .main {
+    display: flex;
+  }
+
+  .nav,
+  .balance {
+    width: 82%;
+    margin-bottom: 30px;
+    background-color: var(--bg-color-dark-blue);
+    border-radius: 5px;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    padding: 38px 0;
+  }
+
+  .currency {
+    width: 82%;
+    margin: 0;
+    position: inherit;
+  }
+
+  .balance {
+    justify-content: space-around;
+    padding: 38px 0;
+    background-color: var(--bg-color-dark-blue);
+  }
+
+  .content {
+    width: 66.66666%;
+  }
+
+  .addTransaction {
+    bottom: 50px;
+    right: 50px;
+  }
+}
