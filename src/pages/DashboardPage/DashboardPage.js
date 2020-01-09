@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styles from './DashboardPage.module.css';
+import Navigation from '../../components/Navigation/Navigation';
 // import HomeTab from '../../components/HomeTab/HomeTab';
 import DiagramTab from '../../components/DiagramTab/index';
 // import Header from '../../components/Header/Header';
@@ -21,7 +22,9 @@ export default class DashboardPage extends Component {
     <Header />> */}Header</header>
         <main className={styles.main}>
           <aside className={styles.aside}>
-            <nav className={styles.nav}>Navigation </nav>
+            <nav className={styles.nav}>
+              <Navigation />
+            </nav>
             <section className={styles.balance}>
               <Balance />
             </section>
@@ -34,9 +37,12 @@ export default class DashboardPage extends Component {
           <article className={styles.content}>
             <Switch>
               {/*
-        <Route path="/home" component={HomeTab} /> */}
-
+        <Route path="/home" component={HomeTab} />
+        */}
               <Route path="/diagram" component={DiagramTab} />
+              {windowWidth < 768 && (
+                <Route path="/currency" component={Currency} />
+              )}
             </Switch>
           </article>
         </main>
