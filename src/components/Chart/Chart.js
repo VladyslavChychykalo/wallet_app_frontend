@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
 import 'chartjs-plugin-labels';
-import Chart from 'chart.js';
 import styles from './styles.module.css';
 
-Chart.defaults.global.legend.display = false;
 const data = {
   labels: [
     'Main Expenses',
@@ -36,7 +34,7 @@ const data = {
   ],
 };
 
-export default class Stateless extends Component {
+export default class Chart extends Component {
   state = {};
 
   render() {
@@ -48,6 +46,9 @@ export default class Stateless extends Component {
             data={data}
             options={{
               maintainAspectRatio: false,
+              legend: {
+                display: false,
+              },
               plugins: {
                 labels: {
                   render: 'label',

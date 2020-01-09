@@ -1,8 +1,8 @@
 import React from 'react';
-import Stateless from './Chart/Chart';
+import Chart from './Chart/Chart';
 
 const App = () => {
-  return <Stateless />;
+  return <Chart />;
 };
 
 export default App;
