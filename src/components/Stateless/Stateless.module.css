@@ -1,0 +1,78 @@
+.stateless {
+  font-family: 'HelveticaNeueCyr';
+  padding-left: 8%;
+  padding-right: 8%;
+}
+.statelessSelect,
+.statelessHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8%;
+  font-size: 18px;
+}
+.statelessSelect > p {
+  width: 130px;
+}
+.statelessListItem {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+li {
+  list-style-type: none;
+  padding-bottom: 10px;
+}
+li::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  border: 2px solid #f3f6f6;
+}
+li:last-child::after {
+  border: 2px solid #b9c9d4;
+}
+.statelessIcone {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  margin-right: 12px;
+}
+.statelessTitle {
+  display: inline-block;
+  max-width: 300px;
+}
+.statelessAmount {
+  padding-left: 14%;
+}
+
+@media (min-width: 768px) {
+  .statelessHeader {
+    display: none;
+  }
+  .statelessSelect {
+    justify-content: center;
+  }
+  .statelessSelect > p {
+    width: 200px;
+    margin-left: 20px;
+  }
+  .statelessListTablet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .statelessListItem {
+    width: 40%;
+  }
+  .statelessFooter {
+    text-align: end;
+  }
+}
+
+@media (min-width: 1280px) {
+  .link {
+    color: #ffffff;
+  }
+}
