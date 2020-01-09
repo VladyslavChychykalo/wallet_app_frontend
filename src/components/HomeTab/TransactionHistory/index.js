@@ -40,7 +40,7 @@ const testTransactions = [
     category: 'car',
     comment: 'test comment',
     balanceAfter: 5000,
-    typebalanceAfter: '-',
+    typebalanceAfter: '+',
     updatedAt: '2020-11-25T14:14:14.100Z',
     createdAt: '2020-11-25T14:14:14.100Z',
   },
@@ -103,7 +103,13 @@ class TransactionHistory extends React.Component {
               </div>
               <div className={styles.pair}>
                 <div className={styles.key}>Сумма</div>
-                <div className={styles.val}>{numFormat(t.amount)}</div>
+                <div
+                  className={`${styles.val} ${
+                    t.typebalanceAfter === '+' ? styles.hilite : ''
+                  }`}
+                >
+                  {numFormat(t.amount)}
+                </div>
               </div>
               <div className={styles.pair}>
                 <div className={styles.key}>Баланс</div>

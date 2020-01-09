@@ -27,6 +27,9 @@
 .val {
   flex-basis: 100%;
 }
+.hilite {
+  color: var(--color-main-orange);
+}
 .transaction:nth-child(odd) .key {
   border-left: 8px solid var(--color-main-orange);
 }
