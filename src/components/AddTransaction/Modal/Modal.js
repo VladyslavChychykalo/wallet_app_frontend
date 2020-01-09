@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
-import PropTypes from 'prop-types';
 import styles from './Modal.module.css';
+import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
 
 export default class Modal extends Component {
   backdropRef = createRef();
@@ -13,24 +13,21 @@ export default class Modal extends Component {
     window.removeEventListener('keydown', this.handleKeyPress);
   }
 
-  handleKeyPress = e => {
-    if (e.code !== 'Escape') {
-      return;
-    }
+  // handleKeyPress = e => {
+  //   if (e.code !== 'Escape') {
+  //   }
 
-    this.props.onClose();
-  };
+  //   this.props.onClose();
+  // };
 
-  handleBackdropClick = e => {
-    if (this.backdropRef.current && e.target !== this.backdropRef.current) {
-      return;
-    }
+  // handleBackdropClick = e => {
+  //   if (this.backdropRef.current && e.target !== this.backdropRef.current) {
+  //   }
 
-    this.props.onClose();
-  };
+  //   this.props.onClose();
+  // };
 
   render() {
-    const { children } = this.props;
     return (
       <div
         className={styles.backdrop}
@@ -38,13 +35,10 @@ export default class Modal extends Component {
         onClick={this.handleBackdropClick}
         role="presentation"
       >
-        <div className={styles.modal}>{children}</div>
+        <div className={styles.modal}>
+          <AddTransactionForm />
+        </div>
       </div>
     );
   }
 }
-
-Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClose: PropTypes.func.isRequired,
-};

@@ -1,17 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import routes from '../routes/routes';
-import AddTransactionForm from './AddTransaction/AddTransactionForm/AddTransactionForm';
-import TestLauncher from './AddTransaction/TestLauncher';
+import Modal from './AddTransaction/Modal/Modal';
 
 const App = () => {
   return (
     <>
-      {/* <AddTransactionForm /> */}
-      <TestLauncher>
-        <AddTransactionForm />
-      </TestLauncher>
-
+      <Modal />
       <BrowserRouter>
         <Switch>
           <Route
