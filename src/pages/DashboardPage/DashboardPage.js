@@ -5,6 +5,7 @@ import Navigation from '../../components/Navigation/Navigation';
 // import HomeTab from '../../components/HomeTab/HomeTab';
 import DiagramTab from '../../components/DiagramTab/index';
 // import Header from '../../components/Header/Header';
+import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
 // import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction'
 
@@ -24,7 +25,9 @@ export default class DashboardPage extends Component {
             <nav className={styles.nav}>
               <Navigation />
             </nav>
-            <section className={styles.balance}>Balance</section>
+            <section className={styles.balance}>
+              <Balance />
+            </section>
             {windowWidth >= 768 && (
               <section className={styles.currency}>
                 <Currency />
@@ -34,7 +37,7 @@ export default class DashboardPage extends Component {
           <article className={styles.content}>
             <Switch>
               {/*
-        <Route path="/home" component={HomeTab} /> 
+        <Route path="/home" component={HomeTab} />
         */}
               <Route path="/diagram" component={DiagramTab} />
               {windowWidth < 768 && (
