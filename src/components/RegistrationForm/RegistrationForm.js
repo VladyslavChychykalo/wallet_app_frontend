@@ -120,7 +120,7 @@ const RegistrationForm = ({ onRegistration }) => (
                 Registration
               </button>
             </Form>
-            <Link className={styles.link} to="/">
+            <Link className={styles.link} to="/login">
               Login
             </Link>
           </div>
