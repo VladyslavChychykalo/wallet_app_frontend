@@ -27,18 +27,18 @@ const Stateless = () => {
   return (
     <div className={styles.stateless}>
       <div className={styles.statelessSelect}>
-        <p>
+        <div className={styles.statelessSelectGroup}>
           <Select
             options={mounth}
             defaultValue={{ label: 'Month', value: 'Month' }}
           />
-        </p>
-        <p>
+        </div>
+        <div className={styles.statelessSelectGroup}>
           <Select
             options={year}
             defaultValue={{ label: 'Year', value: 'Year' }}
           />
-        </p>
+        </div>
       </div>
       <div className={styles.statelessHeader}>
         <p>Category</p>
@@ -61,8 +61,24 @@ const Stateless = () => {
             ))}
           </ul>
         )}
-        {windowWidth >= 768 && (
+        {windowWidth >= 768 && windowWidth < 1280 && (
           <ul className={styles.statelessListTablet}>
+            {data.map(d => (
+              <li key={d.id} className={styles.statelessListItem}>
+                <div>
+                  <span
+                    className={styles.statelessIcone}
+                    style={{ backgroundColor: `${d.color}` }}
+                  ></span>
+                  <span className={styles.statelessTitle}>{d.title}</span>
+                </div>
+                <span className={styles.statelessAmount}>{d.amount}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {windowWidth > 1280 && (
+          <ul>
             {data.map(d => (
               <li key={d.id} className={styles.statelessListItem}>
                 <div>

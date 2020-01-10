@@ -8,7 +8,6 @@ import DiagramTab from '../../components/DiagramTab/index';
 import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
 // import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction'
-import Stateless from '../../components/Stateless/Stateless';
 
 export default class DashboardPage extends Component {
   componentDidMount() {
@@ -51,9 +50,7 @@ export default class DashboardPage extends Component {
           +{/*
     <ModalAddTransaction /> */}
         </div>
-        <div>
-          <Stateless />
-        </div>
+        <div />
       </div>
     );
   }

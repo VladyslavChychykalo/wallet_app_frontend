@@ -10,7 +10,7 @@
   padding-bottom: 8%;
   font-size: 18px;
 }
-.statelessSelect > p {
+.statelessSelectGroup {
   width: 130px;
 }
 .statelessListItem {
@@ -54,7 +54,7 @@ li:last-child::after {
   .statelessSelect {
     justify-content: center;
   }
-  .statelessSelect > p {
+  .statelessSelectGroup {
     width: 200px;
     margin-left: 20px;
   }
@@ -72,7 +72,10 @@ li:last-child::after {
 }
 
 @media (min-width: 1280px) {
-  .link {
-    color: #ffffff;
+  .statelessFooter {
+    text-align: start;
+  }
+  .statelessListItem {
+    width: 100%;
   }
 }
