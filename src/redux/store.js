@@ -27,8 +27,6 @@ import rootReducer from './rootReducer';
 const middleware = [ReduxThunk];
 const enhancer = composeWithDevTools(applyMiddleware(...middleware));
 
-// const store = createStore(() => initialStore, enhancer);
-
 const store = createStore(rootReducer, enhancer);
 
 export default store;
