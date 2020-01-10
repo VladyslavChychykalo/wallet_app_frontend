@@ -18,8 +18,8 @@ export default class DashboardPage extends Component {
     const windowWidth = document.documentElement.clientWidth;
     return (
       <div className={styles.container}>
-        <header className={styles.header}>{/*
-    <Header />> */}Header</header>
+        <header className={styles.header}>
+    <Header /></header>
         <main className={styles.main}>
           <aside className={styles.aside}>
             <nav className={styles.nav}>
