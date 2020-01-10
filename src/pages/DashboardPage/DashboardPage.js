@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import styles from './DashboardPage.module.css';
 import Navigation from '../../components/Navigation/Navigation';
 // import HomeTab from '../../components/HomeTab/HomeTab';
@@ -43,6 +43,7 @@ export default class DashboardPage extends Component {
               {windowWidth < 768 && (
                 <Route path="/currency" component={Currency} />
               )}
+              <Redirect to="/home" />
             </Switch>
           </article>
         </main>
