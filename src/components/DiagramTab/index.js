@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './DiagramTab.module.css';
-import Stateless from '../Stateless/Stateless';
+import Table from '../Table/Table';
 
 const DiagramTab = () => {
   const {
@@ -23,7 +23,7 @@ const DiagramTab = () => {
           <div className="chart" />
         </div>
         <div className="table">
-          <Stateless />
+          <Table />
         </div>
       </div>
     </div>

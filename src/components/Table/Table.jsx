@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Stateless.module.css';
-import data from './data.json';
 import Select from 'react-select';
+import styles from './Table.module.css';
+import data from './data.json';
 
 const mounth = [
   { label: 1, value: 1 },
@@ -53,7 +53,7 @@ const Stateless = () => {
                   <span
                     className={styles.statelessIcone}
                     style={{ backgroundColor: `${d.color}` }}
-                  ></span>
+                  />
                   <span className={styles.statelessTitle}>{d.title}</span>
                 </div>
                 <span className={styles.statelessAmount}>{d.amount}</span>
@@ -69,7 +69,7 @@ const Stateless = () => {
                   <span
                     className={styles.statelessIcone}
                     style={{ backgroundColor: `${d.color}` }}
-                  ></span>
+                  />
                   <span className={styles.statelessTitle}>{d.title}</span>
                 </div>
                 <span className={styles.statelessAmount}>{d.amount}</span>
@@ -85,7 +85,7 @@ const Stateless = () => {
                   <span
                     className={styles.statelessIcone}
                     style={{ backgroundColor: `${d.color}` }}
-                  ></span>
+                  />
                   <span className={styles.statelessTitle}>{d.title}</span>
                 </div>
                 <span className={styles.statelessAmount}>{d.amount}</span>
