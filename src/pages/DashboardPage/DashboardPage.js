@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import styles from './DashboardPage.module.css';
 import Navigation from '../../components/Navigation/Navigation';
-// import HomeTab from '../../components/HomeTab/HomeTab';
+import HomeTab from '../../components/HomeTab/HomeTab';
 import DiagramTab from '../../components/DiagramTab/index';
 // import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
@@ -36,13 +36,12 @@ export default class DashboardPage extends Component {
           </aside>
           <article className={styles.content}>
             <Switch>
-              {/*
-        <Route path="/home" component={HomeTab} />
-        */}
+              <Route path="/home" component={HomeTab} />
               <Route path="/diagram" component={DiagramTab} />
               {windowWidth < 768 && (
                 <Route path="/currency" component={Currency} />
               )}
+              <Redirect to="/home" />
             </Switch>
           </article>
         </main>
@@ -50,6 +49,7 @@ export default class DashboardPage extends Component {
           +{/*
     <ModalAddTransaction /> */}
         </div>
+        <div />
       </div>
     );
   }
