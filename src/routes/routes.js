@@ -1,6 +1,6 @@
 import LoginPage from '../pages/LoginPage/LoginPage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
-import DashboardPage from '../pages/DashboardPage/DashboardPage';
+import DashboardPageContainer from '../pages/DashboardPage/DashboardPageContainer';
 
 export default {
   LOGIN_PAGE: {
@@ -13,6 +13,6 @@ export default {
   },
   DASHBOARD_PAGE: {
     path: '/',
-    component: DashboardPage,
+    component: DashboardPageContainer,
   },
 };

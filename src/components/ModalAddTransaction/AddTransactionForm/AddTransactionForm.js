@@ -33,11 +33,11 @@ class AddTransactionForm extends Component {
   //   e.preventDefault();
   // };
 
-  // handleChange = e => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
 
   // handleSelect = e => {
   //   this.setState({
