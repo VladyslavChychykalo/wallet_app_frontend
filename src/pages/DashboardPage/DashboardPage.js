@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './DashboardPage.module.css';
-// import HomeTab from '../../components/HomeTab/HomeTab';
+import Navigation from '../../components/Navigation/Navigation';
+import HomeTab from '../../components/HomeTab/HomeTab';
 import DiagramTab from '../../components/DiagramTab/index';
 // import Header from '../../components/Header/Header';
+import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
 import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransactionConteiner';
 
@@ -31,8 +33,12 @@ export default class DashboardPage extends Component {
           </header>
           <main className={styles.main}>
             <aside className={styles.aside}>
-              <nav className={styles.nav}>Navigation </nav>
-              <section className={styles.balance}>Balance</section>
+              <nav className={styles.nav}>
+                <Navigation />
+              </nav>
+              <section className={styles.balance}>
+                <Balance />
+              </section>
               {windowWidth >= 768 && (
                 <section className={styles.currency}>
                   <Currency />
@@ -41,10 +47,12 @@ export default class DashboardPage extends Component {
             </aside>
             <article className={styles.content}>
               <Switch>
-                {/*
-      <Route path="/home" component={HomeTab} /> */}
-
+                <Route path="/home" component={HomeTab} />
                 <Route path="/diagram" component={DiagramTab} />
+                {windowWidth < 768 && (
+                  <Route path="/currency" component={Currency} />
+                )}
+                <Redirect to="/home" />
               </Switch>
             </article>
           </main>
