@@ -12,7 +12,7 @@ import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTr
 
 export default class DashboardPage extends Component {
   static propTypes = {
-    isModalAddTransactionOpen: PropTypes.func.isRequired,
+    isModalAddTransactionOpen: PropTypes.bool.isRequired,
     openModalAddTransaction: PropTypes.func.isRequired,
   };
 
