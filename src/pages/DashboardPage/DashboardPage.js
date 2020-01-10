@@ -4,7 +4,7 @@ import styles from './DashboardPage.module.css';
 import Navigation from '../../components/Navigation/Navigation';
 // import HomeTab from '../../components/HomeTab/HomeTab';
 import DiagramTab from '../../components/DiagramTab/index';
-// import Header from '../../components/Header/Header';
+import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
 // import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction'
