@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './DiagramTab.module.css';
 import Table from '../Table/Table';
+import Chart from '../Chart/Chart';
+import styles from './DiagramTab.module.css';
 
 const DiagramTab = () => {
   const {
@@ -20,7 +21,9 @@ const DiagramTab = () => {
           <div className={chartBlockHeader}>
             <h2>Statistics</h2>
           </div>
-          <div className="chart" />
+          <div className="chart">
+            <Chart />
+          </div>
         </div>
         <div className="table">
           <Table />
