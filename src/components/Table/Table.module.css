@@ -78,4 +78,8 @@ li:last-child::after {
   .statelessListItem {
     width: 100%;
   }
+  .statelessHeader {
+    display: flex;
+    justify-content: space-between;
+  }
 }
