@@ -7,8 +7,13 @@
 .statelessHeader {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 8%;
+  margin-bottom: 8%;
   font-size: 18px;
+}
+.statelessHeader {
+  background-color: #f3f6f6;
+  height: 3em;
+  line-height: 3em;
 }
 .statelessSelectGroup {
   width: 130px;
@@ -80,6 +85,5 @@ li:last-child::after {
   }
   .statelessHeader {
     display: flex;
-    justify-content: space-between;
   }
 }
