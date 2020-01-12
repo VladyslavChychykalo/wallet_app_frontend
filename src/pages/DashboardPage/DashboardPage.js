@@ -17,7 +17,7 @@ export default class DashboardPage extends Component {
   };
 
   componentDidMount() {
-    // clg
+    // this.props.fetchTransactions;
   }
 
   render() {
