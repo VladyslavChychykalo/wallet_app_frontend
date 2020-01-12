@@ -1,8 +1,7 @@
 .stateless {
   font-family: 'HelveticaNeueCyr';
-  padding-left: 8%;
-  padding-right: 8%;
 }
+
 .statelessSelect,
 .statelessHeader {
   display: flex;
@@ -77,6 +76,10 @@ li:last-child::after {
 }
 
 @media (min-width: 1280px) {
+  .stateless {
+    width: 360px;
+  }
+
   .statelessFooter {
     text-align: start;
   }
