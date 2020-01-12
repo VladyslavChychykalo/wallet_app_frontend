@@ -1,14 +1,18 @@
 .stateless {
   font-family: 'HelveticaNeueCyr';
-  padding-left: 8%;
-  padding-right: 8%;
 }
+
 .statelessSelect,
 .statelessHeader {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 8%;
+  margin-bottom: 8%;
   font-size: 18px;
+}
+.statelessHeader {
+  background-color: #f3f6f6;
+  height: 3em;
+  line-height: 3em;
 }
 .statelessSelectGroup {
   width: 130px;
@@ -72,10 +76,17 @@ li:last-child::after {
 }
 
 @media (min-width: 1280px) {
+  .stateless {
+    width: 360px;
+  }
+
   .statelessFooter {
     text-align: start;
   }
   .statelessListItem {
     width: 100%;
+  }
+  .statelessHeader {
+    display: flex;
   }
 }

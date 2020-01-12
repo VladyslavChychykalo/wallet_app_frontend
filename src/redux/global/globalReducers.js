@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import { Type } from './globalActions';
+import types from '../types';
 
 const isModalAddTransactionOpen = (state = false, { type }) => {
   switch (type) {
-    case Type.OPEN_MODALADDTRANSACTION:
+    case types.OPEN_MODALADDTRANSACTION:
       return true;
-    case Type.CLOSE_MODALADDTRANSACTION:
+    case types.CLOSE_MODALADDTRANSACTION:
       return false;
     default:
       return state;

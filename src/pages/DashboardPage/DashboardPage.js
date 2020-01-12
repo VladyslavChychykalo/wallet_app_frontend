@@ -5,7 +5,7 @@ import styles from './DashboardPage.module.css';
 import Navigation from '../../components/Navigation/Navigation';
 import HomeTab from '../../components/HomeTab/HomeTab';
 import DiagramTab from '../../components/DiagramTab/index';
-// import Header from '../../components/Header/Header';
+import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
 import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransactionConteiner';
@@ -28,8 +28,7 @@ export default class DashboardPage extends Component {
         {!!isModalAddTransactionOpen && <ModalAddTransaction />}
         <div className={styles.container}>
           <header className={styles.header}>
-            {/*
-    <Header />> */}Header
+            <Header />
           </header>
           <main className={styles.main}>
             <aside className={styles.aside}>
@@ -64,7 +63,7 @@ export default class DashboardPage extends Component {
             }}
           >
             +{/*
-    <ModalAddTransaction /> */}
+      <ModalAddTransaction /> */}
           </button>
         </div>
       </>
