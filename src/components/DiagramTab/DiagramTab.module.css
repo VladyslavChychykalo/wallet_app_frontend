@@ -88,15 +88,14 @@
 
   .wrapper {
     flex-direction: row;
+    justify-content: space-between;
     padding: 0 50px 34px;
   }
 
   .chartBlock {
-    width: 50%;
+    width: 338px;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+    display: unset;
     padding: 0;
     border-radius: unset;
     box-shadow: unset;

@@ -39,25 +39,23 @@ export default class Chart extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        <div className={styles.canvasContainer}>
-          <Pie
-            className={styles.pie}
-            data={data}
-            options={{
-              maintainAspectRatio: false,
-              legend: {
-                display: false,
+      <div className={styles.canvasContainer}>
+        <Pie
+          className={styles.pie}
+          data={data}
+          options={{
+            maintainAspectRatio: false,
+            legend: {
+              display: false,
+            },
+            plugins: {
+              labels: {
+                render: 'label',
+                fontColor: 'white',
               },
-              plugins: {
-                labels: {
-                  render: 'label',
-                  fontColor: 'white',
-                },
-              },
-            }}
-          />
-        </div>
+            },
+          }}
+        />
       </div>
     );
   }
