@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 import * as Datetime from 'react-datetime';
 import './react-datetime.css';
 import styles from './AddTransactionForm.module.css';
+import backArrow from '../../../assets/icons/arrow right/long-arrow-left.svg';
 
 const options = [
   { value: 'Food', label: 'Food' },
@@ -17,6 +19,10 @@ const options = [
 ];
 
 class AddTransactionForm extends Component {
+  static propTypes = {
+    closeModalAddTransaction: PropTypes.func.isRequired,
+  };
+
   state = {
     typeOfTransaction: 'expense',
     // value: null,
@@ -54,10 +60,23 @@ class AddTransactionForm extends Component {
 
   render() {
     const { typeOfTransaction, timeOfTransaction } = this.state;
+    const { closeModalAddTransaction } = this.props;
+    const windowWidth = document.documentElement.clientWidth;
     return (
       <>
         <div className={styles.titleWrapper}>
-          <h2 className={styles.title}>add transaction</h2>
+          <div className={styles.controlWrapper}>
+            {windowWidth < 768 && (
+              <button
+                type="button"
+                className={styles.closeModalButton}
+                onClick={closeModalAddTransaction}
+              >
+                <img alt="" src={backArrow} />
+              </button>
+            )}
+            <h2 className={styles.title}>add transaction</h2>
+          </div>
         </div>
         <form
           className={styles.transactionForm}
