@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import s from './UserInfo.module.css';
 
 const UserInfo = () => {
@@ -14,7 +14,9 @@ const UserInfo = () => {
   // const checkUserName = useSelector(state => state.session.user.userData.name);
 
   return (
-    <div className={s.user_page_block}> User
+    <div className={s.user_page_block}>
+      {' '}
+      User
       {/* {Object.keys(checkUserName).length > 0 ? (
         <>
           <div className={s.user_pic}>

@@ -1,14 +1,17 @@
 .title {
   margin-bottom: 10px;
+  font-size: 15px;
 }
 
 @media (min-width: 768px) {
   .title {
     color: #7e8d93;
+    font-size: 15px;
   }
 
   .amount {
     color: var(--color-main-blue);
+    padding-left: 10px;
   }
 }
 
