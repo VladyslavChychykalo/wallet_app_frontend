@@ -21,13 +21,9 @@ const DiagramTab = () => {
           <div className={chartBlockHeader}>
             <h2>Statistics</h2>
           </div>
-          <div className="chart">
-            <Chart />
-          </div>
+          <Chart />
         </div>
-        <div className="table">
-          <Table />
-        </div>
+        <Table />
       </div>
     </div>
   );
