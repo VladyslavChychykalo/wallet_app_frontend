@@ -10,44 +10,30 @@ const Navigation = () => {
 
   return (
     <>
-      <div className={styles.linkBox}>
-        <NavLink
-          to="/home"
-          className={styles.link}
-          activeClassName={styles.activeLink}
-        >
-          <div className={styles.svg}>
-            <Home fill="white" />
-          </div>
-          <span className={styles.text}>Home</span>
-          <div className={styles.after}>|</div>
-        </NavLink>
-      </div>
-      <div className={styles.linkBox}>
-        <NavLink
-          to="/diagram"
-          className={styles.link}
-          activeClassName={styles.activeLink}
-        >
-          <div className={styles.svg}>
-            <Diagrams fill="white" />
-          </div>
-          <span className={styles.text}>Statistic</span>
-          <div className={styles.after}>|</div>
-        </NavLink>
-      </div>
+      <NavLink
+        to="/home"
+        className={styles.link}
+        activeClassName={styles.activeLink}
+      >
+        <Home className={styles.svg} />
+        <span className={styles.text}>Home</span>
+      </NavLink>
+      <NavLink
+        to="/diagram"
+        className={styles.link}
+        activeClassName={styles.activeLink}
+      >
+        <Diagrams className={styles.svg} />
+        <span className={styles.text}>Statistic</span>
+      </NavLink>
       {windowWidth < 768 && (
-        <div className={styles.linkBox}>
-          <NavLink
-            to="/currency"
-            className={styles.link}
-            activeClassName={styles.activeLink}
-          >
-            <div className={styles.svg}>
-              <Currency fill="white" />
-            </div>
-          </NavLink>
-        </div>
+        <NavLink
+          to="/currency"
+          className={styles.link}
+          activeClassName={styles.activeLink}
+        >
+          <Currency className={styles.svg} />
+        </NavLink>
       )}
     </>
   );

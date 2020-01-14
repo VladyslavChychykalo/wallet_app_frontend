@@ -1,27 +1,31 @@
 .header {
   display: flex;
   justify-content: space-between;
-  height: 40px;
-  width: 100%;
-  padding: 10px;
-  box-shadow: none;
-  margin: 0;
-  background-color: rgb(40, 64, 96);
   align-items: center;
+  width: 320px;
+  margin: 0 auto;
+  padding: 6px;
+  background-color: var(--bg-color-dark-blue);
 }
 
 .title {
-  color: rgb(117, 131, 151);
+  color: #8390a2;
   font-size: 18px;
   line-height: 1.5;
-  font-weight: 700;
-  line-height: 30px;
   letter-spacing: 1.44px;
-  font-size: 20px;
   font-family: 'BauhausC';
   font-weight: bold;
-  margin: 0 0 0 10px;
-  padding-top: 4px;
+  margin: 0;
+  padding-top: 6px;
+}
+
+.Logo_link {
+  display: flex;
+  align-items: center;
+}
+
+.Logo_IMG {
+  margin-right: 6px;
 }
 
 .Logo_IMG,
@@ -35,14 +39,15 @@
 .user_logout_div {
   display: flex;
   justify-content: flex-end;
-  width: 70px;
-  flex-flow: row;
-  align-self: center;
+  color: #8390a2;
 }
 
 @media (min-width: 768px) {
   .header {
-    background-color: #fff;
+    background-color: #ffffff;
+    width: 768px;
+    padding: 26px;
+    box-shadow: 0 5px 5px 0 #dedada;
   }
 
   .user_logout_div {
@@ -68,7 +73,12 @@
 
 @media (min-width: 1280px) {
   .header {
-    max-width: 1192px;
+    width: 1280px;
     margin: 0 auto;
+    padding: 26px 40px;
+  }
+
+  .Logo_IMG {
+    margin-right: 16px;
   }
 }
