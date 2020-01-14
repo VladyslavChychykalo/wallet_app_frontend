@@ -28,9 +28,6 @@ export default class DashboardPage extends Component {
     const { location } = this.props;
     const { pathname } = location;
     const isHomePage = pathname;
-    console.log(isHomePage);
-    console.log(location);
-    console.log(pathname);
     return (
       <>
         {!!isModalAddTransactionOpen && <ModalAddTransaction />}
