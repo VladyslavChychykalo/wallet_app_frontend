@@ -10,14 +10,14 @@ import {
   // finaceTypeTotalBalanceFetchError
 } from './financeActions';
 
-export const getFinaceData = () => dispatch => {
+export const getFinaceDataFetch = () => dispatch => {
   dispatch(finaceDataFetchStart());
 };
 
-export const finaceTotalBalance = () => dispatch => {
+export const getFinaceTotalBalanceFetch = () => dispatch => {
   dispatch(finaceTotalBalanceFetchStart());
 };
 
-export const finaceTotalTypeBalance = () => dispatch => {
+export const getFinaceTotalTypeBalanceFetch = () => dispatch => {
   dispatch(finaceTotalTypeBalanceFetchStart());
 };
