@@ -43,11 +43,13 @@ export default class DashboardPage extends Component {
               <section className={styles.balance}>
                 <Balance />
               </section>
-              {windowWidth >= 768 && isHomePage === '/home' && (
-                <section className={styles.currency}>
-                  <Currency />
-                </section>
-              )}
+              {windowWidth < 1280 &&
+                windowWidth >= 768 &&
+                isHomePage === '/home' && (
+                  <section className={styles.currency}>
+                    <Currency />
+                  </section>
+                )}
               {windowWidth >= 1280 && (
                 <section className={styles.currency}>
                   <Currency />
@@ -64,17 +66,17 @@ export default class DashboardPage extends Component {
                 <Redirect to="/home" />
               </Switch>
             </article>
-          </main>
-          <button
-            type="button"
-            className={styles.addTransaction}
-            onClick={() => {
-              openModalAddTransaction();
-            }}
-          >
-            +{/*
+            <button
+              type="button"
+              className={styles.addTransaction}
+              onClick={() => {
+                openModalAddTransaction();
+              }}
+            >
+              +{/*
       <ModalAddTransaction /> */}
-          </button>
+            </button>
+          </main>
         </div>
       </>
     );

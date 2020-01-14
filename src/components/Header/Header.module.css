@@ -5,7 +5,6 @@
   width: 320px;
   margin: 0 auto;
   padding: 6px;
-  background-color: var(--bg-color-dark-blue);
 }
 
 .title {
@@ -44,10 +43,8 @@
 
 @media (min-width: 768px) {
   .header {
-    background-color: #ffffff;
     width: 768px;
     padding: 26px;
-    box-shadow: 0 5px 5px 0 #dedada;
   }
 
   .user_logout_div {

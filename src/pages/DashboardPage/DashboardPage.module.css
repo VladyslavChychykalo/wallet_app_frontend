@@ -1,6 +1,14 @@
 .container {
   background-color: #ebefee;
-  height: 100vh;
+  background-attachment: fixed;
+  /* height: 100vh; */
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.header {
+  width: 100%;
+  background-color: var(--bg-color-dark-blue);
 }
 
 .main {
@@ -50,8 +58,18 @@
 }
 
 @media (min-width: 768px) {
+  .container {
+    height: 100vh;
+  }
+
   .main {
     width: 768px;
+    position: relative;
+  }
+
+  .header {
+    background-color: #ffffff;
+    box-shadow: 0 5px 5px 0 #dedada;
   }
 
   .aside {
@@ -86,12 +104,17 @@
   }
 
   .addTransaction {
-    bottom: 52px;
-    right: 52px;
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
   }
 }
 
 @media (min-width: 1280px) {
+  .container {
+    height: auto;
+  }
+
   .header {
     margin-bottom: 46px;
   }
