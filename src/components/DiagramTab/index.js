@@ -247,18 +247,18 @@ class DiagramTab extends Component {
             <div className={chartBlockHeader}>
               <h2>Statistics</h2>
             </div>
-            <div className="chart">
+
               <Chart data={data} />
-            </div>
+
           </div>
-          <div className="table">
+
             <Table
               data={statistics}
               handleChange={this.handleChange}
               expenses={this.getAllExpenses(statistics)}
               income={this.getAllIncome(finance.data)}
             />
-          </div>
+
         </div>
       </div>
     );

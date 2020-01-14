@@ -2,7 +2,8 @@ import React from 'react';
 import Select from 'react-select';
 import styles from './Table.module.css';
 
-const mounth = [
+const month = [
+
   { label: 'January', value: 'January' },
   { label: 'February', value: 'February' },
   { label: 'March', value: 'March' },
@@ -15,6 +16,7 @@ const mounth = [
   { label: 'October', value: 'October' },
   { label: 'November', value: 'November' },
   { label: 'December', value: 'December' },
+
 ];
 
 const year = [
@@ -34,7 +36,7 @@ const Stateless = ({ data, handleChange, expenses, income }) => {
         <div className={styles.statelessSelectGroup}>
           <Select
             onChange={handleChange}
-            options={mounth}
+            options={month}
             defaultValue={{ label: 'Month', value: 'Month' }}
           />
         </div>

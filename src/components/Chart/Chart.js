@@ -5,7 +5,6 @@ import 'chartjs-plugin-labels';
 import styles from './styles.module.css';
 
 const Chart = ({ data }) => (
-  <div className={styles.container}>
     <div className={styles.canvasContainer}>
       <Pie
         className={styles.pie}
@@ -24,7 +23,6 @@ const Chart = ({ data }) => (
         }}
       />
     </div>
-  </div>
 );
 
 Chart.propTypes = {
@@ -33,5 +31,3 @@ Chart.propTypes = {
     datasets: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
 };
-
-export default Chart;
