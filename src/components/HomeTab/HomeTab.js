@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
 
 function mapStateToProps(/* state */) {
@@ -45,9 +46,9 @@ const testHomeTab = [
     createdAt: '2020-11-25T14:14:14.100Z',
   },
   {
-    type: 'income',
+    type: 'cost',
     date: 1578231058734,
-    id: 'a3',
+    id: 'a4',
     amount: 1200.12,
     category: 'Products',
     comment: 'test comment',
@@ -59,7 +60,7 @@ const testHomeTab = [
   {
     type: 'income',
     date: 1578231058734,
-    id: 'a3',
+    id: 'a5',
     amount: 1200.12,
     category: 'Irregular income',
     comment: 'test comment',
@@ -103,7 +104,7 @@ class HomeTab extends React.Component {
             <div>Commentary</div>
             <div>Sum</div>
             <div>Balance</div>
-            {/* <div>Delete</div> */}
+            <div>Delete</div>
           </div>
           {transactions.map(t => (
             <div key={t.id} className={styles.transaction}>
@@ -129,7 +130,7 @@ class HomeTab extends React.Component {
                 <div className={styles.key}>Sum</div>
                 <div
                   className={`${styles.val} ${
-                    t.typebalanceAfter === '+' ? styles.hilite : ''
+                    t.type === 'cost' ? styles.hilite : ''
                   }`}
                 >
                   {numFormat(t.amount)}
@@ -139,14 +140,12 @@ class HomeTab extends React.Component {
                 <div className={styles.key}>Balance</div>
                 <div className={styles.val}>{numFormat(t.balanceAfter)}</div>
               </div>
-              {/*
               <div className={styles.pair}>
                 <div className={styles.key}>Delete</div>
                 <div className={styles.val}>
-                  <button>X</button>
+                  <Trash className={styles.deleteBtn} />
                 </div>
               </div>
-          */}
             </div>
           ))}
         </div>

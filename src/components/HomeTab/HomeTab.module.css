@@ -26,6 +26,7 @@
 }
 .val {
   flex-basis: 100%;
+  white-space: nowrap;
 }
 .hilite {
   color: var(--color-main-orange);
@@ -35,6 +36,10 @@
 }
 .transaction:nth-child(even) .key {
   border-left: 8px solid #777;
+}
+.deleteBtn {
+  height: 20px;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
