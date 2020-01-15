@@ -13,6 +13,8 @@
   background-color: #f3f6f6;
   height: 3em;
   line-height: 3em;
+  padding-left: 26px;
+  padding-right: 26px;
 }
 .statelessSelectGroup {
   width: 130px;
@@ -21,19 +23,22 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 300px;
+  margin: 0 auto;
 }
 li {
   list-style-type: none;
   padding-bottom: 10px;
 }
-li::after {
-  content: '';
+
+.statelessLine {
   display: inline-block;
-  width: 100%;
+  width: 360px;
   height: 2px;
   border: 2px solid #f3f6f6;
 }
-li:last-child::after {
+
+li:last-child:nth-child(2n + 1) > .statelessLine {
   border: 2px solid #b9c9d4;
 }
 .statelessIcone {
@@ -68,7 +73,7 @@ li:last-child::after {
     justify-content: space-between;
   }
   .statelessListItem {
-    width: 40%;
+    width: 320px;
   }
   .statelessFooter {
     text-align: end;
@@ -84,9 +89,21 @@ li:last-child::after {
     text-align: start;
   }
   .statelessListItem {
-    width: 100%;
+    width: 300px;
+    margin: 0 auto;
   }
   .statelessHeader {
     display: flex;
+  }
+  .statelessLine {
+    display: inline-block;
+    width: 360px;
+    height: 2px;
+    border: 2px solid #f3f6f6;
+  }
+  .statelessListItem {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
