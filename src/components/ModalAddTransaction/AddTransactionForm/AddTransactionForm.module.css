@@ -206,6 +206,14 @@ textarea:focus {
   border-color: var(--bg-color-dark-blue);
 }
 
+.errorsContainer {
+  margin-bottom: 30px;
+}
+
+.error {
+  color: red;
+}
+
 @media (min-width: 768px) {
   .transactionButton {
     position: static;
