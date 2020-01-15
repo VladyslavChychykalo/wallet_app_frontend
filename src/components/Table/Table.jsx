@@ -27,7 +27,6 @@ const year = [
 ];
 
 const Stateless = () => {
-
   return (
     <div className={styles.stateless}>
       <div className={styles.statelessSelect}>
@@ -67,12 +66,15 @@ const Stateless = () => {
           ))}
         </ul>
       </div>
+      <div className={styles.statelessLineLast}></div>
       <div className={styles.statelessFooter}>
-        <p>
-          Expenses: <span style={{ color: '#3a5374' }}>2000.22</span>
+        <p className={styles.tableExpenses}>
+          <span style={{ paddingRight:'20px' }}>Expenses: </span>
+          <span style={{ color: '#3a5374' }}>2000.22</span>
         </p>
-        <p>
-          Incoming: <span style={{ color: '#ff6c00' }}>4000.33</span>
+        <p className={styles.tableExpenses}>
+          <span style={{ paddingRight:'20px' }}>Incoming:</span>
+          <span style={{ color: '#ff6c00' }}>4000.33</span>
         </p>
       </div>
     </div>

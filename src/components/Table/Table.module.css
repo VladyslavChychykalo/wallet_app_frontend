@@ -56,6 +56,11 @@ li:last-child:nth-child(2n + 1) > .statelessLine {
   padding-left: 14%;
 }
 
+.tableExpenses {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (min-width: 768px) {
   .statelessHeader {
     display: none;
@@ -77,6 +82,21 @@ li:last-child:nth-child(2n + 1) > .statelessLine {
   }
   .statelessFooter {
     text-align: end;
+  }
+  .tableExpenses {
+    justify-content: flex-end;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  li:last-child:nth-child(2n + 1) > .statelessLine {
+    visibility: hidden;
+  }
+  .statelessLineLast {
+    border: 2px solid #b9c9d4;
+    max-width: 800px;
+    margin-bottom: 20px;
   }
 }
 
@@ -105,5 +125,9 @@ li:last-child:nth-child(2n + 1) > .statelessLine {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+  }
+  .tableExpenses {
+    text-transform: none;
+    font-weight: 400;
   }
 }
