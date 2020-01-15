@@ -16,24 +16,20 @@
 }
 .logoutP {
   display: none;
-  font-family: "HelveticaNeueCyr";
+  font-family: 'HelveticaNeueCyr';
   color: rgb(107, 125, 131);
   font-size: 15px;
-
 }
-
-
 
 @media (min-width: 768px) {
   .logoutSvg {
     display: block;
-    margin-right: 10px;    
+    margin-right: 10px;
   }
   .logoutP {
-    display: flex;  
+    display: flex;
     font-size: 15px;
     color: rgb(107, 125, 131);
-
   }
   .logoutP:hover {
     text-decoration: underline;

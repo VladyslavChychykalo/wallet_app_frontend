@@ -1,5 +1,6 @@
 .user_page_block {
   display: flex;
+  margin-right: 20px;
 }
 
 .user_pic {
@@ -38,11 +39,10 @@
 
   .user_page_block::after {
     content: '';
-    display: flex;
     width: 1px;
     height: 100%;
     background-color: #bababb;
-    margin: 0 15px;
+    margin-left: 15px;
   }
 
   .user_name_full {
@@ -50,5 +50,11 @@
     padding-left: 10px;
     justify-self: center;
     align-self: center;
+  }
+}
+
+@media (min-width: 1280px) {
+  .user_page_block::after {
+    margin-left: 20px;
   }
 }

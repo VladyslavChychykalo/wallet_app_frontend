@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import Modal from '../../components/Modal/Modal';
+import Modal from '../Modal/Modal';
 import { SetIsModalLogoutClose } from '../../redux/global/globalOperations';
-//import { logoutOperation } from '../../redux/authUser/operations';
+// import { logoutOperation } from '../../redux/authUser/operations';
 import s from './LogoutModal.module.css';
 
 const LogoutModal = () => {
   const dispatch = useDispatch();
   const closeModal = () => dispatch(SetIsModalLogoutClose());
-  //const logoutFunc = () => dispatch(logoutOperation());
+  // const logoutFunc = () => dispatch(logoutOperation());
 
   return (
     <Modal onClose={closeModal}>
@@ -20,7 +20,7 @@ const LogoutModal = () => {
               type="button"
               className={s.yes_no_btn_header}
               onClick={() => {
-               // logoutFunc();
+                // logoutFunc();
                 closeModal();
               }}
             >
