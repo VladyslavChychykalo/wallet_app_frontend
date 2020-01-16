@@ -242,7 +242,7 @@ class DiagramTab extends Component {
       wrapper,
     } = styles;
 
-    const { data, statistics, income } = this.state;
+    const { data, statistics } = this.state;
 
     return (
       <div className={diagram}>
@@ -254,13 +254,15 @@ class DiagramTab extends Component {
             <div className={chartBlockHeader}>
               <h2>Statistics</h2>
             </div>
-            {data.labels.length > 0 && <Chart data={data} />}
+
+            <Chart data={data} />
           </div>
+
           <Table
             data={statistics}
             handleChange={this.handleChange}
-            expenses={this.getSum(statistics)}
-            income={this.getSum(income)}
+            expenses={this.getAllExpenses(statistics)}
+            income={this.getAllIncome(finance.data)}
           />
         </div>
       </div>

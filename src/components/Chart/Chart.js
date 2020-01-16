@@ -5,25 +5,23 @@ import 'chartjs-plugin-labels';
 import styles from './styles.module.css';
 
 const Chart = ({ data }) => (
-  <div className={styles.container}>
-    <div className={styles.canvasContainer}>
-      <Pie
-        className={styles.pie}
-        data={data}
-        options={{
-          maintainAspectRatio: false,
-          legend: {
-            display: false,
+  <div className={styles.canvasContainer}>
+    <Pie
+      className={styles.pie}
+      data={data}
+      options={{
+        maintainAspectRatio: false,
+        legend: {
+          display: false,
+        },
+        plugins: {
+          labels: {
+            render: 'label',
+            fontColor: 'white',
           },
-          plugins: {
-            labels: {
-              render: 'label',
-              fontColor: 'white',
-            },
-          },
-        }}
-      />
-    </div>
+        },
+      }}
+    />
   </div>
 );
 
