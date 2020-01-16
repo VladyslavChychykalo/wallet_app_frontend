@@ -5,7 +5,7 @@ axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 axios.defaults.headers.patch['Content-Type'] = 'application/json';
 
-// axios.defaults.baseURL = 'https://...';
+axios.defaults.baseURL = 'https://project1.goit.co.ua/api';
 
 export const setToken = token => ({
   headers: {
@@ -13,4 +13,4 @@ export const setToken = token => ({
   },
 });
 
-export const w = () => null;
+export const register = () => null;

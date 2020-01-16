@@ -1,5 +1,21 @@
 import types from '../types';
 
+// Refresh
+
+export const refreshRequest = () => ({
+  type: types.REFRESH_CURRENT_REQUEST,
+});
+
+export const refreshSuccess = response => ({
+  type: types.REFRESH_CURRENT_SUCCESS,
+  payload: { response },
+});
+
+export const refreshError = error => ({
+  type: types.REFRESH_CURRENT_ERROR,
+  payload: { error },
+});
+
 // Login
 export const loginRequest = () => ({
   type: types.LOGIN_REQUEST,
