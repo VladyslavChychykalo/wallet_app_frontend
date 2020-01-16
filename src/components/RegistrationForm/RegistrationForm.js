@@ -26,11 +26,11 @@ const RegistrationSchema = yup.object().shape({
     .min(6, 'Password must be at least 6 characters')
     .max(12, 'Password must be at most 12 characters')
     .required('Password is required'),
-  passwordConfirmed: yup
-    .string()
-    .min(6, 'Password must be at least 6 characters')
-    .max(12, 'Password must be at most 12 characters')
-    .required('Password is required'),
+  // passwordConfirmed: yup
+  //   .string()
+  //   .min(6, 'Password must be at least 6 characters')
+  //   .max(12, 'Password must be at most 12 characters')
+  //   .required('Password is required'),
   name: yup.string(),
 });
 
@@ -39,11 +39,12 @@ const RegistrationForm = ({ onRegistration }) => (
     initialValues={{
       email: '',
       password: '',
-      passwordConfirmed: '',
+      // passwordConfirmed: '',
       name: '',
     }}
     validationSchema={RegistrationSchema}
     onSubmit={(values, { resetForm }) => {
+      console.log(values);
       setTimeout(() => {
         onRegistration(values);
         resetForm();
@@ -92,7 +93,8 @@ const RegistrationForm = ({ onRegistration }) => (
                 <Field
                   className={styles.input}
                   type="password"
-                  name="passwordConfirmed"
+                  // name="passwordConfirmed"
+                  name="password"
                   placeholder="Confirm password"
                 />
                 <PasswordIcon className={styles.registrationIcon} />

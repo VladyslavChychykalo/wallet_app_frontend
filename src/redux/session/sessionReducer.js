@@ -7,6 +7,10 @@ const user = (state = null, { type, payload }) => {
     case types.REGISTER_SUCCESS:
     case types.REFRESH_CURRENT_SUCCESS:
       return payload.response.user;
+
+    case types.LOGOUT:
+      return null;
+
     default:
       return state;
   }
@@ -17,6 +21,10 @@ const token = (state = null, { type, payload }) => {
     case types.LOGIN_SUCCESS:
     case types.REGISTER_SUCCESS:
       return payload.response.token;
+
+    case types.LOGOUT:
+      return null;
+
     default:
       return state;
   }
@@ -39,6 +47,9 @@ const isAuth = (state = false, { type }) => {
     case types.REGISTER_SUCCESS:
     case types.REFRESH_CURRENT_SUCCESS:
       return true;
+
+    case types.LOGOUT:
+      return null;
 
     default:
       return state;

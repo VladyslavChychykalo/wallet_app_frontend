@@ -7,12 +7,12 @@ import routes from '../routes/routes';
 
 class App extends Component {
   static propTypes = {
-    refreshCurrentUser: PropTypes.func.isRequired,
+    refreshUser: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    const { refreshCurrentUser } = this.props;
-    refreshCurrentUser();
+    const { refreshUser } = this.props;
+    refreshUser();
   }
 
   render() {
@@ -42,7 +42,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  refreshCurrentUser: refresh,
+  refreshUser: refresh,
 };
 
 export default connect(null, mapDispatchToProps)(App);

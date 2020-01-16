@@ -45,3 +45,8 @@ export const registrationError = error => ({
   type: types.REGISTER_ERROR,
   payload: { error },
 });
+
+// Logout
+export const logOutSuccess = () => ({
+  type: types.LOGOUT,
+});
