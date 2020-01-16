@@ -85,14 +85,24 @@ function numFormat(num) {
 }
 
 class HomeTab extends React.Component {
+  state = {
+    transactions: testHomeTab,
+  };
+
   componentDidMount() {
     // clg
+  }
+
+  onDelete(t) {
+    const { transactions } = this.state;
+    transactions.splice(transactions.indexOf(t), 1);
+    this.setState({ transactions });
   }
 
   render() {
     // let { transactions } = this.props;
 
-    const transactions = testHomeTab;
+    const { transactions } = this.state;
 
     return (
       <div className={styles.transactionHistory}>
@@ -143,7 +153,10 @@ class HomeTab extends React.Component {
               <div className={styles.pair}>
                 <div className={styles.key}>Delete</div>
                 <div className={styles.val}>
-                  <Trash className={styles.deleteBtn} />
+                  <Trash
+                    className={styles.deleteBtn}
+                    onClick={() => this.onDelete(t)}
+                  />
                 </div>
               </div>
             </div>
