@@ -30,6 +30,7 @@ export const login = credentials => dispatch => {
 
 export const registration = credentials => dispatch => {
   dispatch(registrationRequest());
+  console.log(credentials);
 
   axios
     .post('/auth/sign-up', credentials)
