@@ -31,8 +31,15 @@
 }
 
 .loader {
-  width: 200px;
-  margin: auto;
+  padding-top: 40%;
+  text-align: center;
+}
+
+.error {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
 }
 
 .currencyHeadline {

@@ -1,14 +1,20 @@
 .stateless {
   font-family: 'HelveticaNeueCyr';
-  padding-left: 8%;
-  padding-right: 8%;
 }
+
 .statelessSelect,
 .statelessHeader {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 8%;
+  margin-bottom: 8%;
   font-size: 18px;
+}
+.statelessHeader {
+  background-color: #f3f6f6;
+  height: 3em;
+  line-height: 3em;
+  padding-left: 26px;
+  padding-right: 26px;
 }
 .statelessSelectGroup {
   width: 130px;
@@ -17,19 +23,22 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 300px;
+  margin: 0 auto;
 }
 li {
   list-style-type: none;
   padding-bottom: 10px;
 }
-li::after {
-  content: '';
+
+.statelessLine {
   display: inline-block;
-  width: 100%;
+  width: 360px;
   height: 2px;
   border: 2px solid #f3f6f6;
 }
-li:last-child::after {
+
+li:last-child:nth-child(2n + 1) > .statelessLine {
   border: 2px solid #b9c9d4;
 }
 .statelessIcone {
@@ -45,6 +54,11 @@ li:last-child::after {
 }
 .statelessAmount {
   padding-left: 14%;
+}
+
+.tableExpenses {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (min-width: 768px) {
@@ -64,18 +78,56 @@ li:last-child::after {
     justify-content: space-between;
   }
   .statelessListItem {
-    width: 40%;
+    width: 320px;
   }
   .statelessFooter {
     text-align: end;
   }
+  .tableExpenses {
+    justify-content: flex-end;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  li:last-child:nth-child(2n + 1) > .statelessLine {
+    visibility: hidden;
+  }
+  .statelessLineLast {
+    border: 2px solid #b9c9d4;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
 }
 
 @media (min-width: 1280px) {
+  .stateless {
+    width: 360px;
+  }
+
   .statelessFooter {
     text-align: start;
   }
   .statelessListItem {
-    width: 100%;
+    width: 300px;
+    margin: 0 auto;
+  }
+  .statelessHeader {
+    display: flex;
+  }
+  .statelessLine {
+    display: inline-block;
+    width: 360px;
+    height: 2px;
+    border: 2px solid #f3f6f6;
+  }
+  .statelessListItem {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .tableExpenses {
+    text-transform: none;
+    font-weight: 400;
   }
 }

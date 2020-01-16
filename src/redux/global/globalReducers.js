@@ -1,11 +1,34 @@
 import { combineReducers } from 'redux';
-import { Type } from './globalActions';
+import types from '../types';
 
 const isModalAddTransactionOpen = (state = false, { type }) => {
   switch (type) {
-    case Type.OPEN_MODALADDTRANSACTION:
+    case types.OPEN_MODALADDTRANSACTION:
       return true;
-    case Type.CLOSE_MODALADDTRANSACTION:
+    case types.CLOSE_MODALADDTRANSACTION:
+      return false;
+    default:
+      return state;
+  }
+};
+
+const isModalLogoutOpen = (state = false, { type }) => {
+  switch (type) {
+    case types.OPEN_MODALLGOUTTRANSACTION:
+      return true;
+    case types.CLOSE_MODALGOUTTRANSACTION:
+      return false;
+    default:
+      return state;
+  }
+};
+
+const loadingReducer = (state = false, { type }) => {
+  switch (type) {
+    case types.GLOBAL_FETCH_START:
+      return true;
+    case types.GLOBAL_FETCH_FINISH:
+    case types.GLOBAL_FETCH_ERROR:
       return false;
     default:
       return state;
@@ -14,4 +37,6 @@ const isModalAddTransactionOpen = (state = false, { type }) => {
 
 export default combineReducers({
   isModalAddTransactionOpen,
+  isModalLogoutOpen,
+  loading: loadingReducer,
 });

@@ -76,7 +76,7 @@ const finance = {
       createdAt: '2020-10-20T14:19:58.147Z',
     },
     {
-      type: 'cost',
+      type: 'income',
       date: 1519211809934,
       id: 'lkadj',
       amount: 420,
@@ -115,6 +115,7 @@ const colors = [
 class DiagramTab extends Component {
   state = {
     expenses: [],
+    income: [],
     statistics: [],
     year: '',
     month: '',
@@ -135,37 +136,44 @@ class DiagramTab extends Component {
     // const { finance } = this.props
     // filter finance by cost inside connect
 
-    const allExpenses = this.filterExpenses(finance.data);
-    this.setState({ expenses: allExpenses });
+    const allExpenses = this.filterTransactions(finance.data, 'cost');
+    const allIncome = this.filterTransactions(finance.data, 'income');
 
-    const totalCosts = this.getTotalCost(allExpenses);
+    this.setState({ expenses: allExpenses, income: allIncome });
+
+    const totalCosts = this.getTotal(allExpenses);
 
     this.formStatistics(totalCosts);
-
-    this.filterStatistics();
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    const { expenses, year, month } = this.state;
+    const { expenses, year, month, statistics, income } = this.state;
+
+    if (prevState.statistics !== statistics) {
+      this.filterStatistics();
+    }
 
     if (month !== prevState.month || year !== prevState.year) {
-      this.sortExpenses(expenses, month, year);
+      this.sortTransactions(expenses, month, year);
+      this.sortTransactions(income, month, year);
     }
   };
 
-  sortExpenses(expenses, month, year) {
-    const sorted = expenses.filter(exp => {
-      const date = moment(exp.date).format('YYYY MMMM');
+  sortTransactions(transactions, month, year) {
+    const sorted = transactions.filter(trans => {
+      const date = moment(trans.date).format('YYYY MMMM');
       const byMonth = month ? date.includes(month) : true;
       const byYear = year ? date.includes(year) : true;
       return byMonth && byYear;
     });
 
-    const totalCosts = this.getTotalCost(sorted);
+    if (sorted.some(exp => exp.type === 'income')) {
+      return this.setState({ income: sorted });
+    }
 
-    this.formStatistics(totalCosts);
+    const totalCosts = this.getTotal(sorted);
 
-    this.filterStatistics();
+    return this.formStatistics(totalCosts);
   }
 
   filterStatistics = () => {
@@ -188,9 +196,10 @@ class DiagramTab extends Component {
     }));
   };
 
-  filterExpenses = expenses => expenses.filter(exp => exp.type === 'cost');
+  filterTransactions = (transaction, type) =>
+    transaction.filter(trans => trans.type === type);
 
-  getTotalCost = expenses =>
+  getTotal = expenses =>
     expenses.reduce((acc, exp) => {
       acc[exp.category] = (acc[exp.category] || 0) + exp.amount;
       return acc;
@@ -221,10 +230,8 @@ class DiagramTab extends Component {
     }
   };
 
-  getAllExpenses = expenses =>
-    expenses.reduce((acc, exp) => acc + exp.amount, 0);
-
-  getAllIncome = income => income.reduce((acc, inc) => acc + inc.amount, 0);
+  getSum = transaction =>
+    transaction.reduce((acc, trans) => acc + trans.amount, 0);
 
   render() {
     const {
@@ -235,7 +242,7 @@ class DiagramTab extends Component {
       wrapper,
     } = styles;
 
-    const { data, statistics } = this.state;
+    const { data, statistics, income } = this.state;
 
     return (
       <div className={diagram}>
@@ -247,18 +254,14 @@ class DiagramTab extends Component {
             <div className={chartBlockHeader}>
               <h2>Statistics</h2>
             </div>
-            <div className="chart">
-              <Chart data={data} />
-            </div>
+            {data.labels.length > 0 && <Chart data={data} />}
           </div>
-          <div className="table">
-            <Table
-              data={statistics}
-              handleChange={this.handleChange}
-              expenses={this.getAllExpenses(statistics)}
-              income={this.getAllIncome(finance.data)}
-            />
-          </div>
+          <Table
+            data={statistics}
+            handleChange={this.handleChange}
+            expenses={this.getSum(statistics)}
+            income={this.getSum(income)}
+          />
         </div>
       </div>
     );

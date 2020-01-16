@@ -1,0 +1,60 @@
+.user_page_block {
+  display: flex;
+  margin-right: 20px;
+}
+
+.user_pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dbdcdd;
+  height: 32px;
+  width: 32px;
+  border-radius: 30px;
+  align-self: center;
+}
+
+.user_pic_letter {
+  font-size: 23px;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+.user_name_full {
+  display: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .user_logout_div {
+    width: fit-content;
+    padding: 0 5px;
+    justify-content: space-between;
+  }
+
+  .user_page_block {
+    width: fit-content;
+  }
+
+  .user_page_block::after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background-color: #bababb;
+    margin-left: 15px;
+  }
+
+  .user_name_full {
+    display: flex;
+    padding-left: 10px;
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+@media (min-width: 1280px) {
+  .user_page_block::after {
+    margin-left: 20px;
+  }
+}

@@ -35,6 +35,7 @@ export default class Modal extends Component {
   };
 
   render() {
+    const { closeModalAddTransaction } = this.props;
     return (
       <div
         className={styles.backdrop}
@@ -43,7 +44,9 @@ export default class Modal extends Component {
         role="presentation"
       >
         <div className={styles.modal}>
-          <AddTransactionForm />
+          <AddTransactionForm
+            closeModalAddTransaction={closeModalAddTransaction}
+          />
         </div>
       </div>
     );

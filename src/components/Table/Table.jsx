@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import styles from './Table.module.css';
 
-const mounth = [
+const month = [
   { label: 'January', value: 'January' },
   { label: 'February', value: 'February' },
   { label: 'March', value: 'March' },
@@ -26,15 +26,13 @@ const year = [
 ];
 
 const Stateless = ({ data, handleChange, expenses, income }) => {
-  const windowWidth = document.documentElement.clientWidth;
-
   return (
     <div className={styles.stateless}>
       <div className={styles.statelessSelect}>
         <div className={styles.statelessSelectGroup}>
           <Select
             onChange={handleChange}
-            options={mounth}
+            options={month}
             defaultValue={{ label: 'Month', value: 'Month' }}
           />
         </div>
@@ -51,10 +49,10 @@ const Stateless = ({ data, handleChange, expenses, income }) => {
         <p>Amount</p>
       </div>
       <div>
-        {windowWidth < 768 && (
-          <ul>
-            {data.map(d => (
-              <li key={d.id} className={styles.statelessListItem}>
+        <ul className={styles.statelessListTablet}>
+          {data.map(d => (
+            <li key={d.id}>
+              <span className={styles.statelessListItem}>
                 <div>
                   <span
                     className={styles.statelessIcone}
@@ -63,49 +61,21 @@ const Stateless = ({ data, handleChange, expenses, income }) => {
                   <span className={styles.statelessTitle}>{d.category}</span>
                 </div>
                 <span className={styles.statelessAmount}>{d.amount}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        {windowWidth >= 768 && windowWidth < 1280 && (
-          <ul className={styles.statelessListTablet}>
-            {data.map(d => (
-              <li key={d.id} className={styles.statelessListItem}>
-                <div>
-                  <span
-                    className={styles.statelessIcone}
-                    style={{ backgroundColor: `${d.color}` }}
-                  />
-                  <span className={styles.statelessTitle}>{d.category}</span>
-                </div>
-                <span className={styles.statelessAmount}>{d.amount}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        {windowWidth > 1280 && (
-          <ul>
-            {data.map(d => (
-              <li key={d.id} className={styles.statelessListItem}>
-                <div>
-                  <span
-                    className={styles.statelessIcone}
-                    style={{ backgroundColor: `${d.color}` }}
-                  />
-                  <span className={styles.statelessTitle}>{d.category}</span>
-                </div>
-                <span className={styles.statelessAmount}>{d.amount}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+              </span>
+              <div className={styles.statelessLine} />
+            </li>
+          ))}
+        </ul>
       </div>
+      <div className={styles.statelessLineLast} />
       <div className={styles.statelessFooter}>
-        <p>
-          Expenses: <span style={{ color: '#3a5374' }}>{expenses}</span>
+        <p className={styles.tableExpenses}>
+          <span style={{ paddingRight: '20px' }}>Expenses: </span>
+          <span style={{ color: '#3a5374' }}>{expenses}</span>
         </p>
-        <p>
-          Incoming: <span style={{ color: '#ff6c00' }}>{income}</span>
+        <p className={styles.tableExpenses}>
+          <span style={{ paddingRight: '20px' }}>Incoming:</span>
+          <span style={{ color: '#ff6c00' }}>{income}</span>
         </p>
       </div>
     </div>

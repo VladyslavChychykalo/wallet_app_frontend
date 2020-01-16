@@ -4,15 +4,35 @@
   line-height: 30px;
   color: var(--text-color-white);
   font-weight: bold;
-  margin: 0 auto;
-  width: 320px;
-  padding-left: 50px;
   text-transform: uppercase;
   font-family: 'HelveticaNeueCyr';
 }
 
 .titleWrapper {
   background-color: var(--color-main-blue);
+}
+
+.controlWrapper {
+  margin: 0 auto;
+  width: 320px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.closeModalButton {
+  width: 44px;
+  height: 100%;
+  background-color: var(--color-main-blue);
+  border: none;
+  outline: none;
+  color: var(--text-color-white);
+}
+.closeModalButton img {
+  width: 44px;
+  height: 14px;
+  display: inherit;
 }
 
 .transactionForm {
@@ -147,6 +167,7 @@
   border-radius: 4px;
   outline: none;
   padding: 8px;
+  overflow-y: visible;
 }
 
 .valueInput::placeholder,
@@ -184,21 +205,38 @@ input:focus,
 textarea:focus {
   border-color: var(--bg-color-dark-blue);
 }
+
+.errorsContainer {
+  margin-bottom: 30px;
+}
+
+.error {
+  color: red;
+}
+
 @media (min-width: 768px) {
   .transactionButton {
     position: static;
     background-color: var(--color-main-blue);
   }
+
   .inputComment {
     margin-bottom: 30px;
   }
+
   .titleWrapper {
     background-color: #f3f6f6;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
   }
+
   .title {
     color: var(--text-color-main);
     font-size: 15px;
     text-align: center;
-    padding: 20px;
+    padding: 20px 0;
+  }
+  .controlWrapper {
+    justify-content: center;
   }
 }
