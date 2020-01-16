@@ -1,5 +1,5 @@
 .title {
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   font-size: 15px;
 }
 
@@ -12,6 +12,7 @@
   .amount {
     color: var(--color-main-blue);
     padding-left: 10px;
+    margin-bottom: 2px;
   }
 }
 
