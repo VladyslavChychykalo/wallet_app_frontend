@@ -55,16 +55,17 @@ export default class DashboardPage extends Component {
               </Switch>
             </article>
           </main>
-          <button
-            type="button"
-            className={styles.addTransaction}
-            onClick={() => {
-              openModalAddTransaction();
-            }}
-          >
-            +{/*
-    <ModalAddTransaction /> */}
-          </button>
+          <Route path="/home">
+            <button
+              type="button"
+              className={styles.addTransaction}
+              onClick={() => {
+                openModalAddTransaction();
+              }}
+            >
+              +{/* open <ModalAddTransaction /> */}
+            </button>
+          </Route>
         </div>
       </>
     );

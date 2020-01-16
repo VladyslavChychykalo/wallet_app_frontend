@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
 import types from '../types';
 
-const data = (state = null, { type, payload }) => {
+const data = (state = [], { type, payload }) => {
   switch (type) {
     case types.FINANCE_DATA_FETCH_FINISH:
       return payload.response.data;
+    case types.FINANCE_ADD_TRANSACTION_FINISH:
+      return [...state, payload.data];
+    case types.FINANCE_ADD_TRANSACTION_ERROR:
+      return { ...payload.error };
     default:
       return state;
   }
