@@ -27,8 +27,6 @@ const year = [
 ];
 
 const Stateless = () => {
-  const windowWidth = document.documentElement.clientWidth;
-
   return (
     <div className={styles.stateless}>
       <div className={styles.statelessSelect}>
@@ -50,10 +48,10 @@ const Stateless = () => {
         <p>Amount</p>
       </div>
       <div>
-        {windowWidth < 768 && (
-          <ul>
-            {data.map(d => (
-              <li key={d.id} className={styles.statelessListItem}>
+        <ul className={styles.statelessListTablet}>
+          {data.map(d => (
+            <li key={d.id}>
+              <span className={styles.statelessListItem}>
                 <div>
                   <span
                     className={styles.statelessIcone}
@@ -62,49 +60,21 @@ const Stateless = () => {
                   <span className={styles.statelessTitle}>{d.title}</span>
                 </div>
                 <span className={styles.statelessAmount}>{d.amount}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        {windowWidth >= 768 && windowWidth < 1280 && (
-          <ul className={styles.statelessListTablet}>
-            {data.map(d => (
-              <li key={d.id} className={styles.statelessListItem}>
-                <div>
-                  <span
-                    className={styles.statelessIcone}
-                    style={{ backgroundColor: `${d.color}` }}
-                  />
-                  <span className={styles.statelessTitle}>{d.title}</span>
-                </div>
-                <span className={styles.statelessAmount}>{d.amount}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        {windowWidth > 1280 && (
-          <ul>
-            {data.map(d => (
-              <li key={d.id} className={styles.statelessListItem}>
-                <div>
-                  <span
-                    className={styles.statelessIcone}
-                    style={{ backgroundColor: `${d.color}` }}
-                  />
-                  <span className={styles.statelessTitle}>{d.title}</span>
-                </div>
-                <span className={styles.statelessAmount}>{d.amount}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+              </span>
+              <div className={styles.statelessLine} />
+            </li>
+          ))}
+        </ul>
       </div>
+      <div className={styles.statelessLineLast} />
       <div className={styles.statelessFooter}>
-        <p>
-          Expenses: <span style={{ color: '#3a5374' }}>2000.22</span>
+        <p className={styles.tableExpenses}>
+          <span style={{ paddingRight: '20px' }}>Expenses: </span>
+          <span style={{ color: '#3a5374' }}>2000.22</span>
         </p>
-        <p>
-          Incoming: <span style={{ color: '#ff6c00' }}>4000.33</span>
+        <p className={styles.tableExpenses}>
+          <span style={{ paddingRight: '20px' }}>Incoming:</span>
+          <span style={{ color: '#ff6c00' }}>4000.33</span>
         </p>
       </div>
     </div>
