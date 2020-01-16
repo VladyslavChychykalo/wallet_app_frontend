@@ -61,19 +61,19 @@ const Stateless = () => {
                 </div>
                 <span className={styles.statelessAmount}>{d.amount}</span>
               </span>
-              <div className={styles.statelessLine}></div>
+              <div className={styles.statelessLine} />
             </li>
           ))}
         </ul>
       </div>
-      <div className={styles.statelessLineLast}></div>
+      <div className={styles.statelessLineLast} />
       <div className={styles.statelessFooter}>
         <p className={styles.tableExpenses}>
-          <span style={{ paddingRight:'20px' }}>Expenses: </span>
+          <span style={{ paddingRight: '20px' }}>Expenses: </span>
           <span style={{ color: '#3a5374' }}>2000.22</span>
         </p>
         <p className={styles.tableExpenses}>
-          <span style={{ paddingRight:'20px' }}>Incoming:</span>
+          <span style={{ paddingRight: '20px' }}>Incoming:</span>
           <span style={{ color: '#ff6c00' }}>4000.33</span>
         </p>
       </div>
