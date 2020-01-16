@@ -9,7 +9,9 @@ const UserInfo = ({ user, authenticated }) => {
 };
 
 UserInfo.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
   authenticated: PropTypes.bool.isRequired,
 };
 

@@ -49,7 +49,7 @@ const isAuth = (state = false, { type }) => {
       return true;
 
     case types.LOGOUT:
-      return null;
+      return false;
 
     default:
       return state;

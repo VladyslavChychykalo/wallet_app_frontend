@@ -59,20 +59,17 @@ export const refresh = () => (dispatch, getState) => {
     return;
   }
 
+  setAuthToken(token);
+
   dispatch(refreshRequest());
 
-  const options = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
   axios
-    .get('/users/current', options)
+    .get('/users/current')
     .then(response => {
       dispatch(refreshSuccess(response.data));
     })
     .catch(error => {
+      clearAuthToken();
       dispatch(refreshError(error));
     });
 };
