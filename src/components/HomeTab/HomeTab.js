@@ -108,23 +108,25 @@ class HomeTab extends React.Component {
       <div className={styles.transactionHistory}>
         <div>
           <div className={styles.transactionHead}>
-            <div>Date</div>
-            <div>Type</div>
+            <div className={styles.textCenter}>Date</div>
+            <div className={styles.textCenter}>Type</div>
             <div>Category</div>
-            <div>Commentary</div>
-            <div>Sum</div>
+            <div>Comment</div>
+            <div className={styles.textCenter}>Sum</div>
             <div>Balance</div>
-            <div>Delete</div>
+            <div className={styles.textCenter}>Delete</div>
           </div>
           {transactions.map(t => (
             <div key={t.id} className={styles.transaction}>
               <div className={styles.pair}>
                 <div className={styles.key}>Date</div>
-                <div className={styles.val}>{timestampToDate(t.date)}</div>
+                <div className={`${styles.val} ${styles.textCenter}`}>
+                  {timestampToDate(t.date)}
+                </div>
               </div>
               <div className={styles.pair}>
                 <div className={styles.key}>Type</div>
-                <div className={styles.val}>
+                <div className={`${styles.val} ${styles.textCenter}`}>
                   {t.type === 'income' ? '+' : '-'}
                 </div>
               </div>
@@ -133,13 +135,13 @@ class HomeTab extends React.Component {
                 <div className={styles.val}>{t.category}</div>
               </div>
               <div className={styles.pair}>
-                <div className={styles.key}>Commentary</div>
+                <div className={styles.key}>Comment</div>
                 <div className={styles.val}>{t.comment}</div>
               </div>
               <div className={styles.pair}>
                 <div className={styles.key}>Sum</div>
                 <div
-                  className={`${styles.val} ${
+                  className={`${styles.val} ${styles.textCenter} ${
                     t.type === 'cost' ? styles.hilite : ''
                   }`}
                 >
@@ -148,11 +150,13 @@ class HomeTab extends React.Component {
               </div>
               <div className={styles.pair}>
                 <div className={styles.key}>Balance</div>
-                <div className={styles.val}>{numFormat(t.balanceAfter)}</div>
+                <div className={`${styles.val} ${styles.textCenter}`}>
+                  {numFormat(t.balanceAfter)}
+                </div>
               </div>
               <div className={styles.pair}>
                 <div className={styles.key}>Delete</div>
-                <div className={styles.val}>
+                <div className={`${styles.val} ${styles.textCenter}`}>
                   <Trash
                     className={styles.deleteBtn}
                     onClick={() => this.onDelete(t)}

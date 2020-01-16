@@ -3,28 +3,6 @@
   font-family: 'HelveticaNeueCyr', sans-serif;
 }
 
-.transactionHistory {
-  max-height: 60vh;
-  overflow-y: auto;
-}
-/* width */
-.transactionHistory::-webkit-scrollbar {
-  width: 6px;
-}
-/* Track */
-.transactionHistory::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-/* Handle */
-.transactionHistory::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 6px;
-}
-/* Handle on hover */
-.transactionHistory::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
 .transactionHead {
   display: none;
 }
@@ -93,7 +71,31 @@
   .val {
     padding: 0 10px;
   }
+  .textCenter {
+    text-align: center;
+  }
 }
 
 @media (min-width: 1280px) {
+  .transactionHistory {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  /* width */
+  .transactionHistory::-webkit-scrollbar {
+    width: 6px;
+  }
+  /* Track */
+  .transactionHistory::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  /* Handle */
+  .transactionHistory::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+  }
+  /* Handle on hover */
+  .transactionHistory::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
