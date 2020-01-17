@@ -60,7 +60,7 @@
   }
 
   .activeLink {
-    color: var(--color-main-blue);
+    color: var(--bg-color-dark-blue);
     font-weight: bold;
   }
 }
