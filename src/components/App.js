@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { refresh } from '../redux/session/sessionOperations';
 import routes from '../routes/routes';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 class App extends Component {
   static propTypes = {
@@ -29,7 +30,7 @@ class App extends Component {
               path={routes.REGISTER_PAGE.path}
               component={routes.REGISTER_PAGE.component}
             />
-            <Route
+            <ProtectedRoute
               path={routes.DASHBOARD_PAGE.path}
               component={routes.DASHBOARD_PAGE.component}
             />

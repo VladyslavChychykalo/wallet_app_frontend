@@ -26,11 +26,11 @@ const RegistrationSchema = yup.object().shape({
     .min(6, 'Password must be at least 6 characters')
     .max(12, 'Password must be at most 12 characters')
     .required('Password is required'),
-  passwordConfirmed: yup
-    .string()
-    .min(6, 'Password must be at least 6 characters')
-    .max(12, 'Password must be at most 12 characters')
-    .required('Password is required'),
+  // passwordConfirmed: yup
+  //   .string()
+  //   .min(6, 'Password must be at least 6 characters')
+  //   .max(12, 'Password must be at most 12 characters')
+  //   .required('Password is required'),
   name: yup.string(),
 });
 
@@ -73,7 +73,6 @@ const RegistrationForm = ({ onRegistration }) => (
     {({ touched, errors, isSubmitting, values }) => {
       const strength = strengthIndicator(values.password);
       const color = strengthColor(strength);
-      console.log(touched, errors);
       return (
         <>
           <div className={styles.backgroundContainer}>
@@ -110,13 +109,13 @@ const RegistrationForm = ({ onRegistration }) => (
                 )}
               </div>
               <div className={styles.inputWithIcon}>
-                <Field
+                {/* <Field
                   className={styles.input}
                   type="password"
                   name="passwordConfirmed"
                   // name="password"
                   placeholder="Confirm password"
-                />
+                /> */}
                 <PasswordIcon className={styles.registrationIcon} />
                 {touched.passwordConfirmed && errors.passwordConfirmed && (
                   <p className={styles.error}>{errors.passwordConfirmed}</p>
