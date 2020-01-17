@@ -138,18 +138,19 @@ const EnhancedForm = withFormik({
     category: '',
   }),
   validationSchema: AddTransactionSchema,
-  handleSubmit: (values, { setSubmitting }) => {
+  handleSubmit: (values, { setSubmitting, props: { onSubmit } }) => {
     // eslint-disable-next-line no-unused-vars
     const payload = { ...values, category: values.category.value };
     setTimeout(() => {
       // console.log(JSON.stringify(payload, null, 2));
+      onSubmit(payload);
       setSubmitting(false);
-    }, 1000);
+    }, 100);
   },
   displayName: 'BasicForm', // helps with React DevTools
 })(innerForm);
 
-const AddTransactionForm = ({ closeModalAddTransaction }) => {
+const AddTransactionForm = ({ closeModalAddTransaction, addTransaction }) => {
   const windowWidth = document.documentElement.clientWidth;
   return (
     <>
@@ -167,7 +168,7 @@ const AddTransactionForm = ({ closeModalAddTransaction }) => {
           <h2 className={styles.title}>add transaction</h2>
         </div>
       </div>
-      <EnhancedForm />
+      <EnhancedForm onSubmit={addTransaction} />
     </>
   );
 };
@@ -176,4 +177,5 @@ export default AddTransactionForm;
 
 AddTransactionForm.propTypes = {
   closeModalAddTransaction: PropTypes.func.isRequired,
+  addTransaction: PropTypes.func.isRequired,
 };
