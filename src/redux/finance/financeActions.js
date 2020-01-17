@@ -49,3 +49,17 @@ export const finaceTypeTotalBalanceFetchError = error => ({
   type: types.FINANCE_TYPE_TOTAL_BALANCE_ERROR,
   payload: { error },
 });
+
+// Add transaction actions
+
+export const financeAddTransactionStart = () => ({
+  type: types.FINANCE_ADD_TRANSACTION_START,
+});
+export const financeAddTransactionFinish = response => ({
+  type: types.FINANCE_ADD_TRANSACTION_FINISH,
+  payload: response,
+});
+export const financeAddTransactionError = error => ({
+  type: types.FINANCE_ADD_TRANSACTION_ERROR,
+  payload: error,
+});

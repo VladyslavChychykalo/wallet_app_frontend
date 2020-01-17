@@ -6,16 +6,19 @@ import AddTransactionForm from './AddTransactionForm/AddTransactionForm';
 export default class Modal extends Component {
   static propTypes = {
     closeModalAddTransaction: PropTypes.func.isRequired,
+    addTransaction: PropTypes.func.isRequired,
   };
 
   backdropRef = createRef();
 
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyPress);
+    document.body.style.overflow = 'hidden';
   }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyPress);
+    document.body.style.overflow = 'unset';
   }
 
   handleKeyPress = e => {
@@ -35,7 +38,7 @@ export default class Modal extends Component {
   };
 
   render() {
-    const { closeModalAddTransaction } = this.props;
+    const { closeModalAddTransaction, addTransaction } = this.props;
     return (
       <div
         className={styles.backdrop}
@@ -46,6 +49,7 @@ export default class Modal extends Component {
         <div className={styles.modal}>
           <AddTransactionForm
             closeModalAddTransaction={closeModalAddTransaction}
+            addTransaction={addTransaction}
           />
         </div>
       </div>

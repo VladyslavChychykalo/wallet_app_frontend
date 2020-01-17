@@ -1,5 +1,5 @@
 .container {
-  background-color: #ebefee;
+  background-color: #edf3f3;
   background-attachment: fixed;
   /* height: 100vh; */
   background-repeat: no-repeat;
@@ -60,11 +60,16 @@
 @media (min-width: 768px) {
   .container {
     height: 100vh;
+    background-color: #faf9fa;
   }
 
   .main {
     width: 768px;
     position: relative;
+    padding-bottom: 320px;
+    background-image: url(../../assets/images/bgImg.png);
+    background-repeat: no-repeat;
+    background-position: bottom 0 left 100px;
   }
 
   .header {
@@ -98,6 +103,7 @@
   }
 
   .currency {
+    width: 350px;
     position: absolute;
     bottom: 50px;
     left: 30px;
@@ -129,6 +135,8 @@
   .main {
     display: flex;
     width: 1280px;
+    background-image: none;
+    padding-bottom: 0;
   }
 
   .nav,
