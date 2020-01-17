@@ -261,8 +261,8 @@ class DiagramTab extends Component {
           <Table
             data={statistics}
             handleChange={this.handleChange}
-            expenses={this.getAllExpenses(statistics)}
-            income={this.getAllIncome(finance.data)}
+            expenses={this.getSum(statistics)}
+            income={this.getSum(finance.data)}
           />
         </div>
       </div>
