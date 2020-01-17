@@ -1,55 +1,55 @@
 [
   {
     "id": "4db49f1-9aa2-4faf-9862-a97efaefd21",
-    "title": "Main expenses",
+    "category": "Main expenses",
     "amount": "200.00",
     "color": "#ebb129"
   },
   {
     "id": "4db49f-9aa2-4faf-9862-a97efaefd2c",
-    "title": "Products",
+    "category": "Products",
     "amount": "100.00",
     "color": "#e28b20"
   },
   {
     "id": "4db49-9aa2-4faf-9862-a97efaed21c",
-    "title": "Car",
+    "category": "Car",
     "amount": "100.00",
     "color": "#d25925"
   },
   {
     "id": "4db4-9aa2-4faf-9862-a97eaefd21c",
-    "title": "Yourself care",
+    "category": "Yourself care",
     "amount": "100.00",
     "color": "#67b7d0"
   },
   {
     "id": "4db-9aa2-4faf-9862-a97eaefd21c",
-    "title": "Child care",
+    "category": "Child care",
     "amount": "101.00",
     "color": "#5593d7"
   },
   {
     "id": "4db49f19-9aa2-4faf-9862-a9aefd21c",
-    "title": "Household products",
+    "category": "Household products",
     "amount": "100.32",
     "color": "#ffab00"
   },
   {
     "id": "4db49f19-9aa2-4faf-862-a9efaefd21c",
-    "title": "Education",
+    "category": "Education",
     "amount": "100.32",
     "color": "#9cc254"
   },
   {
     "id": "db49f19-9aa2-4ff-9862-a97efaefd21c",
-    "title": "Leisure",
+    "category": "Leisure",
     "amount": "200.32",
     "color": "#73ad57"
   },
   {
     "id": "4db49f19-aa2-4faf-9862-a97efaefd21c",
-    "title": "Other expenses",
+    "category": "Other expenses",
     "amount": "100.32",
     "color": "#507c3a"
   }
