@@ -1,6 +1,6 @@
-export const getFinaceData = store => store.finance.data;
+export const getFinanceData = store => store.finance.data;
 
-export const getFinaceTotalBalance = store => store.finance.totalBalance;
+export const getFinanceTotalBalance = store => store.finance.totalBalance;
 
-export const getFinaceTotalTypeBalance = store =>
+export const getFinanceTotalTypeBalance = store =>
   store.finance.typeTotalBalance;
