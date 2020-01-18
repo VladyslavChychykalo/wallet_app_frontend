@@ -39,8 +39,8 @@ const Currency = () => {
           {currency.map(item => (
             <div className={css.currencyBoard} key={uuid()}>
               <div className={css.mainLine}>{item.ccy}</div>
-              <div className={css.mainLine}>{Number(item.buy).toFixed(2)}</div>
               <div className={css.mainLine}>{Number(item.sale).toFixed(2)}</div>
+              <div className={css.mainLine}>{Number(item.buy).toFixed(2)}</div>
             </div>
           ))}
         </div>
