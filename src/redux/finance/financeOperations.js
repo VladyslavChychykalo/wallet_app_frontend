@@ -21,34 +21,39 @@ import axios from 'axios';
 // export const fetchTransactions = () => {};
 
 import {
-  finaceDataFetchStart,
-  // finaceDataFetchFinish,
-  // finaceDataFetchError,
-  finaceTotalBalanceFetchStart,
-  // finaceTotalBalanceFinish,
-  // finaceTotalBalanceFetchError,
-  finaceTotalTypeBalanceFetchStart,
-  // finaceTypeTotalBalanceFinish,
-  // finaceTypeTotalBalanceFetchError,
+  financeDataFetchStart,
+  financeDataFetchFinish,
+  financeDataFetchError,
+  financeTotalBalanceFetchStart,
+  // financeTotalBalanceFinish,
+  // financeTotalBalanceFetchError,
+  financeTotalTypeBalanceFetchStart,
+  // financeTypeTotalBalanceFinish,
+  // financeTypeTotalBalanceFetchError,
   financeAddTransactionStart,
   financeAddTransactionFinish,
   financeAddTransactionError,
 } from './financeActions';
 import { closeModalAddTransaction } from '../global/globalActions';
 
-export const getFinaceDataFetch = () => dispatch => {
-  dispatch(finaceDataFetchStart());
+const apiUrl = 'https://project1.goit.co.ua/api/transactions/';
+
+export const getFinanceDataFetch = id => dispatch => {
+  dispatch(financeDataFetchStart());
+  axios
+    .get(apiUrl + id)
+    .then(data => dispatch(financeDataFetchFinish(data)))
+    .catch(error => financeDataFetchError(error));
 };
 
-export const getFinaceTotalBalanceFetch = () => dispatch => {
-  dispatch(finaceTotalBalanceFetchStart());
+export const getFinanceTotalBalanceFetch = () => dispatch => {
+  dispatch(financeTotalBalanceFetchStart());
 };
 
-export const getFinaceTotalTypeBalanceFetch = () => dispatch => {
-  dispatch(finaceTotalTypeBalanceFetchStart());
+export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
+  dispatch(financeTotalTypeBalanceFetchStart());
 };
 
-const apiUrl = 'http://localhost:3004/posts';
 export const addTransaction = submittedData => dispatch => {
   dispatch(financeAddTransactionStart());
   axios
