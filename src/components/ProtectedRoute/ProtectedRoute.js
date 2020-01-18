@@ -11,11 +11,11 @@ const ProtectedRoute = ({ component: Component, ...restProps }) => {
   return (
     <Route {...restProps}>
       {isAuthenticated ? (
-        <Component />
+        <Component {...restProps} />
       ) : (
         <Redirect
           to={{
-            pathname: '/auth',
+            pathname: '/login',
             state: { from: restProps.location },
           }}
         />
@@ -25,7 +25,8 @@ const ProtectedRoute = ({ component: Component, ...restProps }) => {
 };
 
 ProtectedRoute.propTypes = {
-  component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  // component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  component: PropTypes.shape().isRequired,
 };
 
 export default ProtectedRoute;
