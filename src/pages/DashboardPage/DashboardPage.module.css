@@ -1,0 +1,177 @@
+.container {
+  background-color: #edf3f3;
+  background-attachment: fixed;
+  /* height: 100vh; */
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.header {
+  width: 100%;
+  background-color: var(--bg-color-dark-blue);
+}
+
+.main {
+  width: 320px;
+  margin: 0 auto;
+}
+
+.nav {
+  width: 100%;
+  background-color: var(--color-main-blue);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.balance {
+  background-color: var(--color-main-blue);
+  width: 304px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 28px 0;
+  color: #ffffff;
+  font-family: 'HelveticaNeueCyr', serif;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+  font-size: 15px;
+}
+
+.addTransaction {
+  position: fixed;
+  border: none;
+  outline: none;
+  bottom: 12px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-main-orange);
+  color: var(--text-color-white);
+  overflow: hidden;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+@media (min-width: 768px) {
+  .container {
+    height: 100vh;
+    background-color: #faf9fa;
+  }
+
+  .main {
+    width: 768px;
+    position: relative;
+    padding-bottom: 320px;
+    background-image: url(../../assets/images/bgImg.png);
+    background-repeat: no-repeat;
+    background-position: bottom 0 left 100px;
+  }
+
+  .header {
+    background-color: #ffffff;
+    box-shadow: 0 5px 5px 0 #dedada;
+  }
+
+  .aside {
+    width: 768px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .nav {
+    width: 40%;
+    margin: 0;
+    background: none;
+    padding: 28px 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .balance {
+    width: 25%;
+    margin: 0;
+    background: none;
+    display: flex;
+    align-items: flex-end;
+    padding: 28px 0;
+  }
+
+  .currency {
+    width: 350px;
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+  }
+
+  .addTransaction {
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    height: auto;
+  }
+
+  .header {
+    margin-bottom: 46px;
+  }
+
+  .aside {
+    width: 324px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .main {
+    display: flex;
+    width: 1280px;
+    background-image: none;
+    padding-bottom: 0;
+  }
+
+  .nav,
+  .balance {
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: var(--bg-color-dark-blue);
+    border-radius: 5px;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    padding: 38px 0;
+  }
+
+  .currency {
+    width: 100%;
+    margin: 0;
+    position: inherit;
+  }
+
+  .balance {
+    justify-content: space-around;
+    padding: 38px 0;
+    background-color: var(--bg-color-dark-blue);
+  }
+
+  .content {
+    width: 876px;
+    padding-right: 40px;
+  }
+
+  .addTransaction {
+    bottom: 50px;
+    right: 75px;
+  }
+}

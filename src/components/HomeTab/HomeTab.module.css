@@ -1,0 +1,77 @@
+.HomeTab {
+  background: #ffffff;
+  font-family: 'HelveticaNeueCyr', sans-serif;
+}
+
+.transactionHead {
+  display: none;
+}
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 0 0 15px;
+}
+.pair {
+  width: 100%;
+  display: flex;
+  line-height: 62px;
+}
+.pair:nth-child(odd) {
+  background: #f4f5f7;
+}
+.key {
+  flex-basis: 100%;
+  padding: 0 0 0 15px;
+}
+.val {
+  flex-basis: 100%;
+  white-space: nowrap;
+}
+.hilite {
+  color: var(--color-main-orange);
+}
+.transaction:nth-child(odd) .key {
+  border-left: 8px solid var(--color-main-orange);
+}
+.transaction:nth-child(even) .key {
+  border-left: 8px solid #777;
+}
+.deleteBtn {
+  height: 20px;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .transactionHead {
+    display: flex;
+    justify-content: space-between;
+  }
+  .transactionHead div {
+    padding: 0 10px;
+    font-weight: bold;
+    line-height: 72px;
+    text-transform: uppercase;
+    width: 100%;
+    background: #fff;
+  }
+  .transaction {
+    flex-direction: row;
+    margin: 0;
+  }
+  .pair:nth-child(odd) {
+    background: none;
+  }
+  .transaction:nth-child(odd) .pair {
+    background: rgb(243, 246, 246);
+  }
+  .key {
+    display: none;
+  }
+  .val {
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 1280px) {
+}

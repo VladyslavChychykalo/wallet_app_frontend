@@ -1,0 +1,81 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  margin: 0 auto;
+  padding: 6px;
+}
+
+.title {
+  color: #8390a2;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 1.44px;
+  font-family: 'BauhausC';
+  font-weight: bold;
+  margin: 0;
+  padding-top: 6px;
+}
+
+.Logo_link {
+  display: flex;
+  align-items: center;
+}
+
+.Logo_IMG {
+  margin-right: 6px;
+}
+
+.Logo_IMG,
+.Logo_link {
+  height: 28px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+}
+
+.user_logout_div {
+  display: flex;
+  justify-content: flex-end;
+  color: #8390a2;
+}
+
+@media (min-width: 768px) {
+  .header {
+    width: 768px;
+    padding: 26px;
+  }
+
+  .user_logout_div {
+    width: fit-content;
+    padding: 0 5px;
+    justify-content: space-between;
+  }
+
+  .title {
+    font-size: 20px;
+    color: rgb(40, 40, 40);
+  }
+
+  .Logo_IMG {
+    transition: 0.3s ease-in;
+  }
+
+  .Logo_IMG:hover {
+    transform: scale(1.03, 1.03);
+    transition: transform 0.3s ease-in;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header {
+    width: 1280px;
+    margin: 0 auto;
+    padding: 26px 40px;
+  }
+
+  .Logo_IMG {
+    margin-right: 16px;
+  }
+}
