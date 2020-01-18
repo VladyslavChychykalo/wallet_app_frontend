@@ -26,7 +26,9 @@ const isModalLogoutOpen = (state = false, { type }) => {
 const loadingReducer = (state = false, { type }) => {
   switch (type) {
     case types.GLOBAL_FETCH_START:
+    case types.LOGIN_REQUEST:
       return true;
+    case types.LOGIN_SUCCESS:
     case types.GLOBAL_FETCH_FINISH:
     case types.GLOBAL_FETCH_ERROR:
       return false;
