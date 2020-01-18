@@ -16,23 +16,26 @@ import {
 import { closeModalAddTransaction } from '../global/globalActions';
 // import apiURL from '../../services/api'
 
-export const getFinaceDataFetch = () => dispatch => {
+export const getFinanceDataFetch = id => dispatch => {
   dispatch(financeDataFetchStart());
   axios
-    .get('https://project1.goit.co.ua/api/transactions/<user_id>')
+    .get(`https://project1.goit.co.ua/api/transactions/${id}`)
     .then(response => {
-      dispatch(financeDataFetchFinish(response.data));
+      // console.log(response
+      // )
+      dispatch(financeDataFetchFinish(response.data.transactionsList));
     })
     .catch(erorr => {
       dispatch(financeDataFetchError(erorr));
     });
 };
 
-export const getFinaceTotalBalanceFetch = () => dispatch => {
+export const getFinanceTotalBalanceFetch = id => dispatch => {
   dispatch(financeTotalBalanceFetchStart());
   axios
-    .get('https://project1.goit.co.ua/api/user_balance/<user_id>')
+    .get(`https://project1.goit.co.ua/api/user_balance/${id}`)
     .then(response => {
+      console.log(response);
       dispatch(financeTotalBalanceFinish(response.totalBalance));
     })
     .catch(erorr => {
