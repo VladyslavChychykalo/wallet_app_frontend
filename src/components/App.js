@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { refresh } from '../redux/session/sessionOperations';
 import routes from '../routes/routes';
+import Loader from './Loader/Loader';
+import { refresh } from '../redux/session/sessionOperations';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 class App extends Component {
   static propTypes = {
     refreshUser: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
@@ -17,6 +19,7 @@ class App extends Component {
   }
 
   render() {
+    const { isLoading } = this.props;
     return (
       <>
         <BrowserRouter>
@@ -37,13 +40,18 @@ class App extends Component {
             <Redirect to={routes.LOGIN_PAGE.path} />
           </Switch>
         </BrowserRouter>
+        {isLoading && <Loader />}
       </>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  isLoading: state.global.loading,
+});
+
 const mapDispatchToProps = {
   refreshUser: refresh,
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
