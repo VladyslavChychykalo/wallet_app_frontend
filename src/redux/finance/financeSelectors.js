@@ -8,7 +8,7 @@ export const getFinanceTotalTypeBalance = store =>
 // export const getUserId = store => store.session.user.id;
 export const getUserId = store => {
   if (store.session.user === null) {
-    return null;
+    return '';
   }
   return store.session.user.id;
 };
