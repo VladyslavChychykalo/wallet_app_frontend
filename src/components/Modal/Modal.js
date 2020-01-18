@@ -6,6 +6,11 @@ import s from './Modal.module.css';
 const MODAL_ROOT = document.getElementById('root');
 
 export default class Modal extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    onClose: PropTypes.func.isRequired,
+  };
+
   modalRef = createRef();
 
   componentDidMount() {
@@ -47,8 +52,3 @@ export default class Modal extends Component {
     );
   }
 }
-
-Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClose: PropTypes.func.isRequired,
-};

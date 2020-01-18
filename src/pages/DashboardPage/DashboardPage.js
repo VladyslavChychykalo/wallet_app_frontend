@@ -14,15 +14,23 @@ export default class DashboardPage extends Component {
   static propTypes = {
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
     openModalAddTransaction: PropTypes.func.isRequired,
+    // pathname: PropTypes.string.isRequired,
+    location: PropTypes.objectOf(PropTypes.string).isRequired,
   };
 
   componentDidMount() {
-    // clg
+    // this.props.fetchTransactions;
   }
 
   render() {
     const { isModalAddTransactionOpen, openModalAddTransaction } = this.props;
     const windowWidth = document.documentElement.clientWidth;
+    const { location } = this.props;
+    let pathname;
+    if (location && location.pathname) {
+      pathname = location.pathname;
+    }
+    const isHomePage = pathname;
     return (
       <>
         {!!isModalAddTransactionOpen && <ModalAddTransaction />}
@@ -38,7 +46,14 @@ export default class DashboardPage extends Component {
               <section className={styles.balance}>
                 <Balance />
               </section>
-              {windowWidth >= 768 && (
+              {windowWidth < 1280 &&
+                windowWidth >= 768 &&
+                isHomePage === '/home' && (
+                  <section className={styles.currency}>
+                    <Currency />
+                  </section>
+                )}
+              {windowWidth >= 1280 && (
                 <section className={styles.currency}>
                   <Currency />
                 </section>
@@ -55,16 +70,17 @@ export default class DashboardPage extends Component {
               </Switch>
             </article>
           </main>
-          <button
-            type="button"
-            className={styles.addTransaction}
-            onClick={() => {
-              openModalAddTransaction();
-            }}
-          >
-            +{/*
-    <ModalAddTransaction /> */}
-          </button>
+          <Route path="/home">
+            <button
+              type="button"
+              className={styles.addTransaction}
+              onClick={() => {
+                openModalAddTransaction();
+              }}
+            >
+              +{/* open <ModalAddTransaction /> */}
+            </button>
+          </Route>
         </div>
       </>
     );

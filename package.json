@@ -26,6 +26,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
+    "uuid": "^3.3.3",
     "yup": "^0.28.0"
   },
   "scripts": {

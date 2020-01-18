@@ -1,159 +1,181 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
-import * as Datetime from 'react-datetime';
-import './react-datetime.css';
+import moment from 'moment';
+import { Field, withFormik, Form } from 'formik';
+import AddTransactionSchema from './AddTransactionSchema';
+import SelectForFormik from './SelectForFormik';
+import ReactDatetimeForFormik from './ReactDatetimeForFormik';
+
 import styles from './AddTransactionForm.module.css';
 import backArrow from '../../../assets/icons/arrow right/long-arrow-left.svg';
 
-const options = [
-  { value: 'Food', label: 'Food' },
-  { value: 'Car', label: 'Car' },
-  { value: 'Self-care', label: 'Self-care' },
-  { value: 'Children', label: 'Children' },
-  { value: 'Home-care', label: 'Home-care' },
-  { value: 'Education', label: 'Education' },
-  { value: 'Hobbies', label: 'Hobbies' },
-  { value: 'Other', label: 'Other' },
-];
+const innerForm = props => {
+  const { values, touched, errors, setFieldValue, setFieldTouched } = props;
+  return (
+    <Form className={styles.transactionForm}>
+      <div className={styles.typeOfTransactionWrapper}>
+        <input
+          type="radio"
+          id="contactChoice1"
+          name="typeOfTransaction"
+          value="income"
+          checked={values.typeOfTransaction === 'income'}
+          onChange={() => {
+            setFieldValue('typeOfTransaction', 'income');
+            setFieldValue('category', '');
+          }}
+          className={styles.typeRadio}
+        />
+        <label htmlFor="contactChoice1">Income</label>
 
-class AddTransactionForm extends Component {
-  static propTypes = {
-    closeModalAddTransaction: PropTypes.func.isRequired,
-  };
-
-  state = {
-    typeOfTransaction: 'expense',
-    // value: null,
-    // comment: '',
-    timeOfTransaction: new Date(
-      new Date().getFullYear(),
-      new Date().getMonth(),
-      new Date().getDate(),
-    ).valueOf(),
-    // category: null,
-  };
-
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  // };
-
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  // handleSelect = e => {
-  //   this.setState({
-  //     category: e.value,
-  //   });
-  // };
-
-  handleDate = e => {
-    this.setState({
-      // eslint-disable-next-line no-underscore-dangle
-      timeOfTransaction: e._d.valueOf(),
-    });
-  };
-
-  render() {
-    const { typeOfTransaction, timeOfTransaction } = this.state;
-    const { closeModalAddTransaction } = this.props;
-    const windowWidth = document.documentElement.clientWidth;
-    return (
-      <>
-        <div className={styles.titleWrapper}>
-          <div className={styles.controlWrapper}>
-            {windowWidth < 768 && (
-              <button
-                type="button"
-                className={styles.closeModalButton}
-                onClick={closeModalAddTransaction}
-              >
-                <img alt="" src={backArrow} />
-              </button>
-            )}
-            <h2 className={styles.title}>add transaction</h2>
-          </div>
-        </div>
-        <form
-          className={styles.transactionForm}
-          onSubmit={this.handleSubmit}
-          onChange={this.handleChange}
-        >
-          <div className={styles.typeOfTransactionWrapper}>
-            <input
-              type="radio"
-              id="contactChoice1"
-              name="typeOfTransaction"
-              value="income"
-              className={styles.typeRadio}
-            />
-            <label htmlFor="contactChoice1">Income</label>
-
-            <input
-              type="radio"
-              id="contactChoice2"
-              name="typeOfTransaction"
-              value="expense"
-              className={styles.typeRadio}
-              defaultChecked
-            />
-            <label htmlFor="contactChoice2" defaultChecked>
-              Expense
-            </label>
-          </div>
-          {typeOfTransaction === 'expense' && (
-            <Select
-              placeholder="Category"
-              options={options}
-              onChange={this.handleSelect}
-              className={styles.select}
-              components={{
-                IndicatorSeparator: () => null,
-              }}
-              styles={{
-                control: control => ({
-                  ...control,
-                  border: '2px solid #b9c9d4',
-                }),
-              }}
-            />
+        <input
+          type="radio"
+          id="contactChoice2"
+          name="typeOfTransaction"
+          value="expense"
+          checked={values.typeOfTransaction === 'expense'}
+          onChange={() => {
+            setFieldValue('typeOfTransaction', 'expense');
+          }}
+          className={styles.typeRadio}
+        />
+        <label htmlFor="contactChoice2">Expense</label>
+      </div>
+      {values.typeOfTransaction === 'expense' && (
+        <SelectForFormik
+          value={values.category}
+          onChange={setFieldValue}
+          onBlur={setFieldTouched}
+          error={errors.category}
+          touched={touched.category}
+        />
+      )}
+      <div className={styles.dateAndValueWrapper}>
+        <Field
+          type="text"
+          name="value"
+          placeholder="0.00"
+          className={styles.valueInput}
+          autoComplete="off"
+        />
+        <Field
+          name="timeOfTransaction"
+          value={values.timeOfTransaction}
+          component={ReactDatetimeForFormik}
+        />
+      </div>
+      <label htmlFor="comment" className={styles.comment}>
+        <p>Comment</p>
+      </label>
+      <Field
+        as="textarea"
+        id="comment"
+        name="comment"
+        placeholder="You can input comment here"
+        className={styles.inputComment}
+      />
+      <div className={styles.errorsContainer}>
+        {!!errors.category &&
+          touched.category &&
+          values.typeOfTransaction === 'expense' && (
+            <div className={styles.error}>{errors.category}</div>
           )}
-          <div className={styles.dateAndValueWrapper}>
-            <input
-              type="text"
-              name="value"
-              placeholder="0.00"
-              className={styles.valueInput}
-              autoComplete="off"
-            />
-            <Datetime
-              closeOnSelect
-              value={timeOfTransaction}
-              dateFormat="DD/MM/YYYY"
-              timeFormat={false}
-              onChange={this.handleDate}
-            />
-          </div>
-          <label htmlFor="comment" className={styles.comment}>
-            <p>Comment</p>
-          </label>
-          <textarea
-            id="comment"
-            name="comment"
-            placeholder="You can input comment here"
-            className={styles.inputComment}
-          />
-          <button type="submit" className={styles.transactionButton}>
-            Add
-          </button>
-        </form>
-      </>
-    );
-  }
-}
+        {!!errors.value && touched.value && (
+          <div className={styles.error}>{errors.value}</div>
+        )}
+        {!!errors.timeOfTransaction && touched.timeOfTransaction && (
+          <div className={styles.error}>{errors.timeOfTransaction}</div>
+        )}
+      </div>
+
+      <button type="submit" className={styles.transactionButton}>
+        Add
+      </button>
+    </Form>
+  );
+};
+innerForm.propTypes = {
+  values: PropTypes.shape({
+    typeOfTransaction: PropTypes.string,
+    value: PropTypes.string,
+    timeOfTransaction: PropTypes.string,
+    category: PropTypes.oneOfType([
+      PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.string,
+      }),
+      PropTypes.string,
+    ]),
+  }).isRequired,
+  errors: PropTypes.shape({
+    value: PropTypes.string,
+    category: PropTypes.string,
+    timeOfTransaction: PropTypes.string,
+  }).isRequired,
+  touched: PropTypes.shape({
+    value: PropTypes.bool,
+    category: PropTypes.oneOfType([
+      PropTypes.shape({
+        value: PropTypes.bool,
+        label: PropTypes.bool,
+      }),
+      PropTypes.bool,
+    ]),
+    timeOfTransaction: PropTypes.bool,
+    comment: PropTypes.bool,
+    typeOfTransaction: PropTypes.bool,
+  }).isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  setFieldTouched: PropTypes.func.isRequired,
+};
+
+const EnhancedForm = withFormik({
+  mapPropsToValues: () => ({
+    typeOfTransaction: 'expense',
+    value: '',
+    timeOfTransaction: moment().format('DD/MM/YYYY'),
+    category: '',
+  }),
+  validationSchema: AddTransactionSchema,
+  handleSubmit: (values, { setSubmitting, props: { onSubmit } }) => {
+    // eslint-disable-next-line no-unused-vars
+    const payload = { ...values, category: values.category.value };
+    setTimeout(() => {
+      // console.log(JSON.stringify(payload, null, 2));
+      onSubmit(payload);
+      setSubmitting(false);
+    }, 100);
+  },
+  displayName: 'BasicForm', // helps with React DevTools
+})(innerForm);
+
+const AddTransactionForm = ({ closeModalAddTransaction, addTransaction }) => {
+  const windowWidth = document.documentElement.clientWidth;
+  return (
+    <>
+      <div className={styles.titleWrapper}>
+        <div className={styles.controlWrapper}>
+          {windowWidth < 768 && (
+            <button
+              type="button"
+              className={styles.closeModalButton}
+              onClick={closeModalAddTransaction}
+            >
+              <img alt="" src={backArrow} />
+            </button>
+          )}
+          <h2 className={styles.title}>add transaction</h2>
+        </div>
+      </div>
+      <EnhancedForm onSubmit={addTransaction} />
+    </>
+  );
+};
 
 export default AddTransactionForm;
+
+AddTransactionForm.propTypes = {
+  closeModalAddTransaction: PropTypes.func.isRequired,
+  addTransaction: PropTypes.func.isRequired,
+};

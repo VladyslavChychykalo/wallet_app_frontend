@@ -1,18 +1,20 @@
 .container {
+  background-color: #edf3f3;
+  background-attachment: fixed;
+  /* height: 100vh; */
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.header {
   width: 100%;
-  margin: 0 auto;
-  background-color: #ebefee;
+  background-color: var(--bg-color-dark-blue);
 }
 
 .main {
   width: 320px;
   margin: 0 auto;
 }
-
-/* .aside {
-  width: 320px;
-  margin: 0 auto;
-} */
 
 .nav {
   width: 100%;
@@ -56,54 +58,75 @@
 }
 
 @media (min-width: 768px) {
-  .header {
-    margin-bottom: 30px;
+  .container {
+    height: 100vh;
+    background-color: #faf9fa;
   }
 
   .main {
     width: 768px;
+    position: relative;
+    padding-bottom: 320px;
+    background-image: url(../../assets/images/bgImg.png);
+    background-repeat: no-repeat;
+    background-position: bottom 0 left 100px;
+  }
+
+  .header {
+    background-color: #ffffff;
+    box-shadow: 0 5px 5px 0 #dedada;
   }
 
   .aside {
     width: 768px;
     display: flex;
     justify-content: center;
-    margin: 0 auto 30px;
+    margin: 0 auto;
   }
 
   .nav {
     width: 40%;
-    margin-bottom: 0;
+    margin: 0;
     background: none;
-    padding: 26px 0;
+    padding: 28px 0;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .balance {
-    width: 30%;
+    width: 25%;
     margin: 0;
     background: none;
     display: flex;
+    align-items: flex-end;
+    padding: 28px 0;
   }
 
   .currency {
+    width: 350px;
     position: absolute;
     bottom: 50px;
     left: 30px;
   }
 
   .addTransaction {
-    bottom: 52px;
-    right: 52px;
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
   }
 }
 
 @media (min-width: 1280px) {
+  .container {
+    height: auto;
+  }
+
   .header {
     margin-bottom: 46px;
   }
 
   .aside {
-    width: 310px;
+    width: 324px;
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
@@ -112,6 +135,8 @@
   .main {
     display: flex;
     width: 1280px;
+    background-image: none;
+    padding-bottom: 0;
   }
 
   .nav,
@@ -142,6 +167,7 @@
 
   .content {
     width: 876px;
+    padding-right: 40px;
   }
 
   .addTransaction {

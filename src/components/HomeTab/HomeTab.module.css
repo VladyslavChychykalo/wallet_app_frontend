@@ -1,4 +1,4 @@
-.transactionHistory {
+.HomeTab {
   background: #ffffff;
   font-family: 'HelveticaNeueCyr', sans-serif;
 }
@@ -7,15 +7,15 @@
   display: none;
 }
 .transaction {
-  margin: 0 0 15px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  margin: 0 0 15px;
 }
 .pair {
   width: 100%;
   display: flex;
-  line-height: 45px;
+  line-height: 62px;
 }
 .pair:nth-child(odd) {
   background: #f4f5f7;
@@ -26,6 +26,7 @@
 }
 .val {
   flex-basis: 100%;
+  white-space: nowrap;
 }
 .hilite {
   color: var(--color-main-orange);
@@ -36,6 +37,10 @@
 .transaction:nth-child(even) .key {
   border-left: 8px solid #777;
 }
+.deleteBtn {
+  height: 20px;
+  cursor: pointer;
+}
 
 @media (min-width: 768px) {
   .transactionHead {
@@ -45,18 +50,20 @@
   .transactionHead div {
     padding: 0 10px;
     font-weight: bold;
-    line-height: 45px;
+    line-height: 72px;
     text-transform: uppercase;
     width: 100%;
+    background: #fff;
   }
   .transaction {
     flex-direction: row;
+    margin: 0;
+  }
+  .pair:nth-child(odd) {
+    background: none;
   }
   .transaction:nth-child(odd) .pair {
-    background: #fff;
-  }
-  .transaction:nth-child(even) .pair {
-    background: #f4f5f7;
+    background: rgb(243, 246, 246);
   }
   .key {
     display: none;

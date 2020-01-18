@@ -1,14 +1,12 @@
-.linkBox {
-  margin-right: 14px;
-}
-
 .link {
   display: block;
   width: 30px;
   height: 25px;
-  margin: 0 auto;
+  margin: 0 14px;
   background-color: var(--bg-color-dark-blue);
   border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .activeLink {
@@ -16,21 +14,22 @@
 }
 
 .svg {
-  margin: 0 auto;
-  text-align: center;
+  fill: #ffffff;
 }
 
 .text {
   display: none;
 }
 
-.after {
-  display: none;
-}
-
 @media (min-width: 768px) {
+  .linkBox {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+  }
+
   .link {
-    width: 130px;
+    width: 140px;
     background: none;
     display: flex;
     justify-content: flex-end;
@@ -41,25 +40,28 @@
 
   .svg {
     margin: 0 10px 0 0;
+    fill: #7e8e94;
   }
 
-  .after {
-    font-size: 24px;
-    padding-bottom: 2px;
+  .text::after {
+    content: '';
+    border: 1px solid var(--bg-color-dark-blue);
+    height: 100%;
+    margin-left: 15px;
   }
 
   .text {
     display: block;
     font-family: 'HelveticaNeueCyr', serif;
     font-size: 15px;
-    font-weight: bold;
     letter-spacing: 1.3px;
-    padding-bottom: 6px;
-    padding-right: 16px;
+    padding-bottom: 2px;
+    margin-right: 16px;
   }
 
   .activeLink {
     color: var(--color-main-blue);
+    font-weight: bold;
   }
 }
 
@@ -68,27 +70,22 @@
     color: #ffffff;
     width: 100%;
     margin: 0;
-    padding: 19px 0;
+    padding: 19px 0 19px 26px;
     align-items: center;
     justify-content: flex-start;
     border-radius: 0;
   }
 
-  .linkBox {
-    margin: 0;
-  }
-
   .activeLink {
-    color: #ffffff;
     background-color: #66778e;
   }
 
-  .after {
+  .text::after {
     display: none;
   }
 
   .svg {
-    padding-left: 26px;
+    fill: #ffffff;
     margin-right: 16px;
   }
 }

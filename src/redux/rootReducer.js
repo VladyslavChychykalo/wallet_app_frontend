@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import sessionReducer from './session/sessionReducer';
 import globalReducers from './global/globalReducers';
-// import financeReducers from './finance/financeReducers';
+import financeReducers from './finance/financeReducers';
 
 const sessionPersistConfig = {
   key: 'session',
@@ -14,7 +14,7 @@ const sessionPersistConfig = {
 const rootReducer = combineReducers({
   session: persistReducer(sessionPersistConfig, sessionReducer),
   global: globalReducers,
-  // financeReducers,
+  finance: financeReducers,
 });
 
 export default rootReducer;
