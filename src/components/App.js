@@ -1,8 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import routes from '../routes/routes';
+import Loader from './Loader/Loader';
 
-const App = () => {
+const App = props => {
+  const { isLoading } = props;
   return (
     <>
       <BrowserRouter>
@@ -23,8 +27,16 @@ const App = () => {
           <Redirect to={routes.LOGIN_PAGE.path} />
         </Switch>
       </BrowserRouter>
+      {isLoading && <Loader />}
     </>
   );
 };
+const mapStateToProps = state => ({
+  isLoading: state.global.loading,
+});
 
-export default App;
+export default connect(mapStateToProps)(App);
+
+App.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+};
