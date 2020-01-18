@@ -1,4 +1,23 @@
 import axios from 'axios';
+import {
+  finaceDataFetchStart,
+  // finaceDataFetchFinish,
+  // finaceDataFetchError,
+  finaceTotalBalanceFetchStart,
+  // finaceTotalBalanceFinish,
+  // finaceTotalBalanceFetchError,
+  finaceTotalTypeBalanceFetchStart,
+  // finaceTypeTotalBalanceFinish,
+  // finaceTypeTotalBalanceFetchError,
+  financeAddTransactionStart,
+  financeAddTransactionFinish,
+  financeAddTransactionError,
+} from './financeActions';
+import { closeModalAddTransaction } from '../global/globalActions';
+import { getUserId } from './financeSelectors';
+
+axios.baseURL = 'https://project1.goit.co.ua/api';
+
 // import axios from 'axios';
 // import {
 // fetchTransactionsSuccess,
@@ -20,22 +39,6 @@ import axios from 'axios';
 // delete later
 // export const fetchTransactions = () => {};
 
-import {
-  finaceDataFetchStart,
-  // finaceDataFetchFinish,
-  // finaceDataFetchError,
-  finaceTotalBalanceFetchStart,
-  // finaceTotalBalanceFinish,
-  // finaceTotalBalanceFetchError,
-  finaceTotalTypeBalanceFetchStart,
-  // finaceTypeTotalBalanceFinish,
-  // finaceTypeTotalBalanceFetchError,
-  financeAddTransactionStart,
-  financeAddTransactionFinish,
-  financeAddTransactionError,
-} from './financeActions';
-import { closeModalAddTransaction } from '../global/globalActions';
-
 export const getFinaceDataFetch = () => dispatch => {
   dispatch(finaceDataFetchStart());
 };
@@ -48,11 +51,27 @@ export const getFinaceTotalTypeBalanceFetch = () => dispatch => {
   dispatch(finaceTotalTypeBalanceFetchStart());
 };
 
-const apiUrl = 'http://localhost:3004/posts';
 export const addTransaction = submittedData => dispatch => {
   dispatch(financeAddTransactionStart());
+  const {
+    typeOfTransaction,
+    timeOfTransaction,
+    value,
+    category,
+    comment,
+  } = submittedData;
+  const userId = getUserId();
+  const reqData = {
+    userId,
+    type: typeOfTransaction,
+    transactionDate: timeOfTransaction,
+    amount: value,
+    category,
+    comment,
+  };
+
   axios
-    .post(apiUrl, submittedData)
+    .post('/transactions', reqData)
     .then(data => {
       dispatch(financeAddTransactionFinish(data));
       dispatch(closeModalAddTransaction());
