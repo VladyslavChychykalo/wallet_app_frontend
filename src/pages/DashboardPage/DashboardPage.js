@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styles from './DashboardPage.module.css';
 import Navigation from '../../components/Navigation/Navigation';
 import HomeTab from '../../components/HomeTab/HomeTab';
@@ -9,11 +10,14 @@ import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
 import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransactionConteiner';
+import { openModalAddTransaction } from '../../redux/global/globalActions';
+import getIsModalAddTransactionOpen from '../../redux/global/globalSelectors';
+// import * as financeOperations from '../../redux/finance/financeOperations';
 
-export default class DashboardPage extends Component {
+class DashboardPage extends Component {
   static propTypes = {
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
-    openModalAddTransaction: PropTypes.func.isRequired,
+    openModalAddTransactionAction: PropTypes.func.isRequired,
     // pathname: PropTypes.string.isRequired,
     location: PropTypes.objectOf(PropTypes.string).isRequired,
   };
@@ -23,7 +27,10 @@ export default class DashboardPage extends Component {
   }
 
   render() {
-    const { isModalAddTransactionOpen, openModalAddTransaction } = this.props;
+    const {
+      isModalAddTransactionOpen,
+      openModalAddTransactionAction,
+    } = this.props;
     const windowWidth = document.documentElement.clientWidth;
     const { location } = this.props;
     let pathname;
@@ -33,7 +40,7 @@ export default class DashboardPage extends Component {
     const isHomePage = pathname;
     return (
       <>
-        {!!isModalAddTransactionOpen && <ModalAddTransaction />}
+        {isModalAddTransactionOpen && <ModalAddTransaction />}
         <div className={styles.container}>
           <header className={styles.header}>
             <Header />
@@ -75,7 +82,7 @@ export default class DashboardPage extends Component {
               type="button"
               className={styles.addTransaction}
               onClick={() => {
-                openModalAddTransaction();
+                openModalAddTransactionAction();
               }}
             >
               +{/* open <ModalAddTransaction /> */}
@@ -86,3 +93,14 @@ export default class DashboardPage extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  isModalAddTransactionOpen: getIsModalAddTransactionOpen(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  openModalAddTransactionAction: () => dispatch(openModalAddTransaction()),
+  // fetchTransactions: financeOperations.fetchTransactions,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
