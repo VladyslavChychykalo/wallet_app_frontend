@@ -99,6 +99,7 @@
     padding: 0;
     border-radius: unset;
     box-shadow: unset;
+    text-align: center;
   }
 
   .chartBlockHeader {
