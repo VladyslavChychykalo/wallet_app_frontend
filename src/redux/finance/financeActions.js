@@ -1,38 +1,39 @@
 import types from '../types';
 
 // data
-export const finaceDataFetchStart = () => ({
+
+export const financeDataFetchStart = () => ({
   type: types.FINANCE_DATA_FETCH_START,
 });
-export const finaceDataFetchFinish = response => ({
+export const financeDataFetchFinish = response => ({
   type: types.FINANCE_DATA_FETCH_FINISH,
   payload: { response },
 });
-export const finaceDataFetchError = error => ({
+export const financeDataFetchError = error => ({
   type: types.FINANCE_DATA_ERROR,
   payload: { error },
 });
 // balance
-export const finaceTotalBalanceFetchStart = () => ({
+export const financeTotalBalanceFetchStart = () => ({
   type: types.FINANCE_TOTAL_BALANCE_FETCH_START,
 });
-export const finaceTotalBalanceFinish = response => ({
+export const financeTotalBalanceFinish = response => ({
   type: types.FINANCE_TOTAL_BALANCE_FETCH_FINISH,
   payload: { response },
 });
-export const finaceTotalBalanceFetchError = error => ({
+export const financeTotalBalanceFetchError = error => ({
   type: types.FINANCE_TOTAL_BALANCE_ERROR,
   payload: { error },
 });
 // typeBalance
-export const finaceTotalTypeBalanceFetchStart = () => ({
+export const financeTotalTypeBalanceFetchStart = () => ({
   type: types.FINANCE_TYPE_TOTAL_BALANCE_FETCH_START,
 });
-export const finaceTypeTotalBalanceFinish = response => ({
+export const financeTypeTotalBalanceFinish = response => ({
   type: types.FINANCE_FETCH_TYPE_TOTAL_BALANCE_FINISH,
   payload: { response },
 });
-export const finaceTypeTotalBalanceFetchError = error => ({
+export const financeTypeTotalBalanceFetchError = error => ({
   type: types.FINANCE_TYPE_TOTAL_BALANCE_ERROR,
   payload: { error },
 });

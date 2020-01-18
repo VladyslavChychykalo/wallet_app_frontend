@@ -1,24 +1,81 @@
-// Uncomment this after server will exist
-
-// import { loginRequest, loginSuccess, loginError } from './sessionActions';
+import axios from 'axios';
+import {
+  loginRequest,
+  loginSuccess,
+  loginError,
+  registrationRequest,
+  registrationSuccess,
+  registrationError,
+  refreshRequest,
+  refreshSuccess,
+  refreshError,
+  logOutSuccess,
+} from './sessionActions';
+import { getToken } from './sessionSelectors';
 // import { API } from '../../services/api';
 
-// export const login = credentials => dispatch => {
-//   dispatch(loginRequest());
+axios.defaults.baseURL = 'https://project1.goit.co.ua/api';
 
-//   API.login(credentials)
-//     .then(response => {
-//       // console.log(response);
-//       dispatch(loginSuccess(response));
-//     })
-//     .catch(error => dispatch(loginError(error)));
-// };
+const setAuthToken = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
-// export const registration = () => {};
+const clearAuthToken = () => {
+  axios.defaults.headers.common.Authorization = null;
+};
 
-// ===================================================================================================
+export const login = credentials => dispatch => {
+  dispatch(loginRequest());
 
-// Delete these stubs after server will exist
+  axios
+    .post('/auth/sign-in', credentials)
+    .then(response => {
+      setAuthToken(response.data.token);
+      dispatch(loginSuccess(response.data));
+    })
+    .catch(error => {
+      dispatch(loginError(error));
+    });
+};
 
-export const login = () => {};
-export const registration = () => {};
+export const registration = credentials => dispatch => {
+  dispatch(registrationRequest());
+
+  axios
+    .post('/auth/sign-up', credentials)
+    .then(response => {
+      setAuthToken(response.data.token);
+      dispatch(registrationSuccess(response.data));
+    })
+    .catch(error => {
+      dispatch(registrationError(error));
+    });
+};
+
+export const refresh = () => (dispatch, getState) => {
+  const token = getToken(getState());
+
+  if (!token) {
+    return;
+  }
+
+  setAuthToken(token);
+
+  dispatch(refreshRequest());
+
+  axios
+    .get('/users/current')
+    .then(response => {
+      dispatch(refreshSuccess(response.data));
+    })
+    .catch(error => {
+      clearAuthToken();
+      dispatch(refreshError(error));
+    });
+};
+
+export const logOut = () => dispatch => {
+  clearAuthToken();
+
+  dispatch(logOutSuccess());
+};
