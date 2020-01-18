@@ -21,6 +21,7 @@
 .Logo_link {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .Logo_IMG {
@@ -28,11 +29,16 @@
 }
 
 .Logo_IMG,
-.Logo_link {
+.Logo_box {
   height: 28px;
   cursor: pointer;
-  text-decoration: none;
   display: flex;
+}
+
+.tooltip {
+  font-family: 'HelveticaNeueCyr', sans-serif;
+  font-size: 14px;
+  width: 20%;
 }
 
 .user_logout_div {
@@ -46,22 +52,18 @@
     width: 768px;
     padding: 26px;
   }
-
   .user_logout_div {
     width: fit-content;
     padding: 0 5px;
     justify-content: space-between;
   }
-
   .title {
     font-size: 20px;
     color: rgb(40, 40, 40);
   }
-
   .Logo_IMG {
     transition: 0.3s ease-in;
   }
-
   .Logo_IMG:hover {
     transform: scale(1.03, 1.03);
     transition: transform 0.3s ease-in;
@@ -74,7 +76,6 @@
     margin: 0 auto;
     padding: 26px 40px;
   }
-
   .Logo_IMG {
     margin-right: 16px;
   }
