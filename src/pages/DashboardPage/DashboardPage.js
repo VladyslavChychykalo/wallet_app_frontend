@@ -15,19 +15,18 @@ export default class DashboardPage extends Component {
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
     openModalAddTransaction: PropTypes.func.isRequired,
     // pathname: PropTypes.string.isRequired,
-    location: PropTypes.objectOf(PropTypes.string).isRequired,
+    // location: PropTypes.objectOf(PropTypes.string).isRequired,
   };
 
   componentDidMount() {
-    // this.props.fetchTransactions;
+    //  this.props.getFinaceDataFetch();
+    //  this.props.getFinaceTotalBalanceFetch();
   }
 
   render() {
     const { isModalAddTransactionOpen, openModalAddTransaction } = this.props;
     const windowWidth = document.documentElement.clientWidth;
-    const { location } = this.props;
-    const { pathname } = location;
-    const isHomePage = pathname;
+
     return (
       <>
         {!!isModalAddTransactionOpen && <ModalAddTransaction />}
@@ -43,13 +42,13 @@ export default class DashboardPage extends Component {
               <section className={styles.balance}>
                 <Balance />
               </section>
-              {windowWidth < 1280 &&
+              {/* {windowWidth < 1280 &&
                 windowWidth >= 768 &&
                 isHomePage === '/home' && (
                   <section className={styles.currency}>
                     <Currency />
                   </section>
-                )}
+                )} */}
               {windowWidth >= 1280 && (
                 <section className={styles.currency}>
                   <Currency />
