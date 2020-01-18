@@ -1,5 +1,6 @@
 import React from 'react';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 const RegistrationPage = () => (
   <div>
@@ -7,4 +8,4 @@ const RegistrationPage = () => (
   </div>
 );
 
-export default RegistrationPage;
+export default withAuthRedirect(RegistrationPage);
