@@ -11,10 +11,11 @@ const Currency = () => {
 
   useEffect(() => {
     fetchCurrency()
-      .then(privatRes => setCurrency(privatRes.data.slice(0, 3)))
+      .then(privatRes => setCurrency(privatRes.slice(0, 3)))
       .catch(error => setError(!!error))
       .finally(() => setLoading(false));
   }, []);
+
   return (
     <>
       {isLoading && (
