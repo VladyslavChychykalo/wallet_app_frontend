@@ -66,6 +66,8 @@ export default class DashboardPage extends Component {
                 <Redirect to="/home" />
               </Switch>
             </article>
+          </main>
+          <Route path="/home">
             <button
               type="button"
               className={styles.addTransaction}
@@ -73,10 +75,10 @@ export default class DashboardPage extends Component {
                 openModalAddTransaction();
               }}
             >
-              +{/*
+              +{/* open
         <ModalAddTransaction /> */}
             </button>
-          </main>
+          </Route>
         </div>
       </>
     );
