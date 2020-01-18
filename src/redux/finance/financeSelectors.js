@@ -4,3 +4,6 @@ export const getFinanceTotalBalance = store => store.finance.totalBalance;
 
 export const getFinanceTotalTypeBalance = store =>
   store.finance.typeTotalBalance;
+
+export const getUserId = store => store.session.user.id;
+export const getBalance = store => store.finance.totalBalance;
