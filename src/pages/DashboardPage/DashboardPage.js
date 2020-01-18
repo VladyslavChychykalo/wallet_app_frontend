@@ -27,17 +27,17 @@ class DashboardPage extends Component {
   }
 
   render() {
+    const { location } = this.props;
     const {
       isModalAddTransactionOpen,
       openModalAddTransactionAction,
     } = this.props;
     const windowWidth = document.documentElement.clientWidth;
-    const { location } = this.props;
-    let pathname;
-    if (location && location.pathname) {
-      pathname = location.pathname;
-    }
-    const isHomePage = pathname;
+    // let pathname;
+    // if (location && location.pathname) {
+    //   pathname = location.pathname;
+    // }
+    const isHomePage = location.pathname;
     return (
       <>
         {isModalAddTransactionOpen && <ModalAddTransaction />}
