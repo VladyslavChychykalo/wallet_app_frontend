@@ -74,7 +74,7 @@ export default class DashboardPage extends Component {
               }}
             >
               +{/*
-      <ModalAddTransaction /> */}
+        <ModalAddTransaction /> */}
             </button>
           </main>
         </div>
