@@ -1,7 +1,3 @@
-.canvasContainer {
-  height: 266px;
-}
-
 @media (min-width: 768px) {
   .canvasContainer {
     height: 374px;

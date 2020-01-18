@@ -1,5 +1,4 @@
-.HomeTab {
-  background: #ffffff;
+.transactionHistory {
   font-family: 'HelveticaNeueCyr', sans-serif;
 }
 
@@ -63,7 +62,10 @@
     background: none;
   }
   .transaction:nth-child(odd) .pair {
-    background: rgb(243, 246, 246);
+    background: #f3f6f6;
+  }
+  .transaction:nth-child(even) .pair {
+    background: transparent;
   }
   .key {
     display: none;
@@ -71,7 +73,31 @@
   .val {
     padding: 0 10px;
   }
+  .textCenter {
+    text-align: center;
+  }
 }
 
 @media (min-width: 1280px) {
+  .transactionHistory {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  /* width */
+  .transactionHistory::-webkit-scrollbar {
+    width: 5px;
+  }
+  /* Track */
+  .transactionHistory::-webkit-scrollbar-track {
+    background: #c1cdd2;
+  }
+  /* Handle */
+  .transactionHistory::-webkit-scrollbar-thumb {
+    background: #657792;
+    border-radius: 6px;
+  }
+  /* Handle on hover */
+  .transactionHistory::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }

@@ -1,22 +1,23 @@
+/* eslint-disable prefer-const */
 import axios from 'axios';
+import { closeModalAddTransaction } from '../global/globalActions';
 import {
-  finaceDataFetchStart,
-  // finaceDataFetchFinish,
-  // finaceDataFetchError,
-  finaceTotalBalanceFetchStart,
-  // finaceTotalBalanceFinish,
-  // finaceTotalBalanceFetchError,
-  finaceTotalTypeBalanceFetchStart,
-  // finaceTypeTotalBalanceFinish,
-  // finaceTypeTotalBalanceFetchError,
+  financeDataFetchStart,
+  financeDataFetchFinish,
+  financeDataFetchError,
+  financeTotalBalanceFetchStart,
+  // financeTotalBalanceFinish,
+  // financeTotalBalanceFetchError,
+  financeTotalTypeBalanceFetchStart,
+  // financeTypeTotalBalanceFinish,
+  // financeTypeTotalBalanceFetchError,
   financeAddTransactionStart,
   financeAddTransactionFinish,
   financeAddTransactionError,
 } from './financeActions';
-import { closeModalAddTransaction } from '../global/globalActions';
-import { getUserId } from './financeSelectors';
+import { store } from '../store';
 
-axios.baseURL = 'https://project1.goit.co.ua/api';
+axios.baseURL = 'https://project1.goit.co.ua/api/transactions';
 
 // import axios from 'axios';
 // import {
@@ -39,33 +40,48 @@ axios.baseURL = 'https://project1.goit.co.ua/api';
 // delete later
 // export const fetchTransactions = () => {};
 
-export const getFinaceDataFetch = () => dispatch => {
-  dispatch(finaceDataFetchStart());
+export const getFinanceDataFetch = userId => dispatch => {
+  dispatch(financeDataFetchStart());
+  axios
+    .get(userId)
+    .then(data => dispatch(financeDataFetchFinish(data)))
+    .catch(error => financeDataFetchError(error));
 };
 
-export const getFinaceTotalBalanceFetch = () => dispatch => {
-  dispatch(finaceTotalBalanceFetchStart());
+export const getFinanceTotalBalanceFetch = () => dispatch => {
+  dispatch(financeTotalBalanceFetchStart());
 };
 
-export const getFinaceTotalTypeBalanceFetch = () => dispatch => {
-  dispatch(finaceTotalTypeBalanceFetchStart());
+export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
+  dispatch(financeTotalTypeBalanceFetchStart());
 };
 
 export const addTransaction = submittedData => dispatch => {
   dispatch(financeAddTransactionStart());
-  const {
+  const userId = store.getState().session.user.id;
+
+  let {
     typeOfTransaction,
     timeOfTransaction,
     value,
     category,
     comment,
   } = submittedData;
-  const userId = getUserId();
+
+  const transactionDate = new Date(
+    timeOfTransaction.replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$2/$1'),
+  );
+  if (typeOfTransaction === 'income') {
+    category = 'Income';
+    typeOfTransaction = 'Income';
+  }
+  if (typeOfTransaction === 'expense') typeOfTransaction = 'Expense';
+
   const reqData = {
     userId,
     type: typeOfTransaction,
-    transactionDate: timeOfTransaction,
-    amount: value,
+    transactionDate,
+    amount: +value,
     category,
     comment,
   };
