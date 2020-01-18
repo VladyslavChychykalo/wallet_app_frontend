@@ -1,104 +1,12 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Table from '../Table/Table';
 import Chart from '../Chart/Chart';
 import styles from './DiagramTab.module.css';
 
 const pickColor = state => state.data.datasets[0].backgroundColor;
-
-const finance = {
-  data: [
-    {
-      type: 'cost',
-      date: 1577283638229,
-      id: 'lkadj',
-      amount: 420,
-      category: 'Other',
-      comment: 'ololo',
-      balanceAfter: 288,
-      typeBalanceAfter: '+',
-      createdAt: '2020-10-25T14:19:58.147Z',
-    },
-    {
-      type: 'cost',
-      date: 1577283638229,
-      id: 'lkadj',
-      amount: 420,
-      category: 'Food',
-      comment: 'ololo',
-      balanceAfter: 288,
-      typeBalanceAfter: '+',
-      createdAt: '2020-10-25T14:19:58.147Z',
-    },
-    {
-      type: 'cost',
-      date: 1577283638229,
-      id: 'lkadjdew',
-      amount: 420,
-      category: 'Food',
-      comment: 'ololo',
-      balanceAfter: 288,
-      typeBalanceAfter: '+',
-      createdAt: '2020-10-25T14:19:58.147Z',
-    },
-    {
-      type: 'cost',
-      date: 1577283638229,
-      id: 'lkadjdew',
-      amount: 420,
-      category: 'Food',
-      comment: 'ololo',
-      balanceAfter: 288,
-      typeBalanceAfter: '+',
-      createdAt: '2020-08-25T14:19:58.147Z',
-    },
-    {
-      type: 'income',
-      date: 1577283638229,
-      id: 'lkadj',
-      amount: 420,
-      category: 'Food',
-      comment: 'ololo',
-      balanceAfter: 288,
-      typeBalanceAfter: '+',
-      createdAt: '2020-10-25T14:19:58.147Z',
-    },
-    {
-      type: 'cost',
-      date: 1330192800000,
-      id: 'lkadj',
-      amount: 420,
-      category: 'Car',
-      comment: 'ololo',
-      balanceAfter: 288,
-      typeBalanceAfter: '+',
-      createdAt: '2020-10-20T14:19:58.147Z',
-    },
-    {
-      type: 'income',
-      date: 1519211809934,
-      id: 'lkadj',
-      amount: 420,
-      category: 'Car',
-      comment: 'ololo',
-      balanceAfter: 288,
-      typeBalanceAfter: '+',
-      createdAt: '2020-10-20T14:19:58.147Z',
-    },
-    {
-      type: 'cost',
-      date: 1519211810362,
-      id: 'lkadj',
-      amount: 420,
-      category: 'Car',
-      comment: 'ololo',
-      balanceAfter: 288,
-      typeBalanceAfter: '+',
-      createdAt: '2020-10-20T14:19:58.147Z',
-    },
-  ],
-};
 
 const colors = [
   '#ecb22a',
@@ -113,6 +21,12 @@ const colors = [
 ];
 
 class DiagramTab extends Component {
+  static propTypes = {
+    finance: PropTypes.shape({
+      data: PropTypes.arrayOf(PropTypes.object),
+    }).isRequired,
+  };
+
   state = {
     expenses: [],
     income: [],
@@ -132,7 +46,7 @@ class DiagramTab extends Component {
   };
 
   componentDidMount = () => {
-    // const { finance } = this.props
+    const { finance } = this.props;
 
     const allExpenses = this.filterTransactions(finance.data, 'cost');
     const allIncome = this.filterTransactions(finance.data, 'income');
@@ -146,6 +60,7 @@ class DiagramTab extends Component {
 
   componentDidUpdate = (prevProps, prevState) => {
     const { year, month, statistics } = this.state;
+    const { finance } = this.props;
 
     if (prevState.statistics !== statistics) {
       this.filterStatistics();
