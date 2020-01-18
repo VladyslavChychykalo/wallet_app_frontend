@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import { connect } from 'react-redux';
 import Table from '../Table/Table';
 import Chart from '../Chart/Chart';
 import styles from './DiagramTab.module.css';
 // import { fetchFinance } from '../../services/api';
+import { getFinanceDataFetch } from '../../redux/finance/financeOperations';
 
 const pickColor = state => state.data.datasets[0].backgroundColor;
 
@@ -270,4 +272,13 @@ class DiagramTab extends Component {
   }
 }
 
-export default DiagramTab;
+const mapStateToProps = state => ({
+  user: state.user,
+  finance: state.finance,
+});
+
+const mapDispatchToProps = dispatch => ({
+  finance: id => dispatch(getFinanceDataFetch(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DiagramTab);
