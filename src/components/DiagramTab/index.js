@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import Table from '../Table/Table';
 import Chart from '../Chart/Chart';
 import styles from './DiagramTab.module.css';
-// import { fetchFinance } from '../../services/api';
-import { getFinanceDataFetch } from '../../redux/finance/financeOperations';
 
 const pickColor = state => state.data.datasets[0].backgroundColor;
 
@@ -134,9 +132,7 @@ class DiagramTab extends Component {
   };
 
   componentDidMount = () => {
-    // fetchFinance()
     // const { finance } = this.props
-    // filter finance by cost inside connect
 
     const allExpenses = this.filterTransactions(finance.data, 'cost');
     const allIncome = this.filterTransactions(finance.data, 'income');
@@ -224,7 +220,7 @@ class DiagramTab extends Component {
   }
 
   handleChange = ({ value }) => {
-    // const {expenses} =  this.props
+    // const {finance} =  this.props
     if (typeof value === 'string') {
       this.setState({ month: value, statistics: [] });
     } else {
@@ -277,12 +273,7 @@ class DiagramTab extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user,
   finance: state.finance,
 });
 
-const mapDispatchToProps = dispatch => ({
-  finance: id => dispatch(getFinanceDataFetch(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(DiagramTab);
+export default connect(mapStateToProps)(DiagramTab);
