@@ -1,55 +1,43 @@
 /* eslint-disable prefer-const */
 import axios from 'axios';
 import { closeModalAddTransaction } from '../global/globalActions';
+
 import {
   financeDataFetchStart,
   financeDataFetchFinish,
   financeDataFetchError,
   financeTotalBalanceFetchStart,
-  // financeTotalBalanceFinish,
-  // financeTotalBalanceFetchError,
+  financeTotalBalanceFinish,
+  financeTotalBalanceFetchError,
   financeTotalTypeBalanceFetchStart,
-  // financeTypeTotalBalanceFinish,
-  // financeTypeTotalBalanceFetchError,
+  // finaceTypeTotalBalanceFinish,
+  // finaceTypeTotalBalanceFetchError,
   financeAddTransactionStart,
   financeAddTransactionFinish,
   financeAddTransactionError,
 } from './financeActions';
 import { store } from '../store';
 
-axios.baseURL = 'https://project1.goit.co.ua/api/transactions';
-
-// import axios from 'axios';
-// import {
-// fetchTransactionsSuccess,
-// fetchTransactionsErorr,
-// } from './financeActions';
-// import apiURL from '../../services/api'
-
-// export const fetchTransactions = () => dispatch => {
-// axios
-// .get('apiURL')
-// .then(response => {
-// dispatch(fetchTransactionsSuccess(response.data));
-// })
-// .catch(erorr => {
-// dispatch(fetchTransactionsErorr(erorr));
-// });
-// };
-
-// delete later
-// export const fetchTransactions = () => {};
+axios.baseURL = 'https://project1.goit.co.ua/api/';
 
 export const getFinanceDataFetch = userId => dispatch => {
   dispatch(financeDataFetchStart());
   axios
-    .get(userId)
+    .get(`transactions/${userId}`)
     .then(data => dispatch(financeDataFetchFinish(data)))
     .catch(error => financeDataFetchError(error));
 };
 
-export const getFinanceTotalBalanceFetch = () => dispatch => {
+export const getFinanceTotalBalanceFetch = id => dispatch => {
   dispatch(financeTotalBalanceFetchStart());
+  axios
+    .get(`user_balance/${id}`)
+    .then(response => {
+      dispatch(financeTotalBalanceFinish(response.totalBalance));
+    })
+    .catch(erorr => {
+      dispatch(financeTotalBalanceFetchError(erorr));
+    });
 };
 
 export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
@@ -87,7 +75,7 @@ export const addTransaction = submittedData => dispatch => {
   };
 
   axios
-    .post('/transactions', reqData)
+    .post('transactions', reqData)
     .then(data => {
       dispatch(financeAddTransactionFinish(data));
       dispatch(closeModalAddTransaction());

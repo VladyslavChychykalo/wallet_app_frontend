@@ -1,19 +1,7 @@
 import types from '../types';
 
-export const fetchTransactionsSuccess = data => ({
-  type: types.FETCH_TRANSACTIONS_SUCCESS,
-  payload: {
-    data,
-  },
-});
+// data
 
-export const fetchTransactionsErorr = erorr => ({
-  type: types.FETCH_TRANSACTIONS_ERORR,
-  payload: {
-    erorr,
-  },
-});
-// ///////////////////////////////////////////////////////
 export const financeDataFetchStart = () => ({
   type: types.FINANCE_DATA_FETCH_START,
 });
@@ -25,7 +13,7 @@ export const financeDataFetchError = error => ({
   type: types.FINANCE_DATA_ERROR,
   payload: { error },
 });
-
+// balance
 export const financeTotalBalanceFetchStart = () => ({
   type: types.FINANCE_TOTAL_BALANCE_FETCH_START,
 });
@@ -37,7 +25,7 @@ export const financeTotalBalanceFetchError = error => ({
   type: types.FINANCE_TOTAL_BALANCE_ERROR,
   payload: { error },
 });
-
+// typeBalance
 export const financeTotalTypeBalanceFetchStart = () => ({
   type: types.FINANCE_TYPE_TOTAL_BALANCE_FETCH_START,
 });

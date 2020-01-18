@@ -13,7 +13,7 @@ const data = (state = [], { type, payload }) => {
       return state;
   }
 };
-const totalBalance = (state = null, { type, payload }) => {
+const totalBalance = (state = 0, { type, payload }) => {
   switch (type) {
     case types.FINANCE_TOTAL_BALANCEFETCH_FINISH:
       return payload.response.totalBalance;

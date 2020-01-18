@@ -220,7 +220,6 @@ class DiagramTab extends Component {
   }
 
   handleChange = ({ value }) => {
-    // const {finance} =  this.props
     if (typeof value === 'string') {
       this.setState({ month: value, statistics: [] });
     } else {
