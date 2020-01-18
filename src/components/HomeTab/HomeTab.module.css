@@ -1,5 +1,4 @@
-.HomeTab {
-  background: #ffffff;
+.transactionHistory {
   font-family: 'HelveticaNeueCyr', sans-serif;
 }
 
@@ -63,7 +62,10 @@
     background: none;
   }
   .transaction:nth-child(odd) .pair {
-    background: rgb(243, 246, 246);
+    background: #f3f6f6;
+  }
+  .transaction:nth-child(even) .pair {
+    background: transparent;
   }
   .key {
     display: none;
@@ -83,15 +85,15 @@
   }
   /* width */
   .transactionHistory::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
   /* Track */
   .transactionHistory::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #c1cdd2;
   }
   /* Handle */
   .transactionHistory::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #657792;
     border-radius: 6px;
   }
   /* Handle on hover */
