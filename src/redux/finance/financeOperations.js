@@ -1,53 +1,43 @@
 import axios from 'axios';
-// import axios from 'axios';
-// import {
-// fetchTransactionsSuccess,
-// fetchTransactionsErorr,
-// } from './financeActions';
-// import apiURL from '../../services/api'
-
-// export const fetchTransactions = () => dispatch => {
-// axios
-// .get('apiURL')
-// .then(response => {
-// dispatch(fetchTransactionsSuccess(response.data));
-// })
-// .catch(erorr => {
-// dispatch(fetchTransactionsErorr(erorr));
-// });
-// };
-
-// delete later
-// export const fetchTransactions = () => {};
-
 import {
   financeDataFetchStart,
   financeDataFetchFinish,
   financeDataFetchError,
   financeTotalBalanceFetchStart,
-  // financeTotalBalanceFinish,
-  // financeTotalBalanceFetchError,
+  financeTotalBalanceFinish,
+  financeTotalBalanceFetchError,
   financeTotalTypeBalanceFetchStart,
-  // financeTypeTotalBalanceFinish,
-  // financeTypeTotalBalanceFetchError,
+  // finaceTypeTotalBalanceFinish,
+  // finaceTypeTotalBalanceFetchError,
   financeAddTransactionStart,
   financeAddTransactionFinish,
   financeAddTransactionError,
 } from './financeActions';
 import { closeModalAddTransaction } from '../global/globalActions';
+// import apiURL from '../../services/api'
 
-const apiUrl = 'https://project1.goit.co.ua/api/transactions/';
-
-export const getFinanceDataFetch = id => dispatch => {
+export const getFinaceDataFetch = () => dispatch => {
   dispatch(financeDataFetchStart());
   axios
-    .get(apiUrl + id)
-    .then(data => dispatch(financeDataFetchFinish(data)))
-    .catch(error => financeDataFetchError(error));
+    .get('https://project1.goit.co.ua/api/transactions/<user_id>')
+    .then(response => {
+      dispatch(financeDataFetchFinish(response.data));
+    })
+    .catch(erorr => {
+      dispatch(financeDataFetchError(erorr));
+    });
 };
 
-export const getFinanceTotalBalanceFetch = () => dispatch => {
+export const getFinaceTotalBalanceFetch = () => dispatch => {
   dispatch(financeTotalBalanceFetchStart());
+  axios
+    .get('https://project1.goit.co.ua/api/user_balance/<user_id>')
+    .then(response => {
+      dispatch(financeTotalBalanceFinish(response.totalBalance));
+    })
+    .catch(erorr => {
+      dispatch(financeTotalBalanceFetchError(erorr));
+    });
 };
 
 export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
@@ -57,7 +47,7 @@ export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
 export const addTransaction = submittedData => dispatch => {
   dispatch(financeAddTransactionStart());
   axios
-    .post(apiUrl, submittedData)
+    .post('apiUrl', submittedData)
     .then(data => {
       dispatch(financeAddTransactionFinish(data));
       dispatch(closeModalAddTransaction());

@@ -19,15 +19,16 @@ class DashboardPage extends Component {
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
     openModalAddTransactionAction: PropTypes.func.isRequired,
     // pathname: PropTypes.string.isRequired,
-    location: PropTypes.objectOf(PropTypes.string).isRequired,
+    // location: PropTypes.objectOf(PropTypes.string).isRequired,
   };
 
   componentDidMount() {
-    // this.props.fetchTransactions;
+    //  this.props.getFinaceDataFetch();
+    //  this.props.getFinaceTotalBalanceFetch();
   }
 
   render() {
-    const { location } = this.props;
+    // const { location } = this.props;
     const {
       isModalAddTransactionOpen,
       openModalAddTransactionAction,
@@ -37,7 +38,7 @@ class DashboardPage extends Component {
     // if (location && location.pathname) {
     //   pathname = location.pathname;
     // }
-    const isHomePage = location.pathname;
+    // const isHomePage = location.pathname;
     return (
       <>
         {isModalAddTransactionOpen && <ModalAddTransaction />}
@@ -53,13 +54,13 @@ class DashboardPage extends Component {
               <section className={styles.balance}>
                 <Balance />
               </section>
-              {windowWidth < 1280 &&
+              {/* {windowWidth < 1280 &&
                 windowWidth >= 768 &&
                 isHomePage === '/home' && (
                   <section className={styles.currency}>
                     <Currency />
                   </section>
-                )}
+                )} */}
               {windowWidth >= 1280 && (
                 <section className={styles.currency}>
                   <Currency />
@@ -85,7 +86,8 @@ class DashboardPage extends Component {
                 openModalAddTransactionAction();
               }}
             >
-              +{/* open <ModalAddTransaction /> */}
+              +{/* open
+        <ModalAddTransaction /> */}
             </button>
           </Route>
         </div>
