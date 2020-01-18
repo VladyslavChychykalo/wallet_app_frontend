@@ -93,11 +93,11 @@ class HomeTab extends React.Component {
     // clg
   }
 
-  onDelete(t) {
+  /* onDelete(t) {
     const { transactions } = this.state;
     transactions.splice(transactions.indexOf(t), 1);
     this.setState({ transactions });
-  }
+  } */
 
   render() {
     // let { transactions } = this.props;
@@ -157,10 +157,7 @@ class HomeTab extends React.Component {
               <div className={styles.pair}>
                 <div className={styles.key}>Delete</div>
                 <div className={`${styles.val} ${styles.textCenter}`}>
-                  <Trash
-                    className={styles.deleteBtn}
-                    onClick={() => this.onDelete(t)}
-                  />
+                  <Trash className={styles.deleteBtn} />
                 </div>
               </div>
             </div>
