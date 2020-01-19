@@ -1,4 +1,7 @@
+/* eslint-disable prefer-const */
 import axios from 'axios';
+import { closeModalAddTransaction } from '../global/globalActions';
+
 import {
   financeDataFetchStart,
   financeDataFetchFinish,
@@ -13,28 +16,22 @@ import {
   financeAddTransactionFinish,
   financeAddTransactionError,
 } from './financeActions';
-import { closeModalAddTransaction } from '../global/globalActions';
-// import apiURL from '../../services/api'
 
-export const getFinanceDataFetch = id => dispatch => {
+axios.baseURL = 'https://project1.goit.co.ua/api/';
+
+export const getFinanceDataFetch = userId => dispatch => {
   dispatch(financeDataFetchStart());
   axios
-    .get(`https://project1.goit.co.ua/api/transactions/${id}`)
-    .then(response => {
-      // console.log(response);
-      dispatch(financeDataFetchFinish(response.data.transactionsList));
-    })
-    .catch(erorr => {
-      dispatch(financeDataFetchError(erorr));
-    });
+    .get(`transactions/${userId}`)
+    .then(data => dispatch(financeDataFetchFinish(data)))
+    .catch(error => financeDataFetchError(error));
 };
 
 export const getFinanceTotalBalanceFetch = id => dispatch => {
   dispatch(financeTotalBalanceFetchStart());
   axios
-    .get(`https://project1.goit.co.ua/api/user_balance/${id}`)
+    .get(`user_balance/${id}`)
     .then(response => {
-      // console.log(response);
       dispatch(financeTotalBalanceFinish(response.totalBalance));
     })
     .catch(erorr => {
@@ -48,8 +45,34 @@ export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
 
 export const addTransaction = submittedData => dispatch => {
   dispatch(financeAddTransactionStart());
+
+  let {
+    typeOfTransaction,
+    timeOfTransaction,
+    value,
+    category,
+    comment,
+  } = submittedData;
+
+  const transactionDate = new Date(
+    timeOfTransaction.replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$2/$1'),
+  );
+  if (typeOfTransaction === 'income') {
+    category = 'Income';
+    typeOfTransaction = 'Income';
+  }
+  if (typeOfTransaction === 'expense') typeOfTransaction = 'Expense';
+
+  const reqData = {
+    type: typeOfTransaction,
+    transactionDate,
+    amount: +value,
+    category,
+    comment,
+  };
+
   axios
-    .post('apiUrl', submittedData)
+    .post('/transactions', reqData)
     .then(data => {
       dispatch(financeAddTransactionFinish(data));
       dispatch(closeModalAddTransaction());

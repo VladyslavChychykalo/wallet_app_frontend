@@ -57,11 +57,11 @@ class RegistrationForm extends Component {
   }
 
   notMatchingPasswords = () => {
-    toast('Passwords dont match');
+    toast.error('Passwords dont match');
   };
 
   existingUser = () => {
-    toast('Such user has already existed');
+    toast.error('Such user has already existed');
   };
 
   render() {
@@ -166,7 +166,17 @@ class RegistrationForm extends Component {
                   Login
                 </Link>
               </div>
-              <ToastContainer />
+              <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnVisibilityChange
+                draggable
+                pauseOnHover
+              />
             </>
           );
         }}
