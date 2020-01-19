@@ -1,7 +1,5 @@
 import types from '../types';
 
-// data
-
 export const financeDataFetchStart = () => ({
   type: types.FINANCE_DATA_FETCH_START,
 });

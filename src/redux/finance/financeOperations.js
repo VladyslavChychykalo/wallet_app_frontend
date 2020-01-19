@@ -30,10 +30,10 @@ export const getFinanceDataFetch = userId => dispatch => {
     .catch(error => financeDataFetchError(error));
 };
 
-export const getFinanceTotalBalanceFetch = id => dispatch => {
+export const getFinanceTotalBalanceFetch = userId => dispatch => {
   dispatch(financeTotalBalanceFetchStart());
   axios
-    .get(`user_balance/${id}`)
+    .get(`user_balance/${userId}`)
     .then(response => {
       dispatch(financeTotalBalanceFinish(response.totalBalance));
     })
