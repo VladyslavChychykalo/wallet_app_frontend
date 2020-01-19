@@ -20,7 +20,6 @@ const Header = () => {
         {windowWidth >= 768 && (
           <ReactTooltip
             className={styles.tooltip}
-            type="dark"
             effect="solid"
             place="bottom"
             event="click focus"

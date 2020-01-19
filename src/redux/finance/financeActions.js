@@ -5,7 +5,7 @@ export const financeDataFetchStart = () => ({
 });
 export const financeDataFetchFinish = response => ({
   type: types.FINANCE_DATA_FETCH_FINISH,
-  payload: { response },
+  payload: response,
 });
 export const financeDataFetchError = error => ({
   type: types.FINANCE_DATA_ERROR,
