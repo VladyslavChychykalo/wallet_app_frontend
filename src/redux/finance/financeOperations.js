@@ -61,11 +61,11 @@ export const addTransaction = submittedData => dispatch => {
   const transactionDate = new Date(
     timeOfTransaction.replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$2/$1'),
   );
-  if (typeOfTransaction === 'income') {
+  if (typeOfTransaction === 'income' || typeOfTransaction === 'Income') {
     category = 'Income';
-    typeOfTransaction = 'Income';
+    typeOfTransaction = 'income';
   }
-  if (typeOfTransaction === 'expense') typeOfTransaction = 'Expense';
+  if (typeOfTransaction === 'Expense') typeOfTransaction = 'expense';
 
   const reqData = {
     type: typeOfTransaction,
