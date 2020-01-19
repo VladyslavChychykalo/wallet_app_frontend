@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
+import { deleteTransaction } from '../../redux/finance/financeOperations';
 
 function timestampToDate(timestamp) {
   const date = new Date(timestamp);
@@ -23,17 +24,12 @@ class HomeTab extends React.Component {
     transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
-  state = {};
-
-  // componentDidMount() {
-  //   // console.log(this.props.transactions);
-  // }
-
-  /* onDelete(t) {
+  onDelete(t) {
     const { transactions } = this.state;
     transactions.splice(transactions.indexOf(t), 1);
     this.setState({ transactions });
-  } */
+    deleteTransaction(t.id);
+  }
 
   render() {
     const { transactions } = this.props;
@@ -93,7 +89,10 @@ class HomeTab extends React.Component {
                 <div className={styles.pair}>
                   <div className={styles.key}>Delete</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    <Trash className={styles.deleteBtn} />
+                    <Trash
+                      className={styles.deleteBtn}
+                      onClick={() => this.onDelete(t)}
+                    />
                   </div>
                 </div>
               </div>
@@ -109,4 +108,9 @@ const mapStateToProps = state => ({
   transactions: state.finance.data,
 });
 
-export default connect(mapStateToProps)(HomeTab);
+const mapDispatchToProps = dispatch => ({
+  deleteTransaction: transactionId =>
+    dispatch(deleteTransaction(transactionId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeTab);

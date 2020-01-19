@@ -24,7 +24,6 @@ class DashboardPage extends Component {
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
     openModalAddTransactionAction: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
-    pathname: PropTypes.string.isRequired,
     location: PropTypes.objectOf(PropTypes.string).isRequired,
   };
 
@@ -41,10 +40,6 @@ class DashboardPage extends Component {
       openModalAddTransactionAction,
     } = this.props;
     const windowWidth = document.documentElement.clientWidth;
-    // let pathname;
-    // if (location && location.pathname) {
-    //   pathname = location.pathname;
-    // }
     const isHomePage = location.pathname;
     const isTabHome =
       isHomePage === '/home' && windowWidth < 1280 && windowWidth >= 768;

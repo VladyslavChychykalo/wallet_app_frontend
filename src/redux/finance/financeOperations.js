@@ -15,6 +15,9 @@ import {
   financeAddTransactionStart,
   financeAddTransactionFinish,
   financeAddTransactionError,
+  financeDeleteTransactionStart,
+  financeDeleteTransactionFinish,
+  financeDeleteTransactionError,
 } from './financeActions';
 
 axios.baseURL = 'https://cryptic-citadel-50371.herokuapp.com/api';
@@ -34,8 +37,8 @@ export const getFinanceTotalBalanceFetch = id => dispatch => {
     .then(response => {
       dispatch(financeTotalBalanceFinish(response.totalBalance));
     })
-    .catch(erorr => {
-      dispatch(financeTotalBalanceFetchError(erorr));
+    .catch(err => {
+      dispatch(financeTotalBalanceFetchError(err));
     });
 };
 
@@ -79,5 +82,17 @@ export const addTransaction = submittedData => dispatch => {
     })
     .catch(error => {
       dispatch(financeAddTransactionError(error));
+    });
+};
+
+export const deleteTransaction = transactionId => dispatch => {
+  dispatch(financeDeleteTransactionStart());
+  axios
+    .delete(`/transactions/${transactionId}`)
+    .then(data => {
+      dispatch(financeDeleteTransactionFinish(data));
+    })
+    .catch(error => {
+      dispatch(financeDeleteTransactionError(error));
     });
 };
