@@ -16,7 +16,6 @@ import {
   financeAddTransactionFinish,
   financeAddTransactionError,
 } from './financeActions';
-import { store } from '../store';
 
 axios.baseURL = 'https://project1.goit.co.ua/api/';
 
@@ -46,7 +45,6 @@ export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
 
 export const addTransaction = submittedData => dispatch => {
   dispatch(financeAddTransactionStart());
-  const userId = store.getState().session.user.id;
 
   let {
     typeOfTransaction,
@@ -66,7 +64,6 @@ export const addTransaction = submittedData => dispatch => {
   if (typeOfTransaction === 'expense') typeOfTransaction = 'Expense';
 
   const reqData = {
-    userId,
     type: typeOfTransaction,
     transactionDate,
     amount: +value,
@@ -75,7 +72,7 @@ export const addTransaction = submittedData => dispatch => {
   };
 
   axios
-    .post('transactions', reqData)
+    .post('/transactions', reqData)
     .then(data => {
       dispatch(financeAddTransactionFinish(data));
       dispatch(closeModalAddTransaction());
