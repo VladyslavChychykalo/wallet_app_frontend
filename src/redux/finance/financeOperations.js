@@ -17,7 +17,7 @@ import {
   financeAddTransactionError,
 } from './financeActions';
 
-axios.baseURL = 'https://project1.goit.co.ua/api/';
+axios.baseURL = 'https://cryptic-citadel-50371.herokuapp.com/api';
 
 export const getFinanceDataFetch = userId => dispatch => {
   dispatch(financeDataFetchStart());
