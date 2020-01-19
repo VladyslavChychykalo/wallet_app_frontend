@@ -19,11 +19,13 @@ class HomeTab extends React.Component {
     transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
-  onDelete(t) {
-    const { transactions } = this.state;
-    transactions.splice(transactions.indexOf(t), 1);
-    this.setState({ transactions });
-    deleteTransaction(t.id);
+  // state = {
+  //   transactions: [],
+  // };
+
+  onDelete({ _id: id }) {
+    const { deleteTransaction: deleteTr } = this.props;
+    deleteTr(id);
   }
 
   render() {
