@@ -107,7 +107,6 @@ class DashboardPage extends Component {
               </Switch>
             </article>
           </main>
-          <Route path="/home" />
         </div>
       </>
     );

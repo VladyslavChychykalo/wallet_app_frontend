@@ -32,7 +32,6 @@ const Navigation = ({ location }) => {
             fill={isTabHome ? '#3a5374' : '#6b7d83'}
           />
         )}
-
         <span className={styles.text}>Home</span>
       </NavLink>
       <NavLink
