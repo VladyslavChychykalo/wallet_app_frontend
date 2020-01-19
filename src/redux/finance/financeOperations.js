@@ -84,8 +84,8 @@ export const deleteTransaction = transactionId => dispatch => {
   dispatch(financeDeleteTransactionStart());
   axios
     .delete(`/transactions/${transactionId}`)
-    .then(data => {
-      dispatch(financeDeleteTransactionFinish(data));
+    .then(() => {
+      dispatch(financeDeleteTransactionFinish(transactionId));
     })
     .catch(error => {
       dispatch(financeDeleteTransactionError(error));
