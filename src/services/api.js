@@ -5,7 +5,7 @@ axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 axios.defaults.headers.patch['Content-Type'] = 'application/json';
 
-axios.defaults.baseURL = 'https://project1.goit.co.ua/api';
+axios.defaults.baseURL = 'http://localhost:3001/api';
 
 export const setToken = token => ({
   headers: {
