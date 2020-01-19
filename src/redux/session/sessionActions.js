@@ -50,3 +50,11 @@ export const registrationError = error => ({
 export const logOutSuccess = () => ({
   type: types.LOGOUT,
 });
+
+// set token in redux store
+export const setTokenInStore = token => ({
+  type: types.SET_TOKEN_IN_STORE,
+  payload: {
+    token,
+  },
+});
