@@ -41,7 +41,7 @@ class HomeTab extends React.Component {
             <div>Balance</div>
             <div className={styles.textCenter}>Delete</div>
           </div>
-          {typeof transactions === 'object' && transactions.length === 0 ? (
+          {!Array.isArray(transactions) || transactions.length === 0 ? (
             // {transactions.length === 0 ? (
             <div className={styles.addTransaction}>Please add transaction</div>
           ) : (
