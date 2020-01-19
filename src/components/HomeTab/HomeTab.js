@@ -19,7 +19,6 @@ function numFormat(num) {
 }
 
 class HomeTab extends React.Component {
-
   static propTypes = {
     transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
