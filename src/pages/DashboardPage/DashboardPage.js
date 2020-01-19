@@ -25,10 +25,10 @@ class DashboardPage extends Component {
   static propTypes = {
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
     openModalAddTransactionAction: PropTypes.func.isRequired,
+    getFinanceDataFetch: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
-    getFinanceDataFetch: PropTypes.string.isRequired,
-    // pathname: PropTypes.string.isRequired,
-    // location: PropTypes.objectOf(PropTypes.string).isRequired,
+    pathname: PropTypes.string.isRequired,
+    location: PropTypes.objectOf(PropTypes.string).isRequired,
   };
 
   componentDidMount() {
@@ -37,7 +37,7 @@ class DashboardPage extends Component {
   }
 
   render() {
-    // const { location } = this.props;
+    const { location } = this.props;
 
     const {
       isModalAddTransactionOpen,
@@ -46,9 +46,11 @@ class DashboardPage extends Component {
     const windowWidth = document.documentElement.clientWidth;
     // let pathname;
     // if (location && location.pathname) {
-    // pathname = location.pathname;
+    //   pathname = location.pathname;
     // }
-    // const isHomePage = location.pathname;
+    const isHomePage = location.pathname;
+    const isTabHome =
+      isHomePage === '/home' && windowWidth < 1280 && windowWidth >= 768;
     return (
       <>
         {isModalAddTransactionOpen && <ModalAddTransaction />}
@@ -56,7 +58,15 @@ class DashboardPage extends Component {
           <header className={styles.header}>
             <Header />
           </header>
-          <main className={styles.main}>
+          <main
+            className={styles.main}
+            style={{
+              backgroundImage: isTabHome
+                ? 'url(/static/media/bgImg.c675a8b9.png)'
+                : 'none',
+              paddingBottom: isTabHome ? '320px' : '0px',
+            }}
+          >
             <aside className={styles.aside}>
               <nav className={styles.nav}>
                 <Navigation />
@@ -64,12 +74,11 @@ class DashboardPage extends Component {
               <section className={styles.balance}>
                 <Balance />
               </section>
-              {/* {windowWidth < 1280 && windowWidth>= 768 &&
-          isHomePage === '/home' && (
-          <section className={styles.currency}>
-            <Currency />
-          </section>
-          )} */}
+              {isTabHome && (
+                <section className={styles.currency}>
+                  <Currency />
+                </section>
+              )}
               {windowWidth >= 1280 && (
                 <section className={styles.currency}>
                   <Currency />

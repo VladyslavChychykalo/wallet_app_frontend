@@ -45,7 +45,7 @@
 
   .text::after {
     content: '';
-    border: 1px solid var(--bg-color-dark-blue);
+    border-right: 2px solid var(--bg-color-dark-blue);
     height: 100%;
     margin-left: 15px;
   }
