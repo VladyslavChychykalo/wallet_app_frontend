@@ -1,53 +1,42 @@
+/* eslint-disable prefer-const */
 import axios from 'axios';
-// import axios from 'axios';
-// import {
-// fetchTransactionsSuccess,
-// fetchTransactionsErorr,
-// } from './financeActions';
-// import apiURL from '../../services/api'
-
-// export const fetchTransactions = () => dispatch => {
-// axios
-// .get('apiURL')
-// .then(response => {
-// dispatch(fetchTransactionsSuccess(response.data));
-// })
-// .catch(erorr => {
-// dispatch(fetchTransactionsErorr(erorr));
-// });
-// };
-
-// delete later
-// export const fetchTransactions = () => {};
+import { closeModalAddTransaction } from '../global/globalActions';
 
 import {
   financeDataFetchStart,
   financeDataFetchFinish,
   financeDataFetchError,
   financeTotalBalanceFetchStart,
-  // financeTotalBalanceFinish,
-  // financeTotalBalanceFetchError,
+  financeTotalBalanceFinish,
+  financeTotalBalanceFetchError,
   financeTotalTypeBalanceFetchStart,
-  // financeTypeTotalBalanceFinish,
-  // financeTypeTotalBalanceFetchError,
+  // finaceTypeTotalBalanceFinish,
+  // finaceTypeTotalBalanceFetchError,
   financeAddTransactionStart,
   financeAddTransactionFinish,
   financeAddTransactionError,
 } from './financeActions';
-import { closeModalAddTransaction } from '../global/globalActions';
 
-const apiUrl = 'https://project1.goit.co.ua/api/transactions/';
+axios.baseURL = 'https://cryptic-citadel-50371.herokuapp.com/api';
 
-export const getFinanceDataFetch = id => dispatch => {
+export const getFinanceDataFetch = userId => dispatch => {
   dispatch(financeDataFetchStart());
   axios
-    .get(apiUrl + id)
+    .get(`transactions/${userId}`)
     .then(data => dispatch(financeDataFetchFinish(data)))
     .catch(error => financeDataFetchError(error));
 };
 
-export const getFinanceTotalBalanceFetch = () => dispatch => {
+export const getFinanceTotalBalanceFetch = id => dispatch => {
   dispatch(financeTotalBalanceFetchStart());
+  axios
+    .get(`user_balance/${id}`)
+    .then(response => {
+      dispatch(financeTotalBalanceFinish(response.totalBalance));
+    })
+    .catch(erorr => {
+      dispatch(financeTotalBalanceFetchError(erorr));
+    });
 };
 
 export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
@@ -56,8 +45,34 @@ export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
 
 export const addTransaction = submittedData => dispatch => {
   dispatch(financeAddTransactionStart());
+
+  let {
+    typeOfTransaction,
+    timeOfTransaction,
+    value,
+    category,
+    comment,
+  } = submittedData;
+
+  const transactionDate = new Date(
+    timeOfTransaction.replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$2/$1'),
+  );
+  if (typeOfTransaction === 'income') {
+    category = 'Income';
+    typeOfTransaction = 'Income';
+  }
+  if (typeOfTransaction === 'expense') typeOfTransaction = 'Expense';
+
+  const reqData = {
+    type: typeOfTransaction,
+    transactionDate,
+    amount: +value,
+    category,
+    comment,
+  };
+
   axios
-    .post(apiUrl, submittedData)
+    .post('/transactions', reqData)
     .then(data => {
       dispatch(financeAddTransactionFinish(data));
       dispatch(closeModalAddTransaction());

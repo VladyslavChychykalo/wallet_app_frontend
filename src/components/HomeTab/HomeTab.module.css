@@ -1,7 +1,13 @@
 .transactionHistory {
   font-family: 'HelveticaNeueCyr', sans-serif;
 }
-
+.addTransaction {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 30px;
+}
 .transactionHead {
   display: none;
 }
@@ -99,5 +105,9 @@
   /* Handle on hover */
   .transactionHistory::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+  .addTransaction {
+    width: 400px;
+    margin-top: 100px;
   }
 }
