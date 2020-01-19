@@ -37,8 +37,8 @@
 
 .tooltip {
   font-family: 'HelveticaNeueCyr', sans-serif;
-  font-size: 14px;
-  width: 20%;
+  font-size: 12px;
+  width: 50%;
 }
 
 .user_logout_div {
@@ -67,6 +67,10 @@
   .Logo_IMG:hover {
     transform: scale(1.03, 1.03);
     transition: transform 0.3s ease-in;
+  }
+  .tooltip {
+    font-size: 14px;
+    width: 20%;
   }
 }
 
