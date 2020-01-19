@@ -36,14 +36,14 @@ const Stateless = ({ data, handleChange, expenses, income }) => {
           <Select
             onChange={handleChange}
             options={month}
-            defaultValue={{ label: 'Month', value: 'Month' }}
+            defaultValue={{ label: 'January', value: 'January' }}
           />
         </div>
         <div className={styles.statelessSelectGroup}>
           <Select
             onChange={handleChange}
             options={year}
-            defaultValue={{ label: 'Year', value: 'Year' }}
+            defaultValue={{ label: 2020, value: 2020 }}
           />
         </div>
       </div>

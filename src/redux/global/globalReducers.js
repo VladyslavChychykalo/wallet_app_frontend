@@ -29,6 +29,8 @@ const loadingReducer = (state = false, { type }) => {
     case types.LOGIN_REQUEST:
     case types.REGISTER_REQUEST:
     case types.REFRESH_CURRENT_REQUEST:
+    case types.FINANCE_ADD_TRANSACTION_START:
+    case types.FINANCE_DELETE_TRANSACTION_START:
       return true;
     case types.LOGIN_SUCCESS:
     case types.LOGIN_ERROR:
@@ -38,6 +40,10 @@ const loadingReducer = (state = false, { type }) => {
     case types.REFRESH_CURRENT_ERROR:
     case types.GLOBAL_FETCH_FINISH:
     case types.GLOBAL_FETCH_ERROR:
+    case types.FINANCE_ADD_TRANSACTION_FINISH:
+    case types.FINANCE_ADD_TRANSACTION_ERROR:
+    case types.FINANCE_DELETE_TRANSACTION_ERROR:
+    case types.FINANCE_DELETE_TRANSACTION_FINISH:
       return false;
     default:
       return state;

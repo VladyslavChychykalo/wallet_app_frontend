@@ -16,6 +16,9 @@ import {
   financeAddTransactionStart,
   financeAddTransactionFinish,
   financeAddTransactionError,
+  financeDeleteTransactionStart,
+  financeDeleteTransactionFinish,
+  financeDeleteTransactionError,
 } from './financeActions';
 
 axios.baseURL = 'https://cryptic-citadel-50371.herokuapp.com/api';
@@ -30,15 +33,15 @@ export const getFinanceDataFetch = userId => dispatch => {
     .catch(error => financeDataFetchError(error));
 };
 
-export const getFinanceTotalBalanceFetch = id => dispatch => {
+export const getFinanceTotalBalanceFetch = userId => dispatch => {
   dispatch(financeTotalBalanceFetchStart());
   axios
-    .get(`user_balance/${id}`)
+    .get(`user_balance/${userId}`)
     .then(response => {
       dispatch(financeTotalBalanceFinish(response.totalBalance));
     })
-    .catch(erorr => {
-      dispatch(financeTotalBalanceFetchError(erorr));
+    .catch(err => {
+      dispatch(financeTotalBalanceFetchError(err));
     });
 };
 
@@ -57,11 +60,6 @@ export const addTransaction = submittedData => dispatch => {
   } = submittedData;
 
   const transactionDate = moment(timeOfTransaction, 'DD/MM/YYYY').toISOString();
-  // if (typeOfTransaction === 'income') {
-  //   category = 'Income';
-  //   typeOfTransaction = 'Income';
-  // }
-  // if (typeOfTransaction === 'expense') typeOfTransaction = 'Expense';
 
   const reqData = {
     type: typeOfTransaction,
@@ -79,5 +77,17 @@ export const addTransaction = submittedData => dispatch => {
     })
     .catch(error => {
       dispatch(financeAddTransactionError(error));
+    });
+};
+
+export const deleteTransaction = transactionId => dispatch => {
+  dispatch(financeDeleteTransactionStart());
+  axios
+    .delete(`/transactions/${transactionId}`)
+    .then(() => {
+      dispatch(financeDeleteTransactionFinish(transactionId));
+    })
+    .catch(error => {
+      dispatch(financeDeleteTransactionError(error));
     });
 };
