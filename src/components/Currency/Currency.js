@@ -45,7 +45,7 @@ const Currency = () => {
             </div>
           ))} */}
 
-          {/* <div className={css.currencyBoard}>
+          <div className={css.currencyBoard}>
             <div className={css.mainLine}>USD</div>
             <div className={css.mainLine}>
               {Number(currency[0].buy).toFixed(2)}
@@ -71,7 +71,7 @@ const Currency = () => {
             <div className={css.mainLine}>
               {Number(currency[2].sale).toFixed(2)}
             </div>
-          </div> */}
+          </div>
         </div>
       )}
     </>

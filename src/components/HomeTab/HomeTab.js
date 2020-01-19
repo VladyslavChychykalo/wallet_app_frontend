@@ -33,6 +33,7 @@ class HomeTab extends React.Component {
 
   render() {
     const { transactions } = this.props;
+    console.log(this.props);
     return (
       <div className={styles.transactionHistory}>
         <div>
@@ -76,8 +77,9 @@ class HomeTab extends React.Component {
                   <ReactTooltip
                     effect="solid"
                     place="bottom"
-                    eventOff="mouseenter"
+                    event="mouseenter"
                     offset={{ top: 0, right: 50 }}
+                    globalEventOff="mouseout"
                     getContent={() => t.comment}
                   />
                 </div>
