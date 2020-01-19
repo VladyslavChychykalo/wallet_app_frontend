@@ -14,7 +14,7 @@ import {
 import { getToken } from './sessionSelectors';
 // import { API } from '../../services/api';
 
-axios.defaults.baseURL = 'https://project1.goit.co.ua/api';
+axios.defaults.baseURL = 'https://cryptic-citadel-50371.herokuapp.com/api';
 
 const setAuthToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
