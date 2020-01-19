@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
-import uuid from 'uuid';
+// import uuid from 'uuid';
 import css from './currency.module.css';
 import { fetchCurrency } from '../../services/api';
 
@@ -34,16 +34,44 @@ const Currency = () => {
         <div className={css.currencyTable}>
           <div className={css.currencyHeadline}>
             <div className={css.headline}>Currency</div>
-            <div className={css.headline}>Sale</div>
             <div className={css.headline}>Purshase</div>
+            <div className={css.headline}>Sale</div>
           </div>
-          {currency.map(item => (
+          {/* {currency.map(item => (
             <div className={css.currencyBoard} key={uuid()}>
               <div className={css.mainLine}>{item.ccy}</div>
-              <div className={css.mainLine}>{Number(item.sale).toFixed(2)}</div>
               <div className={css.mainLine}>{Number(item.buy).toFixed(2)}</div>
+              <div className={css.mainLine}>{Number(item.sale).toFixed(2)}</div>
             </div>
-          ))}
+          ))} */}
+
+          <div className={css.currencyBoard}>
+            <div className={css.mainLine}>USD</div>
+            <div className={css.mainLine}>
+              {Number(currency[0].buy).toFixed(2)}
+            </div>
+            <div className={css.mainLine}>
+              {Number(currency[0].sale).toFixed(2)}
+            </div>
+          </div>
+          <div className={css.currencyBoard}>
+            <div className={css.mainLine}>EUR</div>
+            <div className={css.mainLine}>
+              {Number(currency[1].buy).toFixed(2)}
+            </div>
+            <div className={css.mainLine}>
+              {Number(currency[1].sale).toFixed(2)}
+            </div>
+          </div>
+          <div className={css.currencyBoard}>
+            <div className={css.mainLine}>RUB</div>
+            <div className={css.mainLine}>
+              {Number(currency[2].buy).toFixed(2)}
+            </div>
+            <div className={css.mainLine}>
+              {Number(currency[2].sale).toFixed(2)}
+            </div>
+          </div>
         </div>
       )}
     </>

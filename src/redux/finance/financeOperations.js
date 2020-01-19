@@ -21,8 +21,7 @@ export const getFinanceDataFetch = id => dispatch => {
   axios
     .get(`https://project1.goit.co.ua/api/transactions/${id}`)
     .then(response => {
-      // console.log(response
-      // )
+      // console.log(response);
       dispatch(financeDataFetchFinish(response.data.transactionsList));
     })
     .catch(erorr => {
@@ -35,7 +34,7 @@ export const getFinanceTotalBalanceFetch = id => dispatch => {
   axios
     .get(`https://project1.goit.co.ua/api/user_balance/${id}`)
     .then(response => {
-      console.log(response);
+      // console.log(response);
       dispatch(financeTotalBalanceFinish(response.totalBalance));
     })
     .catch(erorr => {
