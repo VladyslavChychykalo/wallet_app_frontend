@@ -48,8 +48,8 @@ class DiagramTab extends Component {
   componentDidMount = () => {
     const { finance } = this.props;
 
-    const allExpenses = this.filterTransactions(finance.data, 'Expense');
-    const allIncome = this.filterTransactions(finance.data, 'Income');
+    const allExpenses = this.filterTransactions(finance.data, 'expense');
+    const allIncome = this.filterTransactions(finance.data, 'income');
 
     this.setState({ expenses: allExpenses, income: allIncome });
 
@@ -126,8 +126,8 @@ class DiagramTab extends Component {
       return byMonth && byYear;
     });
 
-    const allExpenses = this.filterTransactions(sorted, 'Expense');
-    const allIncome = this.filterTransactions(sorted, 'Income');
+    const allExpenses = this.filterTransactions(sorted, 'expense');
+    const allIncome = this.filterTransactions(sorted, 'income');
 
     this.setState({ expenses: allExpenses, income: allIncome });
 
