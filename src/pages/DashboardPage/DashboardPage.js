@@ -28,6 +28,7 @@ class DashboardPage extends Component {
     getFinanceDataFetch: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
     location: PropTypes.objectOf(PropTypes.string).isRequired,
+    pathname: PropTypes.string,
   };
 
   static defaultProps = {
