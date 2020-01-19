@@ -16,10 +16,6 @@ class HomeTab extends React.Component {
     transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
-  // state = {
-  //   transactions: [],
-  // };
-
   onDelete({ _id: id }) {
     const { deleteTransaction: deleteTr } = this.props;
     deleteTr(id);
@@ -27,6 +23,7 @@ class HomeTab extends React.Component {
 
   render() {
     const { transactions } = this.props;
+    transactions.reverse();
 
     return (
       <div className={styles.transactionHistory}>
