@@ -23,7 +23,9 @@ export const getFinanceDataFetch = userId => dispatch => {
   dispatch(financeDataFetchStart());
   axios
     .get(`transactions/${userId}`)
-    .then(data => dispatch(financeDataFetchFinish(data)))
+    .then(data => {
+      dispatch(financeDataFetchFinish(data));
+    })
     .catch(error => financeDataFetchError(error));
 };
 
@@ -45,7 +47,6 @@ export const getFinanceTotalTypeBalanceFetch = () => dispatch => {
 
 export const addTransaction = submittedData => dispatch => {
   dispatch(financeAddTransactionStart());
-
   let {
     typeOfTransaction,
     timeOfTransaction,
