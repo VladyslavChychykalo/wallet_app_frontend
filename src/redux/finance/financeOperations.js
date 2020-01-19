@@ -1,5 +1,6 @@
 /* eslint-disable prefer-const */
 import axios from 'axios';
+import moment from 'moment';
 import { closeModalAddTransaction } from '../global/globalActions';
 
 import {
@@ -58,14 +59,7 @@ export const addTransaction = submittedData => dispatch => {
     comment,
   } = submittedData;
 
-  const transactionDate = new Date(
-    timeOfTransaction.replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$2/$1'),
-  );
-  if (typeOfTransaction === 'income' || typeOfTransaction === 'Income') {
-    category = 'Income';
-    typeOfTransaction = 'income';
-  }
-  if (typeOfTransaction === 'Expense') typeOfTransaction = 'expense';
+  const transactionDate = moment(timeOfTransaction, 'DD/MM/YYYY').toISOString();
 
   const reqData = {
     type: typeOfTransaction,
