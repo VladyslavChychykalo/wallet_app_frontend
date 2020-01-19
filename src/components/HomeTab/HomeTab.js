@@ -32,7 +32,6 @@ class HomeTab extends React.Component {
 
   render() {
     const { transactions } = this.props;
-    console.log(transactions);
     return (
       <div className={styles.transactionHistory}>
         <div>
