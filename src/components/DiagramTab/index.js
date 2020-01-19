@@ -118,7 +118,9 @@ class DiagramTab extends Component {
 
   sortTransactions(transactions, month, year) {
     const sorted = transactions.filter(trans => {
-      const date = moment(trans.date).format('YYYY MMMM');
+      const date = moment(Date.parse(trans.transactionDate)).format(
+        'YYYY MMMM',
+      );
       const byMonth = month ? date.includes(month) : true;
       const byYear = year ? date.includes(year) : true;
       return byMonth && byYear;
