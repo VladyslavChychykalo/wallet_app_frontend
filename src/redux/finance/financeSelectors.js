@@ -14,3 +14,5 @@ export const getUserId = store => {
 };
 
 export const getBalance = store => store.finance.totalBalance;
+
+export const getData = store => store.finance.data;

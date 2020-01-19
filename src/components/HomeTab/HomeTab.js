@@ -1,130 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
-
-const testHomeTab = [
-  {
-    type: 'income',
-    date: 1578231058734,
-    id: 'a1',
-    amount: 100,
-    category: 'Varia',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '-',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-  {
-    type: 'income',
-    date: 1578231058734,
-    id: 'a2',
-    amount: 110,
-    category: 'Regular income',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '-',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-  {
-    type: 'income',
-    date: 1578231058734,
-    id: 'a3',
-    amount: 1200.12,
-    category: 'Car',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '+',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-  {
-    type: 'cost',
-    date: 1578231058734,
-    id: 'a4',
-    amount: 1200.12,
-    category: 'Products',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '+',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-  {
-    type: 'income',
-    date: 1578231058734,
-    id: 'a5',
-    amount: 1200.12,
-    category: 'Irregular income',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '+',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-  {
-    type: 'income',
-    date: 1578231058734,
-    id: 'a6',
-    amount: 100,
-    category: 'Varia',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '-',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-  {
-    type: 'income',
-    date: 1578231058734,
-    id: 'a7',
-    amount: 110,
-    category: 'Regular income',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '-',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-  {
-    type: 'income',
-    date: 1578231058734,
-    id: 'a8',
-    amount: 1200.12,
-    category: 'Car',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '+',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-  {
-    type: 'cost',
-    date: 1578231058734,
-    id: 'a9',
-    amount: 1200.12,
-    category: 'Products',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '+',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-  {
-    type: 'income',
-    date: 1578231058734,
-    id: 'a10',
-    amount: 1200.12,
-    category: 'Irregular income',
-    comment: 'test comment',
-    balanceAfter: 5000,
-    typebalanceAfter: '+',
-    updatedAt: '2020-11-25T14:14:14.100Z',
-    createdAt: '2020-11-25T14:14:14.100Z',
-  },
-];
+import { getData } from '../../redux/finance/financeSelectors';
 
 function timestampToDate(timestamp) {
   const date = new Date(timestamp);
@@ -140,9 +19,9 @@ function numFormat(num) {
 }
 
 class HomeTab extends React.Component {
-  state = {
-    transactions: testHomeTab,
-  };
+  // state = {
+  //   transactions: testHomeTab,
+  // };
 
   componentDidMount() {
     // clg
@@ -155,9 +34,9 @@ class HomeTab extends React.Component {
   } */
 
   render() {
-    // let { transactions } = this.props;
+    const { transactions } = this.props;
 
-    const { transactions } = this.state;
+    // const { transactions } = this.state;
 
     return (
       <div className={styles.transactionHistory}>
@@ -223,9 +102,8 @@ class HomeTab extends React.Component {
   }
 }
 
-function mapStateToProps(/* state */) {
-  return {};
-  // return { transactions: state.finance.data };
+function mapStateToProps(state) {
+  return { transactions: getData(state) };
 }
 
 export default connect(mapStateToProps)(HomeTab);
