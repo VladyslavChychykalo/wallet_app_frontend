@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -42,7 +43,7 @@ class LoginForm extends Component {
   }
 
   wrongPasswordOrEmail = () => {
-    toast('Password or Email is wrong');
+    toast.error('Password or Email is wrong');
   };
 
   render() {
@@ -109,7 +110,17 @@ class LoginForm extends Component {
                   Registration
                 </Link>
               </div>
-              <ToastContainer />
+              <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnVisibilityChange
+                draggable
+                pauseOnHover
+              />
             </>
           );
         }}

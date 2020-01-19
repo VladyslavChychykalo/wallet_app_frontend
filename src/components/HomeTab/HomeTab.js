@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
-import { getData } from '../../redux/finance/financeSelectors';
 
 function timestampToDate(timestamp) {
   const date = new Date(timestamp);
@@ -19,13 +19,16 @@ function numFormat(num) {
 }
 
 class HomeTab extends React.Component {
-  // state = {
-  //   transactions: testHomeTab,
-  // };
 
-  componentDidMount() {
-    // clg
-  }
+  static propTypes = {
+    transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  };
+
+  state = {};
+
+  // componentDidMount() {
+  //   // console.log(this.props.transactions);
+  // }
 
   /* onDelete(t) {
     const { transactions } = this.state;
@@ -35,8 +38,7 @@ class HomeTab extends React.Component {
 
   render() {
     const { transactions } = this.props;
-
-    // const { transactions } = this.state;
+  }
 
     return (
       <div className={styles.transactionHistory}>
@@ -50,60 +52,64 @@ class HomeTab extends React.Component {
             <div>Balance</div>
             <div className={styles.textCenter}>Delete</div>
           </div>
-          {transactions.map(t => (
-            <div key={t.id} className={styles.transaction}>
-              <div className={styles.pair}>
-                <div className={styles.key}>Date</div>
-                <div className={`${styles.val} ${styles.textCenter}`}>
-                  {timestampToDate(t.date)}
+          {typeof transactions === 'object' || transactions.length === 0 ? (
+            <div className={styles.addTransaction}>Please add transaction</div>
+          ) : (
+            transactions.map(t => (
+              <div key={t.id} className={styles.transaction}>
+                <div className={styles.pair}>
+                  <div className={styles.key}>Date</div>
+                  <div className={`${styles.val} ${styles.textCenter}`}>
+                    {timestampToDate(t.date)}
+                  </div>
+                </div>
+                <div className={styles.pair}>
+                  <div className={styles.key}>Type</div>
+                  <div className={`${styles.val} ${styles.textCenter}`}>
+                    {t.type === 'income' ? '+' : '-'}
+                  </div>
+                </div>
+                <div className={styles.pair}>
+                  <div className={styles.key}>Category</div>
+                  <div className={styles.val}>{t.category}</div>
+                </div>
+                <div className={styles.pair}>
+                  <div className={styles.key}>Comment</div>
+                  <div className={styles.val}>{t.comment}</div>
+                </div>
+                <div className={styles.pair}>
+                  <div className={styles.key}>Sum</div>
+                  <div
+                    className={`${styles.val} ${styles.textCenter} ${
+                      t.type === 'cost' ? styles.hilite : ''
+                    }`}
+                  >
+                    {numFormat(t.amount)}
+                  </div>
+                </div>
+                <div className={styles.pair}>
+                  <div className={styles.key}>Balance</div>
+                  <div className={`${styles.val} ${styles.textCenter}`}>
+                    {numFormat(t.balanceAfter)}
+                  </div>
+                </div>
+                <div className={styles.pair}>
+                  <div className={styles.key}>Delete</div>
+                  <div className={`${styles.val} ${styles.textCenter}`}>
+                    <Trash className={styles.deleteBtn} />
+                  </div>
                 </div>
               </div>
-              <div className={styles.pair}>
-                <div className={styles.key}>Type</div>
-                <div className={`${styles.val} ${styles.textCenter}`}>
-                  {t.type === 'income' ? '+' : '-'}
-                </div>
-              </div>
-              <div className={styles.pair}>
-                <div className={styles.key}>Category</div>
-                <div className={styles.val}>{t.category}</div>
-              </div>
-              <div className={styles.pair}>
-                <div className={styles.key}>Comment</div>
-                <div className={styles.val}>{t.comment}</div>
-              </div>
-              <div className={styles.pair}>
-                <div className={styles.key}>Sum</div>
-                <div
-                  className={`${styles.val} ${styles.textCenter} ${
-                    t.type === 'cost' ? styles.hilite : ''
-                  }`}
-                >
-                  {numFormat(t.amount)}
-                </div>
-              </div>
-              <div className={styles.pair}>
-                <div className={styles.key}>Balance</div>
-                <div className={`${styles.val} ${styles.textCenter}`}>
-                  {numFormat(t.balanceAfter)}
-                </div>
-              </div>
-              <div className={styles.pair}>
-                <div className={styles.key}>Delete</div>
-                <div className={`${styles.val} ${styles.textCenter}`}>
-                  <Trash className={styles.deleteBtn} />
-                </div>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return { transactions: getData(state) };
-}
+const mapStateToProps = state => ({
+  transactions: state.finance.data,
+});
 
 export default connect(mapStateToProps)(HomeTab);
