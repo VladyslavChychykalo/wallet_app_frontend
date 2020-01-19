@@ -1,7 +1,5 @@
 import types from '../types';
 
-// data
-
 export const financeDataFetchStart = () => ({
   type: types.FINANCE_DATA_FETCH_START,
 });
@@ -49,5 +47,17 @@ export const financeAddTransactionFinish = response => ({
 });
 export const financeAddTransactionError = error => ({
   type: types.FINANCE_ADD_TRANSACTION_ERROR,
+  payload: error,
+});
+
+export const financeDeleteTransactionStart = () => ({
+  type: types.FINANCE_DELETE_TRANSACTION_START,
+});
+export const financeDeleteTransactionFinish = transactionId => ({
+  type: types.FINANCE_DELETE_TRANSACTION_FINISH,
+  payload: { transactionId },
+});
+export const financeDeleteTransactionError = error => ({
+  type: types.FINANCE_DELETE_TRANSACTION_ERROR,
   payload: error,
 });

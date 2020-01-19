@@ -27,8 +27,8 @@ class DashboardPage extends Component {
     openModalAddTransactionAction: PropTypes.func.isRequired,
     getFinanceDataFetch: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
-    pathname: PropTypes.string,
     location: PropTypes.objectOf(PropTypes.string).isRequired,
+    pathname: PropTypes.string,
   };
 
   static defaultProps = {

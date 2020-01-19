@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { combineReducers } from 'redux';
 import types from '../types';
 
@@ -7,8 +8,8 @@ const data = (state = [], { type, payload }) => {
       return [...payload.data.transactionsList];
     case types.FINANCE_ADD_TRANSACTION_FINISH:
       return [...state, payload.data.transaction];
-    case types.FINANCE_ADD_TRANSACTION_ERROR:
-      return { ...payload.error };
+    case types.FINANCE_DELETE_TRANSACTION_FINISH:
+      return state.filter(t => t._id !== payload.transactionId);
     default:
       return state;
   }
