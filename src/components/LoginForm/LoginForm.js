@@ -12,6 +12,7 @@ import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as EmailIcon } from '../../images/emailIcon.svg';
 import { ReactComponent as PasswordIcon } from '../../images/passwordIcon.svg';
 import { getError } from '../../redux/session/sessionSelectors';
+import { ReactComponent as GoogleIcon } from '../../images/googleSvg.svg';
 
 const LoginSchema = yup.object().shape({
   email: yup
@@ -72,10 +73,6 @@ class LoginForm extends Component {
                 <div className={styles.logoContainer}>
                   <Logo className={styles.logo} />
                   <h1 className={styles.title}>Wallet</h1>
-
-                  <a href="https://cryptic-citadel-50371.herokuapp.com/api/auth/google">
-                    Google auth
-                  </a>
                 </div>
                 <Form autoComplete="off">
                   <div className={styles.inputWithIcon}>
@@ -102,6 +99,12 @@ class LoginForm extends Component {
                       <p className={styles.error}>{errors.password}</p>
                     )}
                   </div>
+                  <a
+                    className={styles.googleImage}
+                    href="https://cryptic-citadel-50371.herokuapp.com/api/auth/google"
+                  >
+                    <GoogleIcon />
+                  </a>
                   <button
                     className={styles.button}
                     type="submit"
