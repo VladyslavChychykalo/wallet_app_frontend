@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
+import { deleteTransaction } from '../../redux/finance/financeOperations';
 
 function timestampToDate(timestamp) {
   return moment(timestamp).format('DD/MM/YYYY');
@@ -15,20 +16,16 @@ class HomeTab extends React.Component {
     transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
-  state = {};
-
-  // componentDidMount() {
-  //   // console.log(this.props.transactions);
-  // }
-
-  /* onDelete(t) {
+  onDelete(t) {
     const { transactions } = this.state;
     transactions.splice(transactions.indexOf(t), 1);
     this.setState({ transactions });
-  } */
+    deleteTransaction(t.id);
+  }
 
   render() {
     const { transactions } = this.props;
+
     return (
       <div className={styles.transactionHistory}>
         <div>
@@ -42,7 +39,6 @@ class HomeTab extends React.Component {
             <div className={styles.textCenter}>Delete</div>
           </div>
           {typeof transactions === 'object' && transactions.length === 0 ? (
-            // {transactions.length === 0 ? (
             <div className={styles.addTransaction}>Please add transaction</div>
           ) : (
             transactions.map(t => (
@@ -51,13 +47,13 @@ class HomeTab extends React.Component {
                 <div className={styles.pair}>
                   <div className={styles.key}>Date</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    {timestampToDate(t.transactonDate)}
+                    {timestampToDate(t.transactionDate)}
                   </div>
                 </div>
                 <div className={styles.pair}>
                   <div className={styles.key}>Type</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    {t.type === 'Income' ? '+' : '-'}
+                    {t.type === 'income' ? '+' : '-'}
                   </div>
                 </div>
                 <div className={styles.pair}>
@@ -72,7 +68,7 @@ class HomeTab extends React.Component {
                   <div className={styles.key}>Sum</div>
                   <div
                     className={`${styles.val} ${styles.textCenter} ${
-                      t.type === 'Expense' ? styles.hilite : ''
+                      t.type === 'expense' ? styles.hilite : ''
                     }`}
                   >
                     {t.amount}
@@ -87,7 +83,10 @@ class HomeTab extends React.Component {
                 <div className={styles.pair}>
                   <div className={styles.key}>Delete</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    <Trash className={styles.deleteBtn} />
+                    <Trash
+                      className={styles.deleteBtn}
+                      onClick={() => this.onDelete(t)}
+                    />
                   </div>
                 </div>
               </div>
@@ -103,4 +102,9 @@ const mapStateToProps = state => ({
   transactions: state.finance.data,
 });
 
-export default connect(mapStateToProps)(HomeTab);
+const mapDispatchToProps = dispatch => ({
+  deleteTransaction: transactionId =>
+    dispatch(deleteTransaction(transactionId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeTab);
