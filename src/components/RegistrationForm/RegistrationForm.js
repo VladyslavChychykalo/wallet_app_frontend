@@ -154,6 +154,9 @@ class RegistrationForm extends Component {
                     />
                     <NameIcon className={styles.registrationIcon} />
                   </div>
+                  <a href="https://cryptic-citadel-50371.herokuapp.com/api/auth/google">
+                    Google auth
+                  </a>
                   <button
                     className={styles.button}
                     type="submit"

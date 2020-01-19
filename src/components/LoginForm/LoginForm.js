@@ -47,6 +47,7 @@ class LoginForm extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <Formik
         initialValues={{
@@ -72,6 +73,10 @@ class LoginForm extends Component {
                 <div className={styles.logoContainer}>
                   <Logo className={styles.logo} />
                   <h1 className={styles.title}>Wallet</h1>
+
+                  <a href="https://cryptic-citadel-50371.herokuapp.com/api/auth/google">
+                    Google auth
+                  </a>
                 </div>
                 <Form autoComplete="off">
                   <div className={styles.inputWithIcon}>

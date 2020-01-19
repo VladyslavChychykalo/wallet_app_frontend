@@ -1,9 +1,10 @@
 import React from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 import styles from './Table.module.css';
 
 const month = [
-  { label: 'Month', value: '' },
+  { label: 'All months', value: '' },
   { label: 'January', value: 'January' },
   { label: 'February', value: 'February' },
   { label: 'March', value: 'March' },
@@ -19,7 +20,7 @@ const month = [
 ];
 
 const year = [
-  { label: 'Year', value: 0 },
+  { label: 'All years', value: 0 },
   { label: 2021, value: 2021 },
   { label: 2020, value: 2020 },
   { label: 2019, value: 2019 },
@@ -82,6 +83,13 @@ const Stateless = ({ data, handleChange, expenses, income }) => {
       </div>
     </div>
   );
+};
+
+Stateless.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  expenses: PropTypes.number.isRequired,
+  income: PropTypes.number.isRequired,
 };
 
 export default Stateless;
