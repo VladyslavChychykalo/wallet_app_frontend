@@ -78,6 +78,7 @@
   .currencyHeadline {
     width: 100%;
   }
+
   .currencyTable {
     background-image: none;
   }
@@ -86,9 +87,10 @@
 @media (min-width: 1280px) {
   .currencyTable {
     width: 100%;
-    height: 400px;
+    /* height: 400px; */
     background-image: url(../../assets/images/bgImg.png);
     background-position: 58% 100%;
     background-repeat: no-repeat;
+    padding-bottom: 220px;
   }
 }

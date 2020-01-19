@@ -1,7 +1,7 @@
 .container {
   background-color: #edf3f3;
   background-attachment: fixed;
-  /* height: 100vh; */
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center top;
 }
@@ -14,7 +14,7 @@
 .main {
   width: 320px;
   margin: 0 auto;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .nav {
@@ -45,7 +45,7 @@
   position: fixed;
   border: none;
   outline: none;
-  bottom: 12px;
+  bottom: 20px;
   right: 50%;
   transform: translateX(50%);
   width: 50px;
@@ -60,7 +60,7 @@
 
 @media (min-width: 768px) {
   .container {
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #faf9fa;
   }
 
@@ -87,7 +87,7 @@
   }
 
   .nav {
-    width: 40%;
+    width: 310px;
     margin: 0;
     background: none;
     padding: 28px 0;
@@ -96,7 +96,7 @@
   }
 
   .balance {
-    width: 25%;
+    width: 192px;
     margin: 0;
     background: none;
     display: flex;
@@ -121,6 +121,7 @@
 @media (min-width: 1280px) {
   .container {
     height: auto;
+    background-color: #f1f3f1;
   }
 
   .header {
