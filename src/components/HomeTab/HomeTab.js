@@ -1,131 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
-
-// const testHomeTab = [
-//   {
-//     type: 'income',
-//     date: 1578231058734,
-//     id: 'a1',
-//     amount: 100,
-//     category: 'Varia',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '-',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-//   {
-//     type: 'income',
-//     date: 1578231058734,
-//     id: 'a2',
-//     amount: 110,
-//     category: 'Regular income',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '-',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-//   {
-//     type: 'income',
-//     date: 1578231058734,
-//     id: 'a3',
-//     amount: 1200.12,
-//     category: 'Car',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '+',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-//   {
-//     type: 'cost',
-//     date: 1578231058734,
-//     id: 'a4',
-//     amount: 1200.12,
-//     category: 'Products',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '+',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-//   {
-//     type: 'income',
-//     date: 1578231058734,
-//     id: 'a5',
-//     amount: 1200.12,
-//     category: 'Irregular income',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '+',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-//   {
-//     type: 'income',
-//     date: 1578231058734,
-//     id: 'a6',
-//     amount: 100,
-//     category: 'Varia',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '-',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-//   {
-//     type: 'income',
-//     date: 1578231058734,
-//     id: 'a7',
-//     amount: 110,
-//     category: 'Regular income',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '-',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-//   {
-//     type: 'income',
-//     date: 1578231058734,
-//     id: 'a8',
-//     amount: 1200.12,
-//     category: 'Car',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '+',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-//   {
-//     type: 'cost',
-//     date: 1578231058734,
-//     id: 'a9',
-//     amount: 1200.12,
-//     category: 'Products',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '+',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-//   {
-//     type: 'income',
-//     date: 1578231058734,
-//     id: 'a10',
-//     amount: 1200.12,
-//     category: 'Irregular income',
-//     comment: 'test comment',
-//     balanceAfter: 5000,
-//     typebalanceAfter: '+',
-//     updatedAt: '2020-11-25T14:14:14.100Z',
-//     createdAt: '2020-11-25T14:14:14.100Z',
-//   },
-// ];
 
 function timestampToDate(timestamp) {
   const date = new Date(timestamp);
@@ -159,7 +37,6 @@ class HomeTab extends React.Component {
 
   render() {
     const { transactions } = this.props;
-    console.log(typeof transactions);
     return (
       <div className={styles.transactionHistory}>
         <div>
