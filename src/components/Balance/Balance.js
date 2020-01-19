@@ -22,4 +22,5 @@ const mapStateToProps = state => ({
 Balance.propTypes = {
   balance: PropTypes.number.isRequired,
 };
+
 export default connect(mapStateToProps)(Balance);
