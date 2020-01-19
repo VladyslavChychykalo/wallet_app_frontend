@@ -50,7 +50,8 @@ class HomeTab extends React.Component {
             <div className={styles.addTransaction}>Please add transaction</div>
           ) : (
             transactions.map(t => (
-              <div key={t.id} className={styles.transaction}>
+              // eslint-disable-next-line no-underscore-dangle
+              <div key={t._id} className={styles.transaction}>
                 <div className={styles.pair}>
                   <div className={styles.key}>Date</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
