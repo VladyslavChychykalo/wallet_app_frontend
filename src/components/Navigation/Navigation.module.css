@@ -32,6 +32,8 @@
     align-items: flex-end;
     text-decoration: none;
     color: #7e8e94;
+    text-align: center;
+    margin: 0;
   }
 
   .svg {
