@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -14,18 +13,18 @@ function timestampToDate(timestamp) {
 class HomeTab extends React.Component {
   static propTypes = {
     transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    deleteTransaction: PropTypes.func.isRequired,
   };
 
-  onDelete(t) {
-    const { transactions } = this.state;
-    transactions.splice(transactions.indexOf(t), 1);
-    this.setState({ transactions });
-    deleteTransaction(t.id);
+  onDelete({ _id: id }) {
+    const { deleteTransaction: deleteTr } = this.props;
+    deleteTr(id);
   }
 
   render() {
     const { transactions } = this.props;
     const windowWidth = document.documentElement.clientWidth;
+
     return (
       <div className={styles.transactionHistory}>
         {windowWidth < 768 &&
@@ -118,4 +117,8 @@ const mapStateToProps = state => ({
   transactions: state.finance.data,
 });
 
-export default connect(mapStateToProps)(HomeTab);
+const mapDispatchToProps = dispatch => ({
+  deleteTransaction: transactionId =>
+    dispatch(deleteTransaction(transactionId)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(HomeTab);
