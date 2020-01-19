@@ -11,7 +11,7 @@ import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as EmailIcon } from '../../images/emailIcon.svg';
 import { ReactComponent as PasswordIcon } from '../../images/passwordIcon.svg';
 import { ReactComponent as NameIcon } from '../../images/nameIcon.svg';
-import { ReactComponent as GoogleIcon } from '../../images/googleSvg.svg';
+import { ReactComponent as GoogleIcon } from '../../images/googleTestIcon.svg';
 import {
   strengthColor,
   strengthIndicator,
@@ -155,11 +155,8 @@ class RegistrationForm extends Component {
                     />
                     <NameIcon className={styles.registrationIcon} />
                   </div>
-                  <a
-                    className={styles.googleImage}
-                    href="https://cryptic-citadel-50371.herokuapp.com/api/auth/google"
-                  >
-                    <GoogleIcon />
+                  <a href="https://cryptic-citadel-50371.herokuapp.com/api/auth/google">
+                    <GoogleIcon className={styles.googleImage} />
                   </a>
                   <button
                     className={styles.button}
