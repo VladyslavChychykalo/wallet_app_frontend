@@ -15,7 +15,7 @@ function timestampToDate(timestamp) {
 const sortByDate = dates => {
   if (dates.length > 0) {
     dates.sort((a, b) => {
-      return Date.parse(a.transactionDate) - Date.parse(b.transactionDate);
+      return Date.parse(b.transactionDate) - Date.parse(a.transactionDate);
     });
   }
   return dates;
@@ -39,37 +39,44 @@ class HomeTab extends React.Component {
       <div className={styles.transactionHistory}>
         {windowWidth < 768 &&
           transactions.map(trans => (
-            <table key={trans._id}>
+            <table className={styles.table} key={trans._id}>
               <tbody>
-                <tr>
-                  <th>Date</th>
-                  <td>{timestampToDate(trans.transactionDate)}</td>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>Date</th>
+                  <td className={styles.td}>
+                    {timestampToDate(trans.transactionDate)}
+                  </td>
                 </tr>
-                <tr>
-                  <th>Type</th>
-                  <td>{trans.type === 'income' ? '+' : '-'}</td>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>Type</th>
+                  <td className={styles.td}>
+                    {trans.type === 'income' ? '+' : '-'}
+                  </td>
                 </tr>
-                <tr>
-                  <th>Category</th>
-                  <td>{trans.category}</td>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>Category</th>
+                  <td className={styles.td}>{trans.category}</td>
                 </tr>
-                <tr>
-                  <th>Comment</th>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>Comment</th>
                   <td>{trans.comment}</td>
                 </tr>
-                <tr>
-                  <th>Sum</th>
-                  <td className={trans.type === 'expense' ? styles.hilite : ''}>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>Sum</th>
+                  <td
+                    className={styles.td}
+                    className={trans.type === 'expense' ? styles.hilite : ''}
+                  >
                     {trans.amount}
                   </td>
                 </tr>
-                <tr>
-                  <th>Balance</th>
-                  <td>{trans.balanceAfter}</td>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>Balance</th>
+                  <td className={styles.td}>{trans.balanceAfter}</td>
                 </tr>
-                <tr>
-                  <th>Delete</th>
-                  <td>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>Delete</th>
+                  <td className={styles.td}>
                     <Trash
                       className={styles.deleteBtn}
                       onClick={() => this.onDelete(trans)}
@@ -80,30 +87,37 @@ class HomeTab extends React.Component {
             </table>
           ))}
         {windowWidth >= 768 && (
-          <table>
+          <table className={styles.table}>
             <thead>
-              <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Comment</th>
-                <th>Sum</th>
-                <th>Balance</th>
-                <th>Delete</th>
+              <tr className={styles.tr}>
+                <th className={styles.th}>Date</th>
+                <th className={styles.th}>Type</th>
+                <th className={styles.th}>Category</th>
+                <th className={styles.th}>Comment</th>
+                <th className={styles.th}>Sum</th>
+                <th className={styles.th}>Balance</th>
+                <th className={styles.th}>Delete</th>
               </tr>
             </thead>
             <tbody>
               {transactions.map(trans => (
-                <tr key={trans._id}>
-                  <td>{timestampToDate(trans.transactionDate)}</td>
-                  <td>{trans.type === 'income' ? '+' : '-'}</td>
-                  <td>{trans.category}</td>
-                  <td>{trans.comment}</td>
-                  <td className={trans.type === 'expense' ? styles.hilite : ''}>
+                <tr className={styles.tr} key={trans._id}>
+                  <td className={styles.td}>
+                    {timestampToDate(trans.transactionDate)}
+                  </td>
+                  <td className={styles.td}>
+                    {trans.type === 'income' ? '+' : '-'}
+                  </td>
+                  <td className={styles.td}>{trans.category}</td>
+                  <td className={styles.td}>{trans.comment}</td>
+                  <td
+                    className={styles.td}
+                    className={trans.type === 'expense' ? styles.hilite : ''}
+                  >
                     {trans.amount}
                   </td>
-                  <td>{trans.balanceAfter}</td>
-                  <td>
+                  <td className={styles.td}>{trans.balanceAfter}</td>
+                  <td className={styles.td}>
                     <Trash
                       className={styles.deleteBtn}
                       onClick={() => this.onDelete(trans)}
