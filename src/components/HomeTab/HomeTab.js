@@ -5,18 +5,13 @@ import PropTypes from 'prop-types';
 import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
 
-// function timestampToDate(timestamp) {
-//   const date = new Date(timestamp);
-//   const str = date.toISOString();
-//   const y = str.slice(2, 4);
-//   const m = str.slice(5, 7);
-//   const d = str.slice(8, 10);
-//   return `${d}.${m}.${y}`;
-// }
-
-// function numFormat(num) {
-//   return num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-// }
+function timestampToDate(timestamp) {
+  const str = timestamp.slice(0, 14);
+  const y = str.slice(2, 4);
+  const m = str.slice(5, 7);
+  const d = str.slice(8, 10);
+  return `${d}.${m}.${y}`;
+}
 
 class HomeTab extends React.Component {
   static propTypes = {
@@ -59,7 +54,7 @@ class HomeTab extends React.Component {
                 <div className={styles.pair}>
                   <div className={styles.key}>Date</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    {t.transaction.transactonDate}
+                    {timestampToDate(t.transactonDate)}
                   </div>
                 </div>
                 <div className={styles.pair}>
@@ -70,11 +65,11 @@ class HomeTab extends React.Component {
                 </div>
                 <div className={styles.pair}>
                   <div className={styles.key}>Category</div>
-                  <div className={styles.val}>{t.transaction.category}</div>
+                  <div className={styles.val}>{t.category}</div>
                 </div>
                 <div className={styles.pair}>
                   <div className={styles.key}>Comment</div>
-                  <div className={styles.val}>{t.transaction.comment}</div>
+                  <div className={styles.val}>{t.comment}</div>
                 </div>
                 <div className={styles.pair}>
                   <div className={styles.key}>Sum</div>
@@ -89,7 +84,7 @@ class HomeTab extends React.Component {
                 <div className={styles.pair}>
                   <div className={styles.key}>Balance</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    {t.transaction.balanceAfter}
+                    {t.balanceAfter}
                   </div>
                 </div>
                 <div className={styles.pair}>
