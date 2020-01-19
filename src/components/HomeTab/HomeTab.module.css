@@ -78,6 +78,7 @@
   }
   .val {
     padding: 0 10px;
+    max-width: 100px;
   }
   .textCenter {
     text-align: center;

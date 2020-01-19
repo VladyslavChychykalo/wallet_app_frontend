@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ReactTooltip from 'react-tooltip';
 import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
 
@@ -69,7 +70,16 @@ class HomeTab extends React.Component {
                 </div>
                 <div className={styles.pair}>
                   <div className={styles.key}>Comment</div>
-                  <div className={styles.val}>{t.comment}</div>
+                  <div className={styles.val} data-tip>
+                    Show comment
+                  </div>
+                  <ReactTooltip
+                    effect="solid"
+                    place="bottom"
+                    eventOff="mouseenter"
+                    offset={{ top: 0, right: 50 }}
+                    getContent={() => t.comment}
+                  />
                 </div>
                 <div className={styles.pair}>
                   <div className={styles.key}>Sum</div>
