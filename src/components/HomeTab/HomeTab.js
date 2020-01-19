@@ -1,16 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
 
 function timestampToDate(timestamp) {
-  const str = timestamp.slice(0, 14);
-  const y = str.slice(2, 4);
-  const m = str.slice(5, 7);
-  const d = str.slice(8, 10);
-  return `${d}.${m}.${y}`;
+  return moment(timestamp).format('DD/MM/YYYY');
 }
 
 class HomeTab extends React.Component {
