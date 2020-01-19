@@ -1,3 +1,67 @@
+table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th {
+  padding: 20px 10px;
+}
+
+table:nth-child(odd) tr {
+  border-left: 8px solid var(--color-main-blue);
+}
+
+table:nth-child(even) tr {
+  border-left: 8px solid var(--color-main-orange);
+}
+
+tr:nth-child(odd) {
+  background: #fff;
+}
+
+@media (min-width: 768px) {
+  table {
+    text-align: center;
+  }
+
+  table:nth-child(odd) tr {
+    border-left: none;
+  }
+
+  table:nth-child(even) tr {
+    border-left: none;
+  }
+
+  th {
+    padding: 30px 0;
+    background: #fff;
+  }
+
+  th:first-child {
+    padding-left: 10px;
+  }
+
+  th:last-child {
+    padding-right: 10px;
+  }
+
+  tr:nth-child(even) {
+    background: #f3f6f6;
+  }
+
+  tr:nth-child(odd) {
+    background: none;
+  }
+
+  td {
+    padding: 30px 0;
+
+    text-align: center;
+  }
+}
+
 .transactionHistory {
   font-family: 'HelveticaNeueCyr', sans-serif;
 }
@@ -25,10 +89,10 @@
 .pair:nth-child(odd) {
   background: #f4f5f7;
 }
-.key {
+/* .key {
   flex-basis: 100%;
   padding: 0 0 0 15px;
-}
+} */
 .val {
   flex-basis: 100%;
   white-space: nowrap;
@@ -78,6 +142,7 @@
   }
   .val {
     padding: 0 10px;
+    max-width: 100px;
   }
   .textCenter {
     text-align: center;

@@ -4,6 +4,7 @@
 
 .diagramHeader {
   display: none;
+  text-transform: uppercase;
 }
 
 .wrapper {
