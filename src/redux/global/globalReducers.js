@@ -27,8 +27,15 @@ const loadingReducer = (state = false, { type }) => {
   switch (type) {
     case types.GLOBAL_FETCH_START:
     case types.LOGIN_REQUEST:
+    case types.REGISTER_REQUEST:
+    case types.REFRESH_CURRENT_REQUEST:
       return true;
     case types.LOGIN_SUCCESS:
+    case types.LOGIN_ERROR:
+    case types.REGISTER_SUCCESS:
+    case types.REGISTER_ERROR:
+    case types.REFRESH_CURRENT_SUCCESS:
+    case types.REFRESH_CURRENT_ERROR:
     case types.GLOBAL_FETCH_FINISH:
     case types.GLOBAL_FETCH_ERROR:
       return false;

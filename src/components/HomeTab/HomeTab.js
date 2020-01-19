@@ -3,11 +3,6 @@ import { connect } from 'react-redux';
 import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
 
-function mapStateToProps(/* state */) {
-  return {};
-  // return { transactions: state.finance.data };
-}
-
 const testHomeTab = [
   {
     type: 'income',
@@ -226,6 +221,11 @@ class HomeTab extends React.Component {
       </div>
     );
   }
+}
+
+function mapStateToProps(/* state */) {
+  return {};
+  // return { transactions: state.finance.data };
 }
 
 export default connect(mapStateToProps)(HomeTab);

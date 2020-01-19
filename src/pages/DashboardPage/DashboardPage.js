@@ -12,22 +12,30 @@ import Currency from '../../components/Currency/Currency';
 import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransactionConteiner';
 import { openModalAddTransaction } from '../../redux/global/globalActions';
 import getIsModalAddTransactionOpen from '../../redux/global/globalSelectors';
-// import * as financeOperations from '../../redux/finance/financeOperations';
+import {
+  getFinanceDataFetch,
+  getFinanceTotalBalanceFetch,
+} from '../../redux/finance/financeOperations';
+
+import { getUserId } from '../../redux/finance/financeSelectors';
 
 class DashboardPage extends Component {
   static propTypes = {
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
     openModalAddTransactionAction: PropTypes.func.isRequired,
+    userId: PropTypes.string.isRequired,
     // pathname: PropTypes.string.isRequired,
-    location: PropTypes.objectOf(PropTypes.string).isRequired,
+    // location: PropTypes.objectOf(PropTypes.string).isRequired,
   };
 
   componentDidMount() {
-    // this.props.fetchTransactions;
+    const { userId } = this.props;
+    getFinanceDataFetch(userId);
+    getFinanceTotalBalanceFetch(userId);
   }
 
   render() {
-    const { location } = this.props;
+    // const { location } = this.props;
     const {
       isModalAddTransactionOpen,
       openModalAddTransactionAction,
@@ -35,9 +43,9 @@ class DashboardPage extends Component {
     const windowWidth = document.documentElement.clientWidth;
     // let pathname;
     // if (location && location.pathname) {
-    //   pathname = location.pathname;
+    // pathname = location.pathname;
     // }
-    const isHomePage = location.pathname;
+    // const isHomePage = location.pathname;
     return (
       <>
         {isModalAddTransactionOpen && <ModalAddTransaction />}
@@ -53,13 +61,12 @@ class DashboardPage extends Component {
               <section className={styles.balance}>
                 <Balance />
               </section>
-              {windowWidth < 1280 &&
-                windowWidth >= 768 &&
-                isHomePage === '/home' && (
-                  <section className={styles.currency}>
-                    <Currency />
-                  </section>
-                )}
+              {/* {windowWidth < 1280 && windowWidth>= 768 &&
+          isHomePage === '/home' && (
+          <section className={styles.currency}>
+            <Currency />
+          </section>
+          )} */}
               {windowWidth >= 1280 && (
                 <section className={styles.currency}>
                   <Currency />
@@ -85,7 +92,8 @@ class DashboardPage extends Component {
                 openModalAddTransactionAction();
               }}
             >
-              +{/* open <ModalAddTransaction /> */}
+              +{/* open
+        <ModalAddTransaction /> */}
             </button>
           </Route>
         </div>
@@ -96,11 +104,14 @@ class DashboardPage extends Component {
 
 const mapStateToProps = state => ({
   isModalAddTransactionOpen: getIsModalAddTransactionOpen(state),
+  userId: getUserId(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   openModalAddTransactionAction: () => dispatch(openModalAddTransaction()),
-  // fetchTransactions: financeOperations.fetchTransactions,
+  getFinanceDataFetch: userId => dispatch(getFinanceDataFetch(userId)),
+  getFinanceTotalBalanceFetch: userId =>
+    dispatch(getFinanceTotalBalanceFetch(userId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
