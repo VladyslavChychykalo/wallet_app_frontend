@@ -27,8 +27,12 @@ class DashboardPage extends Component {
     openModalAddTransactionAction: PropTypes.func.isRequired,
     getFinanceDataFetch: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
-    pathname: PropTypes.string.isRequired,
+    pathname: PropTypes.string,
     location: PropTypes.objectOf(PropTypes.string).isRequired,
+  };
+
+  static defaultProps = {
+    pathname: '/home',
   };
 
   componentDidMount() {
@@ -44,10 +48,6 @@ class DashboardPage extends Component {
       openModalAddTransactionAction,
     } = this.props;
     const windowWidth = document.documentElement.clientWidth;
-    // let pathname;
-    // if (location && location.pathname) {
-    //   pathname = location.pathname;
-    // }
     const isHomePage = location.pathname;
     const isTabHome =
       isHomePage === '/home' && windowWidth < 1280 && windowWidth >= 768;
@@ -69,7 +69,7 @@ class DashboardPage extends Component {
           >
             <aside className={styles.aside}>
               <nav className={styles.nav}>
-                <Navigation />
+                <Navigation {...this.props} />
               </nav>
               <section className={styles.balance}>
                 <Balance />
@@ -87,7 +87,18 @@ class DashboardPage extends Component {
             </aside>
             <article className={styles.content}>
               <Switch>
-                <Route path="/home" component={HomeTab} />
+                <Route path="/home">
+                  <HomeTab />
+                  <button
+                    type="button"
+                    className={styles.addTransaction}
+                    onClick={() => {
+                      openModalAddTransactionAction();
+                    }}
+                  >
+                    +
+                  </button>
+                </Route>
                 <Route path="/diagram" component={DiagramTab} />
                 {windowWidth < 768 && (
                   <Route path="/currency" component={Currency} />
@@ -96,18 +107,6 @@ class DashboardPage extends Component {
               </Switch>
             </article>
           </main>
-          <Route path="/home">
-            <button
-              type="button"
-              className={styles.addTransaction}
-              onClick={() => {
-                openModalAddTransactionAction();
-              }}
-            >
-              +{/* open
-        <ModalAddTransaction /> */}
-            </button>
-          </Route>
         </div>
       </>
     );
