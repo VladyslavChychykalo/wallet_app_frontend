@@ -24,8 +24,12 @@ class DashboardPage extends Component {
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
     openModalAddTransactionAction: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
-    pathname: PropTypes.string.isRequired,
+    pathname: PropTypes.string,
     location: PropTypes.objectOf(PropTypes.string).isRequired,
+  };
+
+  static defaultProps = {
+    pathname: '/home',
   };
 
   componentDidMount() {
@@ -84,7 +88,19 @@ class DashboardPage extends Component {
             </aside>
             <article className={styles.content}>
               <Switch>
-                <Route path="/home" component={HomeTab} />
+                <Route path="/home">
+                  <HomeTab />
+                  <button
+                    type="button"
+                    className={styles.addTransaction}
+                    onClick={() => {
+                      openModalAddTransactionAction();
+                    }}
+                  >
+                    +{/* open
+        <ModalAddTransaction /> */}
+                  </button>
+                </Route>
                 <Route path="/diagram" component={DiagramTab} />
                 {windowWidth < 768 && (
                   <Route path="/currency" component={Currency} />
@@ -93,18 +109,7 @@ class DashboardPage extends Component {
               </Switch>
             </article>
           </main>
-          <Route path="/home">
-            <button
-              type="button"
-              className={styles.addTransaction}
-              onClick={() => {
-                openModalAddTransactionAction();
-              }}
-            >
-              +{/* open
-        <ModalAddTransaction /> */}
-            </button>
-          </Route>
+          <Route path="/home" />
         </div>
       </>
     );
