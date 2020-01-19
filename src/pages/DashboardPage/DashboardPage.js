@@ -45,10 +45,6 @@ class DashboardPage extends Component {
       openModalAddTransactionAction,
     } = this.props;
     const windowWidth = document.documentElement.clientWidth;
-    // let pathname;
-    // if (location && location.pathname) {
-    //   pathname = location.pathname;
-    // }
     const isHomePage = location.pathname;
     const isTabHome =
       isHomePage === '/home' && windowWidth < 1280 && windowWidth >= 768;
@@ -70,7 +66,7 @@ class DashboardPage extends Component {
           >
             <aside className={styles.aside}>
               <nav className={styles.nav}>
-                <Navigation />
+                <Navigation {...this.props} />
               </nav>
               <section className={styles.balance}>
                 <Balance />
@@ -97,8 +93,7 @@ class DashboardPage extends Component {
                       openModalAddTransactionAction();
                     }}
                   >
-                    +{/* open
-        <ModalAddTransaction /> */}
+                    +
                   </button>
                 </Route>
                 <Route path="/diagram" component={DiagramTab} />
