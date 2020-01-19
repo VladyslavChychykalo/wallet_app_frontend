@@ -172,7 +172,7 @@ class HomeTab extends React.Component {
             <div>Balance</div>
             <div className={styles.textCenter}>Delete</div>
           </div>
-          {transactions.length === 0 && typeof transactions === 'object' ? (
+          {typeof transactions === 'object' || transactions.length === 0 ? (
             <div className={styles.addTransaction}>Please add transaction</div>
           ) : (
             transactions.map(t => (
