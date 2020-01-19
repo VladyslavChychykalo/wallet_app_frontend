@@ -36,14 +36,14 @@ const Stateless = ({ data, handleChange, expenses, income }) => {
           <Select
             onChange={handleChange}
             options={month}
-            defaultValue={{ label: 'Month', value: 'Month' }}
+            defaultValue={{ label: 'January', value: 'January' }}
           />
         </div>
         <div className={styles.statelessSelectGroup}>
           <Select
             onChange={handleChange}
             options={year}
-            defaultValue={{ label: 'Year', value: 'Year' }}
+            defaultValue={{ label: 2020, value: 2020 }}
           />
         </div>
       </div>
@@ -73,12 +73,12 @@ const Stateless = ({ data, handleChange, expenses, income }) => {
       <div className={styles.statelessLineLast} />
       <div className={styles.statelessFooter}>
         <p className={styles.tableExpenses}>
-          <span style={{ paddingRight: '20px' }}>Expenses: </span>
-          <span style={{ color: '#3a5374' }}>{expenses}</span>
+          <span className={styles.tableSpan}>Expenses: </span>
+          <span style={{ color: '#3a5374' }}>{expenses} UAH</span>
         </p>
         <p className={styles.tableExpenses}>
-          <span style={{ paddingRight: '20px' }}>Incoming:</span>
-          <span style={{ color: '#ff6c00' }}>{income}</span>
+          <span className={styles.tableSpan}>Incoming:</span>
+          <span style={{ color: '#ff6c00' }}>{income} UAH</span>
         </p>
       </div>
     </div>

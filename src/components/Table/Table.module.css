@@ -10,6 +10,7 @@
   margin-bottom: 8%;
   font-size: 18px;
 }
+
 .statelessHeader {
   background-color: #f3f6f6;
   height: 3em;
@@ -17,15 +18,23 @@
   padding-left: 26px;
   padding-right: 26px;
 }
+
 .statelessSelectGroup {
   width: 130px;
 }
+
 .statelessListItem {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 auto;
 }
+
+.tableSpan {
+  padding-right: 20px;
+  text-transform: uppercase;
+}
+
 li {
   list-style-type: none;
   padding-bottom: 10px;
@@ -41,6 +50,7 @@ li {
 li:last-child:nth-child(2n + 1) > .statelessLine {
   border: 2px solid #b9c9d4;
 }
+
 .statelessIcone {
   display: inline-block;
   width: 15px;
@@ -48,10 +58,12 @@ li:last-child:nth-child(2n + 1) > .statelessLine {
   border: 1px solid black;
   margin-right: 12px;
 }
+
 .statelessTitle {
   display: inline-block;
   max-width: 300px;
 }
+
 .statelessAmount {
   padding-left: 14%;
 }
@@ -59,13 +71,13 @@ li:last-child:nth-child(2n + 1) > .statelessLine {
 .tableExpenses {
   display: flex;
   justify-content: space-between;
+  font-weight: 700;
 }
 
 @media (min-width: 768px) {
   .stateless {
     width: 90%;
   }
-
   .statelessHeader {
     display: none;
   }
@@ -88,7 +100,6 @@ li:last-child:nth-child(2n + 1) > .statelessLine {
     text-align: end;
   }
   .tableExpenses {
-    justify-content: flex-end;
     padding-left: 20px;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -108,7 +119,6 @@ li:last-child:nth-child(2n + 1) > .statelessLine {
   .stateless {
     width: 360px;
   }
-
   .statelessFooter {
     text-align: start;
   }
@@ -132,6 +142,6 @@ li:last-child:nth-child(2n + 1) > .statelessLine {
   }
   .tableExpenses {
     text-transform: none;
-    font-weight: 400;
+    font-weight: 700;
   }
 }
