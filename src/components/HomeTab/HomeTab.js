@@ -29,7 +29,7 @@ class HomeTab extends React.Component {
       <div className={styles.transactionHistory}>
         {windowWidth < 768 &&
           transactions.map(trans => (
-            <table key={trans.id}>
+            <table key={trans._id}>
               <tbody>
                 <tr>
                   <th>Date</th>
@@ -84,7 +84,7 @@ class HomeTab extends React.Component {
             </thead>
             <tbody>
               {transactions.map(trans => (
-                <tr key={trans.id}>
+                <tr key={trans._id}>
                   <td>{timestampToDate(trans.transactionDate)}</td>
                   <td>{trans.type === 'income' ? '+' : '-'}</td>
                   <td>{trans.category}</td>
