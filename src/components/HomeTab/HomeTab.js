@@ -6,16 +6,11 @@ import { ReactComponent as Trash } from '../../images/trash.svg';
 import styles from './HomeTab.module.css';
 
 function timestampToDate(timestamp) {
-  const date = new Date(timestamp);
-  const str = date.toISOString();
+  const str = timestamp.slice(0, 14);
   const y = str.slice(2, 4);
   const m = str.slice(5, 7);
   const d = str.slice(8, 10);
   return `${d}.${m}.${y}`;
-}
-
-function numFormat(num) {
-  return num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
 class HomeTab extends React.Component {
@@ -37,6 +32,7 @@ class HomeTab extends React.Component {
 
   render() {
     const { transactions } = this.props;
+    console.log(transactions);
     return (
       <div className={styles.transactionHistory}>
         <div>
@@ -49,7 +45,8 @@ class HomeTab extends React.Component {
             <div>Balance</div>
             <div className={styles.textCenter}>Delete</div>
           </div>
-          {typeof transactions === 'object' || transactions.length === 0 ? (
+          {/* {typeof transactions === 'object' || transactions.length === 0 ? ( */}
+          {transactions.length === 0 ? (
             <div className={styles.addTransaction}>Please add transaction</div>
           ) : (
             transactions.map(t => (
@@ -57,13 +54,13 @@ class HomeTab extends React.Component {
                 <div className={styles.pair}>
                   <div className={styles.key}>Date</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    {timestampToDate(t.date)}
+                    {timestampToDate(t.transactonDate)}
                   </div>
                 </div>
                 <div className={styles.pair}>
                   <div className={styles.key}>Type</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    {t.type === 'income' ? '+' : '-'}
+                    {t.transaction.type === 'income' ? '+' : '-'}
                   </div>
                 </div>
                 <div className={styles.pair}>
@@ -78,16 +75,16 @@ class HomeTab extends React.Component {
                   <div className={styles.key}>Sum</div>
                   <div
                     className={`${styles.val} ${styles.textCenter} ${
-                      t.type === 'cost' ? styles.hilite : ''
+                      t.transaction.type === 'cost' ? styles.hilite : ''
                     }`}
                   >
-                    {numFormat(t.amount)}
+                    {t.transaction.amount}
                   </div>
                 </div>
                 <div className={styles.pair}>
                   <div className={styles.key}>Balance</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    {numFormat(t.balanceAfter)}
+                    {t.balanceAfter}
                   </div>
                 </div>
                 <div className={styles.pair}>
