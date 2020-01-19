@@ -53,9 +53,9 @@ export const financeAddTransactionError = error => ({
 export const financeDeleteTransactionStart = () => ({
   type: types.FINANCE_DELETE_TRANSACTION_START,
 });
-export const financeDeleteTransactionFinish = response => ({
+export const financeDeleteTransactionFinish = transactionId => ({
   type: types.FINANCE_DELETE_TRANSACTION_FINISH,
-  payload: response,
+  payload: { transactionId },
 });
 export const financeDeleteTransactionError = error => ({
   type: types.FINANCE_DELETE_TRANSACTION_ERROR,
