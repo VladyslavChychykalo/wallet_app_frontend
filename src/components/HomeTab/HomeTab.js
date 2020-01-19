@@ -40,12 +40,13 @@ class HomeTab extends React.Component {
             <div>Balance</div>
             <div className={styles.textCenter}>Delete</div>
           </div>
-          {/* {typeof transactions === 'object' || transactions.length === 0 ? ( */}
-          {transactions.length === 0 ? (
+          {typeof transactions === 'object' && transactions.length === 0 ? (
+            // {transactions.length === 0 ? (
             <div className={styles.addTransaction}>Please add transaction</div>
           ) : (
             transactions.map(t => (
-              <div key={t.id} className={styles.transaction}>
+              // eslint-disable-next-line no-underscore-dangle
+              <div key={t._id} className={styles.transaction}>
                 <div className={styles.pair}>
                   <div className={styles.key}>Date</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
@@ -55,7 +56,7 @@ class HomeTab extends React.Component {
                 <div className={styles.pair}>
                   <div className={styles.key}>Type</div>
                   <div className={`${styles.val} ${styles.textCenter}`}>
-                    {t.transaction.type === 'income' ? '+' : '-'}
+                    {t.type === 'Income' ? '+' : '-'}
                   </div>
                 </div>
                 <div className={styles.pair}>
@@ -70,10 +71,10 @@ class HomeTab extends React.Component {
                   <div className={styles.key}>Sum</div>
                   <div
                     className={`${styles.val} ${styles.textCenter} ${
-                      t.transaction.type === 'cost' ? styles.hilite : ''
+                      t.type === 'Expense' ? styles.hilite : ''
                     }`}
                   >
-                    {t.transaction.amount}
+                    {t.amount}
                   </div>
                 </div>
                 <div className={styles.pair}>

@@ -4,7 +4,7 @@ import types from '../types';
 const data = (state = [], { type, payload }) => {
   switch (type) {
     case types.FINANCE_DATA_FETCH_FINISH:
-      return payload.data.transactionsList;
+      return [...payload.data.transactionsList];
     case types.FINANCE_ADD_TRANSACTION_FINISH:
       return [...state, payload.data.transaction];
     case types.FINANCE_ADD_TRANSACTION_ERROR:
