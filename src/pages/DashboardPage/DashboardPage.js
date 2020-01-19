@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -23,6 +25,7 @@ class DashboardPage extends Component {
   static propTypes = {
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
     openModalAddTransactionAction: PropTypes.func.isRequired,
+    getFinanceDataFetch: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
     pathname: PropTypes.string,
     location: PropTypes.objectOf(PropTypes.string).isRequired,
@@ -33,13 +36,13 @@ class DashboardPage extends Component {
   };
 
   componentDidMount() {
-    const { userId } = this.props;
+    const { getFinanceDataFetch, userId } = this.props;
     getFinanceDataFetch(userId);
-    getFinanceTotalBalanceFetch(userId);
   }
 
   render() {
     const { location } = this.props;
+
     const {
       isModalAddTransactionOpen,
       openModalAddTransactionAction,
@@ -116,11 +119,12 @@ const mapStateToProps = state => ({
   userId: getUserId(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  openModalAddTransactionAction: () => dispatch(openModalAddTransaction()),
-  getFinanceDataFetch: userId => dispatch(getFinanceDataFetch(userId)),
-  getFinanceTotalBalanceFetch: userId =>
-    dispatch(getFinanceTotalBalanceFetch(userId)),
-});
+const mapDispatchToProps = {
+  openModalAddTransactionAction: openModalAddTransaction,
+  getFinanceDataFetch,
+  // : userId => dispatch(getFinanceDataFetch(userId))
+  // getFinanceTotalBalanceFetch: userId =>
+  // dispatch(getFinanceTotalBalanceFetch(userId)),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
