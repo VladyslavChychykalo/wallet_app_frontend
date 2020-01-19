@@ -16,6 +16,7 @@
   justify-content: space-between;
   flex-direction: column;
   margin: 0 0 15px;
+  overflow: scroll;
 }
 .pair {
   width: 100%;
