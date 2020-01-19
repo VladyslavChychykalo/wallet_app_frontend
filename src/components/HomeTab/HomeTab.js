@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,6 +11,15 @@ import { deleteTransaction } from '../../redux/finance/financeOperations';
 function timestampToDate(timestamp) {
   return moment(timestamp).format('DD/MM/YYYY');
 }
+
+const sortByDate = dates => {
+  if (dates.length > 0) {
+    dates.sort((a, b) => {
+      return Date.parse(a.transactionDate) - Date.parse(b.transactionDate);
+    });
+  }
+  return dates;
+};
 
 class HomeTab extends React.Component {
   static propTypes = {
@@ -24,7 +35,6 @@ class HomeTab extends React.Component {
   render() {
     const { transactions } = this.props;
     const windowWidth = document.documentElement.clientWidth;
-
     return (
       <div className={styles.transactionHistory}>
         {windowWidth < 768 &&
@@ -114,7 +124,7 @@ class HomeTab extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  transactions: state.finance.data,
+  transactions: sortByDate(state.finance.data),
 });
 
 const mapDispatchToProps = dispatch => ({
